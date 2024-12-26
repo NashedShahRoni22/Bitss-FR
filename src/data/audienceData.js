@@ -7,34 +7,34 @@ export const audienceData = [
   {
     id: 1,
     title: "Students",
-    subtitle: "Learn and Thrive Safely Online",
+    subtitle: "Learn and Stay Protected Online",
     description:
-      "Get exclusive discounts and educational plans to help you study securely in the digital world.",
+      "Secure your educational websites or projects with seamless anti-spam and real-time form protection solutions designed for WordPress and JavaScript frameworks.",
     image: student,
     specialProperty: "Exclusive Student",
   },
   {
     id: 2,
     title: "Small Businesses",
-    subtitle: "Big Security for Small Teams",
+    subtitle: "Small Business, Big Protection",
     description:
-      "Protect Your Business Operations with Tailored Security Solutions That Perfectly Fit Your Needs.",
+      "Safeguard your website's contact forms from spam and threats with real-time monitoring, captchas, and advanced anti-spam tools. Perfect for startups and small teams.",
     image: smallBusiness,
   },
   {
     id: 3,
     title: "Large Enterprises",
-    subtitle: "Scalable Solutions for Large Operations",
+    subtitle: "Enterprise-Grade Security Solutions",
     description:
-      "Safeguard your enterprise with advanced, scalable security solutions for complex operations.",
+      "Protect high-traffic websites and critical contact forms with scalable anti-spam and threat monitoring tools, built for advanced operations and custom integrations.",
     image: enterprise,
   },
   {
     id: 4,
     title: "Individuals",
-    subtitle: "Personal Protection You Can Rely On",
+    subtitle: "Personalized Security You Can Trust",
     description:
-      "Ensure Your Personal Data and Devices Stay Fully Secure and Protected with Our Reliable Security Tools.",
+      "Keep your personal projects or blogs safe from spam and unwanted messages with easy-to-use, reliable contact form security solutions.",
     image: individual,
   },
 ];

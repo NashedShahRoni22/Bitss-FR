@@ -4,11 +4,11 @@ export default function AudienceCards() {
   return (
     <section className="px-5 py-10 md:container md:mx-auto md:py-20">
       <h2 className="mb-6 text-center text-3xl font-bold md:text-[2.5rem]">
-        Safety Designed for Every Need
+        Comprehensive Security for All Website Owners
       </h2>
-      <p className="text-custom-gray mb-20 w-full text-balance text-center text-xl font-light">
-        Explore our tailored Cybersecurity Solutions designed to meet the unique
-        needs of your Business and Personal life.
+      <p className="mb-20 w-full text-balance text-center text-xl font-light text-custom-gray">
+        Advanced anti-spam and threat prevention, designed to protect websites
+        and users of all sizes and types
       </p>
 
       <div className="grid grid-cols-1 gap-8 divide-y md:grid-cols-2 md:gap-16 md:divide-y-0 lg:grid-cols-4">
@@ -27,7 +27,7 @@ export default function AudienceCards() {
             <h3 className="mb-3 mt-5 text-balance text-center text-[1.375rem] font-bold">
               {data.subtitle}
             </h3>
-            <p className="text-custom-gray text-balance text-center text-lg font-light">
+            <p className="text-balance text-center text-lg font-light text-custom-gray">
               {data.description}
             </p>
           </div>

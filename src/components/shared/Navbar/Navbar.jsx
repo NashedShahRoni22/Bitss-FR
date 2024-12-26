@@ -15,7 +15,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b border-b-[#0077B6] text-[#fff]">
+    <nav className="border-b border-b-[#0077B6] bg-[#010a2b] text-[#fff]">
       <div className="relative flex w-full items-center justify-between px-5 md:container md:mx-auto">
         {/* Logo */}
         <div>

@@ -8,9 +8,16 @@ export const featuresData = [
     image: webProtect,
     icon: webSecureIcon,
     name: "Bitss WAP Website Protection",
-    title: "Secure Your Website and Data with Bitss WAP",
+    title: "Powerful Anti-Spam Plugins for Every Platform",
     overview:
-      "Protect your website, database, and online assets from hacking, data theft, spam, and intrusions with Bitss WAP's advanced, real-time Cyber Security solutions.",
+      "Protect your contact forms, websites, and customer data with cutting-edge anti-spam tools compatible with WordPress, React.js and other platforms.",
+    features: [
+      "Anti-spam contact message blocking system",
+      "Real-time threat detection",
+      "Image Captcha and Math Captcha options",
+      "Compatibility with all major web platforms",
+      "User-friendly dashboard for monitoring spam threats",
+    ],
     url: "/",
   },
   {

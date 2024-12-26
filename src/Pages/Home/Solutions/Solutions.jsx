@@ -12,7 +12,7 @@ export default function Solutions() {
   return (
     <section className="px-5 py-10 text-center md:container md:mx-auto md:py-20">
       <h2 className="mb-14 text-center text-3xl font-bold md:text-[2.5rem]">
-        Why Choose Bitss to Safeguard Your Digital Assets?
+        Why Bitss Is the Best Choice for Contact Form Protection
       </h2>
 
       {/* Mobile Tab Titles */}
@@ -44,10 +44,10 @@ export default function Solutions() {
             <h3 className="mb-4 text-2xl font-medium">
               {tabsData[activeTab].subTitle}
             </h3>
-            <p className="text-custom-gray mb-6 text-lg font-light">
+            <p className="mb-6 text-lg font-light text-custom-gray">
               {tabsData[activeTab].overview}
             </p>
-            <ul className="text-custom-gray space-y-4 font-light">
+            <ul className="space-y-4 font-light text-custom-gray">
               {tabsData[activeTab].content.map((item, index) => (
                 <li key={index} className="flex gap-2">
                   <FaCheck className="mt-1.5 min-w-fit text-[#d32f2f]" />

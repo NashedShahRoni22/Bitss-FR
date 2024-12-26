@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { featuresData } from "../../../data/featuresData";
+import { FaCheck } from "react-icons/fa6";
 
 export default function Featured() {
   return (
@@ -33,16 +34,28 @@ export default function Featured() {
             <h2 className="hidden text-balance text-3xl font-bold leading-[3.15rem] md:block md:text-[2.5rem]">
               {feat.title}
             </h2>
-            <p className="text-custom-gray mb-10 mt-4 text-balance text-lg font-light leading-7">
+            <p className="mt-4 text-balance text-lg font-light leading-7 text-custom-gray">
               {feat.overview}
             </p>
+
             <Link
               to={feat.url}
-              className="inline-flex items-center gap-2 rounded-full bg-[#D32F2F] px-6 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:scale-105 hover:bg-[#af0707] hover:shadow-[0_10px_13px_rgba(211,47,47,0.16)]"
+              className="my-8 inline-flex items-center gap-2 rounded-full bg-[#D32F2F] px-6 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:scale-105 hover:bg-[#af0707] hover:shadow-[0_10px_13px_rgba(211,47,47,0.16)]"
             >
               Get protected
               <HiOutlineArrowLongRight className="min-w-fit scale-125 text-2xl" />
             </Link>
+
+            {feat.features && (
+              <ul className="space-y-2 font-light text-custom-gray">
+                {feat.features.map((li, i) => (
+                  <li key={i} className="flex gap-2">
+                    <FaCheck className="mt-1.5 min-w-fit text-[#d32f2f]" />
+                    <span>{li}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </section>
       ))}

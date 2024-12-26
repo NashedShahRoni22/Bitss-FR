@@ -4,31 +4,31 @@ import easyUseImg from "../assets/home/ease-of-use.webp";
 
 export const tabsData = [
   {
-    title: "Protection",
-    subTitle: "Complete protection",
+    title: "Advanced Spam Prevention",
+    subTitle: "Complete Anti-Spam Protection",
     overview:
-      "Bitss protects your digital assets with advanced technology, using cutting-edge research to detect and prevent emerging online threats, ensuring comprehensive security every time you connect to the internet.",
+      "Bitss provides advanced anti-spam solutions to secure your website’s contact forms, leveraging cutting-edge technology to block spam submissions and safeguard user interactions in real time.",
     content: [
-      "Protect your privacy by blocking unauthorized attempts to access your webcam or track your activity on websites.",
-      "Secure your payments with a hacker-proof Protected Browser when you shop or bank online.",
-      "Safeguard your revenue and valuable data assets, ensuring the security of your client base against theft.",
+      "Prevent spam submissions with real-time threat monitoring and blocking systems.",
+      "Enhance form security with image captchas, math-based human verification, and automated spam detection.",
+      "Ensure seamless protection for both WordPress and JavaScript-based websites, providing a smooth user experience while keeping threats at bay.",
     ],
     image: protectionImg,
   },
   {
-    title: "Advanced Security",
-    subTitle: "Advanced Security Protection",
+    title: "Real-Time Security",
+    subTitle: "Instant Threat Detection",
     overview:
-      "Bitss provides proactive security with real-time detection and advanced analysis to protect your digital assets from emerging cyber threats and sophisticated attacks.",
+      "Bitss offers cutting-edge real-time security for your website and contact forms, ensuring immediate detection and prevention of spam, hacking attempts, and unauthorized submissions.",
     content: [
-      "Monitor your network and devices in real-time, proactively identifying vulnerabilities before they are exploited.",
-      "Leverage AI and machine learning to detect emerging threats and stop them in their tracks, including zero-day exploits.",
-      "Protect against sophisticated malware, ransomware, and spyware with multi-layered detection and analysis techniques.",
+      "Continuously monitor your contact forms and website traffic for suspicious activity and malicious threats.",
+      "Utilize AI-driven threat analysis to block spam submissions, automated bots, and potential phishing attacks in real time.",
+      "Protect your digital assets with proactive defenses against advanced hacking techniques and spam infiltration.",
     ],
     image: securityImg,
   },
   {
-    title: "Ease of Use",
+    title: "Easy Integration",
     subTitle: "Stays out of your way",
     overview:
       "Bitss provides easy-to-use, intuitive security solutions for all, simplifying deployment and management so you can focus on what matters while we protect your digital assets.",

@@ -5,25 +5,24 @@ import virusProtectIcon from "../assets/icons/virus-shield-white.png";
 export const highlitedSolutions = [
   {
     icon: webSecurityIcon,
-    title: "Website Security Solutions",
+    title: "Contact Form Anti-Spam Tools",
     overview:
-      "Protect websites, videos, and client data from theft and hacking.",
+      "Secure contact forms with advanced real-time spam-blocking systems.",
     cta: "Explore Website Protection",
     url: "/",
   },
   {
     icon: networkSecurityIcon,
-    title: "Network Security Solutions",
+    title: "Platform Compatibility Solutions",
     overview:
-      "Safeguard servers, databases, and networks against advanced threats.",
+      "Build secure websites with tools for WordPress, React.js, and more.",
     cta: "Explore Network Protection",
     url: "/",
   },
   {
     icon: virusProtectIcon,
-    title: "Virus Protection Solutions",
-    overview:
-      "Detect, neutralize, and eliminate viruses with real-time defense.",
+    title: "Custom Anti-Spam Security",
+    overview: "Tailor solutions for your specific website needs.",
     cta: "Discover Virus Protection",
     url: "/",
   },
