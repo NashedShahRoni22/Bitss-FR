@@ -1,32 +1,57 @@
 import webSecureIcon from "../assets/icons/web-shield.png";
-import virusProtectIcon from "../assets/icons/virus-shield.png";
-import webProtect from "../assets/home/website-protection.avif";
-import virusProtect from "../assets/home/virus-protection.avif";
+import antispamContactIcon from "../assets/icons/antispam-contact.png";
+import preselectFormIcon from "../assets/icons/pre-select-form.png";
+import webProtect from "../assets/home/website-protection.png";
+import antispamContact from "../assets/home/antispam-cotanct.png";
+import preselectForm from "../assets/home/pre-select-form.png";
 
 export const featuresData = [
   {
     image: webProtect,
     icon: webSecureIcon,
     name: "Bitss WAP Website Protection",
-    title: "Powerful Anti-Spam Plugins for Every Platform",
+    title: "Comprehensive Protection for Your Website",
     overview:
-      "Protect your contact forms, websites, and customer data with cutting-edge anti-spam tools compatible with WordPress, React.js and other platforms.",
+      "Secure your website, prevent data theft, and protect your online assets with real-time threat detection and advanced security measures.",
     features: [
-      "Anti-spam contact message blocking system",
-      "Real-time threat detection",
-      "Image Captcha and Math Captcha options",
-      "Compatibility with all major web platforms",
-      "User-friendly dashboard for monitoring spam threats",
+      "Prevents data theft and intrusion",
+      "Blocks hacking, spamming, and ransomware",
+      "Real-time spam protection for contact pages",
+      "Ensures secure FTP and routine entry",
+      "Protects revenue and client data",
     ],
-    url: "/",
+    url: "/products/wap-website-protection",
   },
   {
-    image: virusProtect,
-    icon: virusProtectIcon,
-    name: "Bitss Vwar Frontline Virus Protection (Software Version)",
-    title: "Defend Your Systems with Bitss Vwar Virus Protection",
+    image: antispamContact,
+    icon: antispamContactIcon,
+    name: "Bitss C Anti-Spam Contact Form",
+    title: "Stop Spam & Manage Your Contacts",
     overview:
-      "Safeguard your software and directories with real-time virus detection, suspicious code neutralization, and automatic scanning, ensuring advanced protection against evolving cyber threats.",
-    url: "/",
+      "Improve your contact form's security with anti-spam features, customizable settings, and real-time threat monitoring.",
+    features: [
+      "Stops website contact spamming",
+      "Prevents virus infiltration",
+      "Advanced anti-spam functions",
+      "Real-time threat monitoring",
+      "Supports WordPress and other platforms",
+    ],
+    url: "/products/anti-spam-contact-form",
+  },
+  {
+    image: preselectForm,
+    icon: preselectFormIcon,
+    name: "Bitss C Preselect Form",
+    title: "Customizable Forms with Enhanced Security",
+    overview:
+      "Protect your client relationships with customizable forms, advanced validation, and built-in anti-spam features.",
+    features: [
+      "Customizable form inputs with validation",
+      "Real-time submission protection",
+      "Advanced anti-spam and security features",
+      "Improves contact management",
+      "Continued support and upgrades",
+    ],
+    url: "products/c-preselect-form",
   },
 ];

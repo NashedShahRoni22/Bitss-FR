@@ -21,8 +21,8 @@ const navLinks = [
             path: "/products/wap-website-protection",
           },
           {
-            name: "C Standard Contact Form",
-            path: "/products/c-standard-contact-form",
+            name: "C Anti-Spam Contact Form",
+            path: "/products/anti-spam-contact-form",
           },
           {
             name: "C Preselect Form",

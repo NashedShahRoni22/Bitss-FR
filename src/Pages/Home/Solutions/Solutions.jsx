@@ -12,7 +12,7 @@ export default function Solutions() {
   return (
     <section className="px-5 py-10 text-center md:container md:mx-auto md:py-20">
       <h2 className="mb-14 text-center text-3xl font-bold md:text-[2.5rem]">
-        Why Bitss Is the Best Choice for Contact Form Protection
+        Why Bitss is the Ultimate Solution for Website Security
       </h2>
 
       {/* Mobile Tab Titles */}
