@@ -4,7 +4,7 @@ import heroImg from "../../../assets/home/hero.png";
 export default function Hero() {
   return (
     <section className="">
-      <div className="flex w-full flex-col items-center justify-center px-5 py-10 md:container md:mx-auto md:flex-row md:py-20">
+      <div className="flex w-full flex-col items-center justify-center gap-8 px-5 py-10 md:container md:mx-auto md:flex-row md:py-20">
         {/* Text Container */}
         <div className="w-full md:w-1/2">
           <h1 className="mb-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">

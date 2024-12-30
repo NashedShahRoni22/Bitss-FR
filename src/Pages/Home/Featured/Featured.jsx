@@ -11,8 +11,8 @@ export default function Featured() {
           key={i}
           className={`flex flex-col justify-between gap-8 px-5 py-10 md:container md:mx-auto md:items-center md:gap-16 md:py-20 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
         >
-          <div className="w-full text-center md:w-1/2 md:text-left">
-            <div className="mb-3 flex items-center justify-center gap-2.5 md:hidden">
+          <div className="w-full md:w-1/2 md:text-left">
+            <div className="mb-3 flex items-center gap-2.5 md:hidden md:justify-center">
               <img src={feat.icon} alt={feat.name} className="size-6" />
               <p className="font-medium">{feat.name}</p>
             </div>
@@ -26,7 +26,7 @@ export default function Featured() {
             />
           </div>
 
-          <div className="w-full text-center md:w-1/2 md:text-left">
+          <div className="w-full md:w-1/2 md:text-left">
             <div className="mb-4 hidden items-center gap-2.5 md:flex">
               <img src={feat.icon} alt={feat.name} className="size-8" />
               <p className="text-lg font-bold">{feat.name}</p>

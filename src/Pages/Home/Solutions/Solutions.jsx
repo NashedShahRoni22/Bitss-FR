@@ -16,7 +16,7 @@ export default function Solutions() {
       </h2>
 
       {/* Mobile Tab Titles */}
-      <select className="mb-12 w-full bg-[#f2f2f2] px-2 py-2 text-xl md:hidden">
+      <select className="mb-12 w-full rounded bg-[#f2f2f2] px-2 py-2 text-xl text-[#071d2b] md:hidden">
         {tabsData.map((tab, i) => (
           <option key={i} onClick={() => handleTabClick(i)}>
             {tab.title}
@@ -41,10 +41,15 @@ export default function Solutions() {
       <div className="text-left">
         <div className="flex flex-col justify-between md:flex-row md:items-center">
           <div className="w-full md:w-1/2">
-            <h3 className="mb-4 text-2xl font-medium">
+            <h3 className="mb-4 text-center text-2xl font-medium md:text-left">
               {tabsData[activeTab].subTitle}
             </h3>
-            <p className="mb-6 text-lg font-light text-custom-gray">
+            <img
+              src={tabsData[activeTab].image}
+              alt={tabsData[activeTab].subTitle}
+              className="mx-auto h-fit w-64 md:hidden"
+            />
+            <p className="my-6 text-lg font-light text-custom-gray">
               {tabsData[activeTab].overview}
             </p>
             <ul className="space-y-4 font-light text-custom-gray">
@@ -56,11 +61,11 @@ export default function Solutions() {
               ))}
             </ul>
           </div>
-          <div className="w-full md:w-1/2">
+          <div className="hidden w-full md:block md:w-1/2">
             <img
               src={tabsData[activeTab].image}
               alt={tabsData[activeTab].subTitle}
-              className="h-fit w-full max-w-md md:ml-auto"
+              className="ml-auto h-fit w-full max-w-md"
             />
           </div>
         </div>

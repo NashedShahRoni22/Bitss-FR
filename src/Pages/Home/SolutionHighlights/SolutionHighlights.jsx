@@ -9,12 +9,23 @@ export default function SolutionHighlights() {
       <h2 className="text-balance text-3xl font-bold leading-[3.15rem] md:text-[2.5rem]">
         Comprehensive Security Solutions
       </h2>
-      <p className="text-custom-gray mb-10 mt-4">
-        Explore tailored security solutions to protect your websites, networks,
-        and devices. <br /> Safeguard your digital assets with cutting-edge
-        technology designed <br /> for Businesses, Individuals and Enterprises
-        alike.
+      <p className="my-4 text-custom-gray">
+        Explore tailored security solutions for WordPress, JavaScript websites,
+        networks <br /> and devices. Protect your digital assets with
+        cutting-edge technology <br /> for businesses, individuals, and
+        enterprises alike.
       </p>
+      <Link
+        to="/"
+        className={`group mb-10 inline-flex w-fit items-center rounded-xl border-2 border-[#0077B6] px-4 py-2.5 font-medium transition-all duration-200 ease-in-out hover:bg-[#0077B6]`}
+      >
+        <span className="flex items-center px-3">
+          <span className="transition-transform duration-300 group-hover:-translate-x-2">
+            Explore All Products
+          </span>
+        </span>
+        <HiOutlineArrowLongRight className="-ml-3 min-w-fit scale-0 opacity-0 transition-opacity duration-300 group-hover:scale-150 group-hover:opacity-100" />
+      </Link>
 
       {/* Solution Cards Container */}
       <div className="relative">
@@ -35,21 +46,10 @@ export default function SolutionHighlights() {
                 <h4 className="text-[1.375rem] font-medium">
                   {solution.title}
                 </h4>
-                <p className="text-custom-gray mb-12 mt-2 text-lg font-light">
+                <p className="mb-12 mt-2 text-lg font-light text-custom-gray">
                   {solution.overview}
                 </p>
               </div>
-              <Link
-                to={solution.url}
-                className={`group inline-flex w-fit items-center rounded-xl border-2 border-[#0077B6] px-4 py-2.5 font-medium transition-all duration-200 ease-in-out hover:bg-[#0077B6]`}
-              >
-                <span className="flex items-center px-3">
-                  <span className="transition-transform duration-300 group-hover:-translate-x-2">
-                    {solution.cta}
-                  </span>
-                </span>
-                <HiOutlineArrowLongRight className="-ml-3 min-w-fit scale-0 opacity-0 transition-opacity duration-300 group-hover:scale-150 group-hover:opacity-100" />
-              </Link>
             </div>
           ))}
         </div>

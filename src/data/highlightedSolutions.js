@@ -5,25 +5,20 @@ import virusProtectIcon from "../assets/icons/virus-shield-white.png";
 export const highlitedSolutions = [
   {
     icon: webSecurityIcon,
-    title: "Contact Form Anti-Spam Tools",
+    title: "Website Security & Anti-Spam Tools",
     overview:
-      "Secure contact forms with advanced real-time spam-blocking systems.",
-    cta: "Explore Website Protection",
-    url: "/",
+      "Safeguard your websites with cutting-edge anti-spam contact forms, preselect forms, and real-time protection tools to ensure a seamless user experience.",
   },
   {
     icon: networkSecurityIcon,
-    title: "Platform Compatibility Solutions",
+    title: "Comprehensive Network & Database Protection",
     overview:
-      "Build secure websites with tools for WordPress, React.js, and more.",
-    cta: "Explore Network Protection",
-    url: "/",
+      "Enhance data security with robust tools for protecting servers, databases, and networks, including Bitss N and Bitss S solutions.",
   },
   {
     icon: virusProtectIcon,
-    title: "Custom Anti-Spam Security",
-    overview: "Tailor solutions for your specific website needs.",
-    cta: "Discover Virus Protection",
-    url: "/",
+    title: "Advanced Virus & Identity Protection",
+    overview:
+      "Safeguard your digital environment with Bitss Vwar Virus Protection (Plugin & Software) and identity verification tools for maximum security.",
   },
 ];

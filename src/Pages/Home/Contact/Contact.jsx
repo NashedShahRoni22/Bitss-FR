@@ -12,7 +12,7 @@ export default function Contact() {
         or explore our FAQ!
       </p>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+      <div className="flex flex-col-reverse items-center justify-center gap-4 sm:flex-row sm:items-start">
         {/* Contact Us Button */}
         <Link
           to="/contact"
@@ -28,8 +28,8 @@ export default function Contact() {
 
         {/* FAQ Button */}
         <Link
-          to="/faq"
-          className={`group inline-flex w-fit items-center rounded-xl border-2 border-[#0077B6] px-4 py-2.5 font-medium transition-all duration-200 ease-in-out hover:bg-[#0077B6]`}
+          to="/contact"
+          className={`group inline-flex w-fit items-center rounded-full bg-[#0077B6] px-4 py-2.5 font-medium transition-all duration-200 ease-in-out`}
         >
           <span className="flex items-center px-3">
             <span className="transition-transform duration-300 group-hover:-translate-x-2">
