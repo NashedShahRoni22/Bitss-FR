@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import MainLayout from "./Layout/MainLayout.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import "./index.css";
+import Products from "./Pages/Products/Products.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -11,9 +12,9 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="/about" element={"About Page Will Be Here..."} />
+          <Route path="/products" element={<Products />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

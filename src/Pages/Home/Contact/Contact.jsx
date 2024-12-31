@@ -25,19 +25,6 @@ export default function Contact() {
           </span>
           <HiOutlineArrowLongRight className="-ml-3 min-w-fit scale-0 opacity-0 transition-opacity duration-300 group-hover:scale-150 group-hover:opacity-100" />
         </Link>
-
-        {/* FAQ Button */}
-        <Link
-          to="/contact"
-          className={`group inline-flex w-fit items-center rounded-full bg-[#0077B6] px-4 py-2.5 font-medium transition-all duration-200 ease-in-out`}
-        >
-          <span className="flex items-center px-3">
-            <span className="transition-transform duration-300 group-hover:-translate-x-2">
-              Visit Our FAQ
-            </span>
-          </span>
-          <HiOutlineArrowLongRight className="-ml-3 min-w-fit scale-0 opacity-0 transition-opacity duration-300 group-hover:scale-150 group-hover:opacity-100" />
-        </Link>
       </div>
     </section>
   );

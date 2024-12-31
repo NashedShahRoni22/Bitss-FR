@@ -16,18 +16,12 @@ export default function Hero() {
             Integration.
           </p>
 
-          <div className="flex flex-col gap-6 md:flex-row md:items-center">
+          <div className="text-center md:text-left">
             <Link
               to="/products"
-              className="rounded-full bg-[#d91f2e] px-8 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:bg-[#af0707] hover:shadow-[0_10px_13px_rgba(211,47,47,0.16)]"
+              className="inline-block rounded-full bg-[#d91f2e] px-8 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:bg-[#af0707] hover:shadow-[0_10px_13px_rgba(211,47,47,0.16)]"
             >
-              Explore Anti-Spam Tools
-            </Link>
-            <Link
-              to="/free-tools"
-              className="rounded-full border border-custom-gray px-8 py-3 text-center text-lg font-medium text-custom-gray transition-all duration-200 ease-linear hover:border-white hover:bg-white hover:text-black hover:shadow-[0_10px_13px_rgba(71,84,103,0.16)]"
-            >
-              Download Free Plugin
+              Explore Our Products
             </Link>
           </div>
         </div>

@@ -17,15 +17,19 @@ const navLinks = [
         icon: webSecurity,
         items: [
           {
-            name: "WAP Website Protection",
+            name: "Bitss WAP Website Protection",
             path: "/products/wap-website-protection",
+            overview:
+              "Bitss WAP offers an innovative solution  ensuring that your sensitive information remains secure from cyber threats.",
           },
           {
-            name: "C Anti-Spam Contact Form",
+            name: "Bitss C Anti-Spam Contact Form",
             path: "/products/anti-spam-contact-form",
+            overview:
+              "Bitss C offers a powerful and intelligent antispam system that ensures a hassle-free experience for your website visitors and enhances the security of your communication channels.",
           },
           {
-            name: "C Preselect Form",
+            name: "Bitss C Preselect Form",
             path: "/products/c-preselect-form",
           },
         ],
@@ -73,7 +77,7 @@ const navLinks = [
         icon: cyberSecurity,
         items: [
           {
-            name: "Cyber Security",
+            name: "Bitss Cyber Security",
             path: "/products/cyber-security",
           },
         ],
