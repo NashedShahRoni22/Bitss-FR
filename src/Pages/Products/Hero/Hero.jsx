@@ -5,7 +5,7 @@ import { BsDot } from "react-icons/bs";
 export default function Hero() {
   return (
     <section className="px-5 py-10 md:container md:mx-auto md:py-20">
-      <h1 className="mb-6 text-balance text-center text-4xl font-bold md:text-5xl">
+      <h1 className="mb-6 text-center text-4xl font-bold md:text-5xl">
         Bitss Cyber Security Products
       </h1>
       <p className="mb-20 w-full text-balance text-center text-xl font-light text-custom-gray">
@@ -16,20 +16,17 @@ export default function Hero() {
       {navLinks.map(
         (link, i) =>
           link.name === "Products" && (
-            <div
-              key={i}
-              className="grid grid-cols-1 rounded-lg bg-[#0c2636] md:grid-cols-2"
-            >
+            <div key={i} className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {link.categories.map((category, i) => (
                 <div
                   key={i}
-                  className={`border-black/20 p-6 ${i < 4 && i % 2 === 0 && "border-b border-r"} ${i % 2 !== 0 && "border-b"}`}
+                  className={`min-h-[250px] rounded-lg border-black/20 bg-[#0c2636] p-4 ${i < 4 && i % 2 === 0 && "border-b border-r"} ${i % 2 !== 0 && "border-b border-r"}`}
                 >
-                  <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-white">
+                  <h3 className="mb-4 flex flex-col gap-4 text-xl font-bold text-white">
                     <img
                       src={category.icon}
                       alt=""
-                      className="size-7 object-cover"
+                      className="size-8 object-cover"
                     />
                     {category.title}
                   </h3>
@@ -40,10 +37,9 @@ export default function Hero() {
                           to={product.path}
                           className="flex max-w-fit items-center gap-1 capitalize transition-all duration-200 ease-in-out hover:text-custom-blue"
                         >
-                          <BsDot className="min-w-fit text-lg" />
+                          {/* <BsDot className="min-w-fit text-lg text-custom-white" /> */}
                           {product.name}
                         </Link>
-                        {/* <p>{product.overview}</p> */}
                       </div>
                     ))}
                   </div>

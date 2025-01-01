@@ -14,19 +14,17 @@ const navLinks = [
     categories: [
       {
         title: "Website Security",
+        description:
+          "Protect your website from spam, data breaches, and unauthorized access.",
         icon: webSecurity,
         items: [
           {
             name: "Bitss WAP Website Protection",
             path: "/products/wap-website-protection",
-            overview:
-              "Bitss WAP offers an innovative solution  ensuring that your sensitive information remains secure from cyber threats.",
           },
           {
             name: "Bitss C Anti-Spam Contact Form",
             path: "/products/anti-spam-contact-form",
-            overview:
-              "Bitss C offers a powerful and intelligent antispam system that ensures a hassle-free experience for your website visitors and enhances the security of your communication channels.",
           },
           {
             name: "Bitss C Preselect Form",
@@ -36,6 +34,8 @@ const navLinks = [
       },
       {
         title: "Network and Database Protection",
+        description:
+          "Safeguard your servers and databases against intrusions and cyberattacks.",
         icon: dataProtection,
         items: [
           {
@@ -50,6 +50,8 @@ const navLinks = [
       },
       {
         title: "Virus and Malware Protection",
+        description:
+          "Defend your systems against viruses, malware, and other harmful threats.",
         icon: antivirus,
         items: [
           {
@@ -64,6 +66,8 @@ const navLinks = [
       },
       {
         title: "Identity Protection",
+        description:
+          "Ensure secure identity verification to protect sensitive user information.",
         icon: idVerify,
         items: [
           {
@@ -74,6 +78,8 @@ const navLinks = [
       },
       {
         title: "Cybersecurity Solutions",
+        description:
+          "Comprehensive solutions to secure your digital assets and operations.",
         icon: cyberSecurity,
         items: [
           {

@@ -5,6 +5,7 @@ export default {
     extend: {
       boxShadow: {
         "custom-1": `0 1rem 2rem rgba(7,29,43,0.12)`,
+        "custom-2": `0 20px 40px -20px rgba(0,0,0,0.4)`,
       },
       colors: {
         "custom-blue": "#FF4081",

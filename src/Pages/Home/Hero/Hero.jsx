@@ -8,12 +8,14 @@ export default function Hero() {
         {/* Text Container */}
         <div className="w-full md:w-1/2">
           <h1 className="mb-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
-            Advanced Protection for Websites, Forms & Data
+            Advanced Frontline Protection for Websites, Servers, Laptops, Forms
+            & Data
           </h1>
           <p className="mb-8 text-center text-lg font-light text-custom-gray md:text-left md:text-xl">
             Defend your WordPress and JavaScript-powered sites with cutting-edge
             Anti-Spam Features, Real-Time Threat Detection & Seamless
-            Integration.
+            Integration. Protect your databases from hackers, spamming, and
+            unauthorized access to ensure total security.
           </p>
 
           <div className="text-center md:text-left">
