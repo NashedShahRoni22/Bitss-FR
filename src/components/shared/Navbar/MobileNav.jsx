@@ -12,7 +12,7 @@ export default function MobileNav() {
   };
 
   return (
-    <div className="absolute left-0 top-full min-h-[calc(100dvh-80px)] w-full space-y-4 border bg-white p-5 text-[#071d2b] md:hidden">
+    <div className="text-background absolute left-0 top-full min-h-[calc(100dvh-80px)] w-full space-y-4 border bg-white p-5 md:hidden">
       {navLinks.map((link, index) => (
         <div key={index}>
           {!link.children && !link.categories && (
@@ -24,11 +24,11 @@ export default function MobileNav() {
             <>
               <button
                 onClick={() => toggleSubLinks(index)}
-                className={`flex w-full cursor-pointer items-center justify-between ${showSubLinks === index && "text-custom-blue"}`}
+                className={`flex w-full cursor-pointer items-center justify-between ${showSubLinks === index && "text-accent"}`}
               >
                 {link.name}
                 <HiOutlineChevronDown
-                  className={`text-lg transition-transform duration-200 ease-linear ${showSubLinks === index ? "-rotate-180 text-custom-blue" : "rotate-0"}`}
+                  className={`text-lg transition-transform duration-200 ease-linear ${showSubLinks === index ? "text-accent -rotate-180" : "rotate-0"}`}
                 />
               </button>
 
@@ -56,11 +56,11 @@ export default function MobileNav() {
             <>
               <button
                 onClick={() => toggleSubLinks(index)}
-                className={`flex w-full cursor-pointer items-center justify-between ${showSubLinks === index && "text-custom-blue"}`}
+                className={`flex w-full cursor-pointer items-center justify-between ${showSubLinks === index && "text-accent"}`}
               >
                 {link.name}{" "}
                 <HiOutlineChevronDown
-                  className={`text-lg transition-transform duration-200 ease-linear ${showSubLinks === index ? "-rotate-180 text-custom-blue" : "rotate-0"}`}
+                  className={`text-lg transition-transform duration-200 ease-linear ${showSubLinks === index ? "text-accent -rotate-180" : "rotate-0"}`}
                 />
               </button>
 

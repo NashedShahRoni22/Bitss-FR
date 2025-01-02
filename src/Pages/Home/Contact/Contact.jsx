@@ -7,7 +7,7 @@ export default function Contact() {
       <h2 className="mb-6 text-balance text-center text-3xl font-bold leading-[3.15rem] md:text-[2.5rem]">
         Which Cybersecurity Solution is Best for you?
       </h2>
-      <p className="mb-20 w-full text-balance text-center text-xl font-light text-custom-gray">
+      <p className="text-muted-text mb-20 w-full text-balance text-center text-xl font-light">
         Still unsure? Let us help you find the perfect solution—reach out to us
         or explore our FAQ!
       </p>
@@ -16,7 +16,7 @@ export default function Contact() {
         {/* Contact Us Button */}
         <Link
           to="/contact"
-          className={`group inline-flex w-fit items-center rounded-full bg-[#d32f2f] px-4 py-2.5 font-medium transition-all duration-200 ease-in-out`}
+          className={`bg-primary group inline-flex w-fit items-center rounded-full px-4 py-2.5 font-medium transition-all duration-200 ease-in-out`}
         >
           <span className="flex items-center px-3">
             <span className="transition-transform duration-300 group-hover:-translate-x-2">

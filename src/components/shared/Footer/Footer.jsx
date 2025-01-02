@@ -9,16 +9,16 @@ import { BsFacebook, BsInstagram, BsTwitterX, BsYoutube } from "react-icons/bs";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0B2545] py-10 text-custom-gray md:mt-20">
-      <div className="grid grid-cols-1 gap-8 border-b border-custom-gray px-5 pb-12 md:container md:mx-auto md:grid-cols-2 lg:grid-cols-12">
+    <footer className="bg-secondary text-muted-text py-10 md:mt-20">
+      <div className="border-muted-text grid grid-cols-1 gap-8 border-b px-5 pb-12 md:container md:mx-auto md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Link to={"/"}>
             <img className="w-32" src={logo} alt="bitss logo" />
           </Link>
-          <p className="mt-3 text-2xl text-custom-white">
+          <p className="text-light-background mt-3 text-2xl">
             By BFINIT Cosmopolitan
           </p>
-          <p className="mt-3 text-custom-gray">
+          <p className="text-muted-text mt-3">
             Securely connecting you with seamless email and chat for personal
             and business communication.
           </p>
@@ -29,12 +29,12 @@ export default function Footer() {
               id="email"
               className="rounded-l border-none px-4 py-1.5 outline-none"
             />
-            <button className="rounded-r bg-[#d32f2f] px-4 py-1.5 text-custom-white">
+            <button className="bg-primary text-light-background rounded-r px-4 py-1.5">
               Subscribe
             </button>
           </div>
           <a
-            className="underline transition-all duration-200 ease-in-out hover:text-custom-white"
+            className="hover:text-light-background underline transition-all duration-200 ease-in-out"
             href="mailto:support@bobosohomail.com"
             target="_blanck"
           >
@@ -43,13 +43,13 @@ export default function Footer() {
         </div>
         {/* bitss products */}
         <div className="lg:col-span-2">
-          <h6 className="mb-8 font-bold text-custom-white">Products</h6>
+          <h6 className="text-light-background mb-8 font-bold">Products</h6>
           <div className="flex flex-col gap-2 space-y-2.5 text-sm">
             {bitssProducts.map((product, i) => (
               <Link
                 to={product.link}
                 key={i}
-                className="flex gap-2.5 transition-all duration-200 ease-in-out hover:text-custom-white hover:underline"
+                className="hover:text-light-background flex gap-2.5 transition-all duration-200 ease-in-out hover:underline"
               >
                 {product.name}
               </Link>
@@ -58,13 +58,15 @@ export default function Footer() {
         </div>
         {/* hosting products */}
         <div className="lg:col-span-2">
-          <h6 className="mb-8 font-bold text-custom-white">Hosting Products</h6>
+          <h6 className="text-light-background mb-8 font-bold">
+            Hosting Products
+          </h6>
           <div className="flex flex-col gap-2 space-y-2.5 text-sm">
             {hostingProducts.map((product, i) => (
               <Link
                 to={product.link}
                 key={i}
-                className="flex gap-2.5 transition-all duration-200 ease-in-out hover:text-custom-white hover:underline"
+                className="hover:text-light-background flex gap-2.5 transition-all duration-200 ease-in-out hover:underline"
               >
                 {product.name}
               </Link>
@@ -73,13 +75,15 @@ export default function Footer() {
         </div>
         {/* other products */}
         <div className="lg:col-span-2">
-          <h6 className="mb-8 font-bold text-custom-white">Other Products</h6>
+          <h6 className="text-light-background mb-8 font-bold">
+            Other Products
+          </h6>
           <div className="flex flex-col gap-2 space-y-2.5 text-sm">
             {products.map((product, i) => (
               <Link
                 to={product.link}
                 key={i}
-                className="flex gap-2.5 transition-all duration-200 ease-in-out hover:text-custom-white hover:underline"
+                className="hover:text-light-background flex gap-2.5 transition-all duration-200 ease-in-out hover:underline"
               >
                 {product.name}
               </Link>
@@ -88,7 +92,7 @@ export default function Footer() {
         </div>
         {/* pages */}
         <div className="lg:col-span-2">
-          <h6 className="mb-8 font-bold text-custom-white">
+          <h6 className="text-light-background mb-8 font-bold">
             Quick Links to BFINIT
           </h6>
           <div className="flex flex-col gap-2 space-y-2.5 text-sm">
@@ -96,7 +100,7 @@ export default function Footer() {
               <Link
                 to={product.link}
                 key={i}
-                className="flex gap-2.5 transition-all duration-200 ease-in-out hover:text-custom-white hover:underline"
+                className="hover:text-light-background flex gap-2.5 transition-all duration-200 ease-in-out hover:underline"
               >
                 {product.name}
               </Link>
@@ -113,25 +117,25 @@ export default function Footer() {
         <div className="flex items-center justify-center gap-7 md:justify-normal">
           <Link
             to="/"
-            className="text-2xl transition-all duration-200 ease-in-out hover:text-custom-white"
+            className="hover:text-light-background text-2xl transition-all duration-200 ease-in-out"
           >
             <BsFacebook />
           </Link>
           <Link
             to="/"
-            className="text-2xl transition-all duration-200 ease-in-out hover:text-custom-white"
+            className="hover:text-light-background text-2xl transition-all duration-200 ease-in-out"
           >
             <BsInstagram />
           </Link>
           <Link
             to="/"
-            className="text-2xl transition-all duration-200 ease-in-out hover:text-custom-white"
+            className="hover:text-light-background text-2xl transition-all duration-200 ease-in-out"
           >
             <BsTwitterX />
           </Link>
           <Link
             to="/"
-            className="text-2xl transition-all duration-200 ease-in-out hover:text-custom-white"
+            className="hover:text-light-background text-2xl transition-all duration-200 ease-in-out"
           >
             <BsYoutube />
           </Link>

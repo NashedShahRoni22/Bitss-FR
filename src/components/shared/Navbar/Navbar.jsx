@@ -15,7 +15,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#0B2545] text-[#fff]">
+    <nav className="bg-secondary">
       <div className="relative flex w-full items-center justify-between px-5 md:container md:mx-auto">
         {/* Logo */}
         <div>
@@ -31,7 +31,7 @@ export default function Navbar() {
               {/* Main Nav Link */}
               <Link
                 to={link.path}
-                className={`text-sm capitalize transition-all duration-200 ease-in-out hover:text-custom-blue ${
+                className={`hover:text-accent text-sm capitalize transition-all duration-200 ease-in-out ${
                   (link.categories || link.children) &&
                   "flex items-center gap-1"
                 }`}
@@ -42,13 +42,13 @@ export default function Navbar() {
                 )}
               </Link>
 
-              {/* Dropdown for Categories */}
+              {/* Dropdown for Products */}
               {link.categories && (
-                <div className="absolute left-0 top-full hidden min-w-[42rem] grid-cols-2 rounded-lg border border-[#0c2636] bg-[#143347] text-white shadow-custom-1 group-hover:grid">
+                <div className="bg-light-accent absolute left-0 top-full z-10 hidden min-w-[42rem] grid-cols-2 rounded-lg text-white shadow-custom-1 group-hover:grid">
                   {link.categories.map((category, j) => (
                     <div
                       key={j}
-                      className={`${j % 2 === 0 && j < 4 && "border-r"} border-b border-[#0c2636] p-6`}
+                      className={`${j % 2 === 0 && j < 4 && "border-r"} border-dark-accent border-b p-6`}
                     >
                       <h3 className="mb-3 flex items-center gap-1.5 font-bold text-white">
                         <img
@@ -58,12 +58,12 @@ export default function Navbar() {
                         />
                         {category.title}
                       </h3>
-                      <div className="space-y-2 text-[#B0BEC5]">
+                      <div className="text-muted-text space-y-2">
                         {category.items.map((product, k) => (
                           <Link
                             key={k}
                             to={product.path}
-                            className="flex max-w-fit items-center gap-1 text-sm capitalize transition-all duration-200 ease-in-out hover:text-custom-blue"
+                            className="hover:text-accent flex max-w-fit items-center gap-1 text-sm capitalize transition-all duration-200 ease-in-out"
                           >
                             <BsDot className="min-w-fit text-lg" />
                             {product.name}
@@ -77,12 +77,12 @@ export default function Navbar() {
 
               {/* Dropdown for Children */}
               {link.children && (
-                <div className="absolute left-0 top-full hidden min-w-max grid-cols-1 gap-4 rounded-lg border border-gray-200 bg-white px-6 py-4 text-[#071d2b] shadow-custom-1 group-hover:grid">
+                <div className="text-background absolute left-0 top-full hidden min-w-max grid-cols-1 gap-4 rounded-lg border border-gray-200 bg-white px-6 py-4 shadow-custom-1 group-hover:grid">
                   {link.children.map((subLink, j) => (
                     <Link
                       key={j}
                       to={subLink.path || subLink.link}
-                      className="block text-sm capitalize transition-all duration-200 ease-in-out hover:text-custom-blue"
+                      className="hover:text-accent block text-sm capitalize transition-all duration-200 ease-in-out"
                     >
                       {subLink.name}
                     </Link>
@@ -96,7 +96,7 @@ export default function Navbar() {
         {/* Desktop Login Button */}
         <Link
           to="/login"
-          className="hidden items-center gap-1.5 text-sm hover:text-custom-blue md:flex"
+          className="hover:text-accent hidden items-center gap-1.5 text-sm md:flex"
         >
           <HiOutlineUserCircle className="text-xl" /> My Account
         </Link>

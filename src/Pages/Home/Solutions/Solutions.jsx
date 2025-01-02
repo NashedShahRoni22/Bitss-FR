@@ -16,7 +16,7 @@ export default function Solutions() {
       </h2>
 
       {/* Mobile Tab Titles */}
-      <select className="mb-12 w-full rounded bg-[#f2f2f2] px-2 py-2 text-xl text-[#071d2b] md:hidden">
+      <select className="text-background bg-light-background mb-12 w-full rounded px-2 py-2 text-xl md:hidden">
         {tabsData.map((tab, i) => (
           <option key={i} onClick={() => handleTabClick(i)}>
             {tab.title}
@@ -25,11 +25,11 @@ export default function Solutions() {
       </select>
 
       {/* Desktop Tab Titles */}
-      <div className="mb-12 hidden items-center justify-center gap-3 rounded-full bg-[#f2f2f2] md:inline-flex">
+      <div className="bg-light-background mb-12 hidden items-center justify-center gap-3 rounded-full md:inline-flex">
         {tabsData.map((tab, i) => (
           <button
             key={i}
-            className={`cursor-pointer rounded-full px-6 py-1.5 text-center text-xl transition-all duration-200 ease-in-out ${activeTab === i ? "bg-[#D32F2F] font-medium" : "text-black hover:bg-[#D32F2F] hover:text-white"}`}
+            className={`cursor-pointer rounded-full px-6 py-1.5 text-center text-xl transition-all duration-200 ease-in-out ${activeTab === i ? "bg-primary font-medium" : "hover:bg-primary text-black hover:text-white"}`}
             onClick={() => handleTabClick(i)}
           >
             {tab.title}
@@ -49,13 +49,13 @@ export default function Solutions() {
               alt={tabsData[activeTab].subTitle}
               className="mx-auto h-fit w-64 md:hidden"
             />
-            <p className="my-6 text-lg font-light text-custom-gray">
+            <p className="text-muted-text my-6 text-lg font-light">
               {tabsData[activeTab].overview}
             </p>
-            <ul className="space-y-4 font-light text-custom-gray">
+            <ul className="text-muted-text space-y-4 font-light">
               {tabsData[activeTab].content.map((item, index) => (
                 <li key={index} className="flex gap-2">
-                  <FaCheck className="mt-1.5 min-w-fit text-[#d32f2f]" />
+                  <FaCheck className="text-primary mt-1.5 min-w-fit" />
                   <span>{item}</span>
                 </li>
               ))}

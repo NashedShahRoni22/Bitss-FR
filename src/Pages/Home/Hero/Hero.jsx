@@ -11,7 +11,7 @@ export default function Hero() {
             Advanced Frontline Protection for Websites, Servers, Laptops, Forms
             & Data
           </h1>
-          <p className="mb-8 text-center text-lg font-light text-custom-gray md:text-left md:text-xl">
+          <p className="text-muted-text mb-8 text-center text-lg font-light md:text-left md:text-xl">
             Defend your WordPress and JavaScript-powered sites with cutting-edge
             Anti-Spam Features, Real-Time Threat Detection & Seamless
             Integration. Protect your databases from hackers, spamming, and
@@ -21,7 +21,7 @@ export default function Hero() {
           <div className="text-center md:text-left">
             <Link
               to="/products"
-              className="inline-block rounded-full bg-[#d91f2e] px-8 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:bg-[#af0707] hover:shadow-[0_10px_13px_rgba(211,47,47,0.16)]"
+              className="hover:bg-primary-hover bg-primary hover:shadow-custom-red inline-block rounded-full px-8 py-3 text-center text-lg font-medium transition-all duration-200 ease-linear"
             >
               Explore Our Products
             </Link>

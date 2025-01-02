@@ -20,13 +20,13 @@ export default function Services() {
         {solutionsData.map((card, index) => (
           <div
             key={index}
-            className="hover:shadow-custom-2 flex flex-col justify-between rounded-lg bg-[#143347] p-6 transition-shadow duration-200 ease-in-out"
+            className="bg-light-accent flex flex-col justify-between rounded-lg p-6 transition-shadow duration-200 ease-in-out hover:shadow-custom-2"
           >
             <h3 className="mb-3 text-center text-2xl font-semibold">
               {card.title}
             </h3>
-            <p className="mb-4 text-custom-gray">{card.description}</p>
-            <ul className="mb-6 space-y-2 text-sm text-custom-gray">
+            <p className="text-muted-text mb-4">{card.description}</p>
+            <ul className="text-muted-text mb-6 space-y-2 text-sm">
               {card.highlights.map((item, idx) => (
                 <li key={idx} className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-blue-500"></span>

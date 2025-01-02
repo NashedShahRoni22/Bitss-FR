@@ -13,7 +13,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
-    "react-router": "^7.0.2"
+    "react-lottie": "^1.2.10",
+    "react-router": "^7.0.2",
+    "smtpexpress": "^0.0.15"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
