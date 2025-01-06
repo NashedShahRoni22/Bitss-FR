@@ -9,14 +9,10 @@ export default {
         "custom-red": "0 10px 13px rgba(211,47,47,0.16)",
       },
       colors: {
-        background: "#071d2b",
-        primary: "#d32f2f",
-        secondary: "#0b2545",
-        accent: "#ff4081",
-        "light-background": "#f2f3f5",
-        "muted-text": "#b0bec5",
-        "light-accent": "#143347",
-        "dark-accent": "#0C2636",
+        "custom-white": "#fdfffc",
+        primary: "#f71735",
+        dark: "#011627",
+        accent: "#143347",
         "primary-hover": "#af0707",
       },
       fontFamily: {

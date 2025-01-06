@@ -9,6 +9,8 @@ export default function Solutions() {
     setActiveTab(i);
   };
 
+  console.log(activeTab);
+
   return (
     <section className="px-5 py-10 text-center md:container md:mx-auto md:py-20">
       <h2 className="mb-14 text-center text-3xl font-bold md:text-[2.5rem]">
@@ -16,20 +18,23 @@ export default function Solutions() {
       </h2>
 
       {/* Mobile Tab Titles */}
-      <select className="text-background bg-light-background mb-12 w-full rounded px-2 py-2 text-xl md:hidden">
+      <select
+        onChange={(e) => handleTabClick(e.target.value)}
+        className="mb-12 w-full rounded bg-[#f2f2f2] px-2 py-2 text-xl md:hidden"
+      >
         {tabsData.map((tab, i) => (
-          <option key={i} onClick={() => handleTabClick(i)}>
+          <option key={i} value={i}>
             {tab.title}
           </option>
         ))}
       </select>
 
       {/* Desktop Tab Titles */}
-      <div className="bg-light-background mb-12 hidden items-center justify-center gap-3 rounded-full md:inline-flex">
+      <div className="mb-12 hidden items-center justify-center gap-3 rounded-full bg-[#f2f2f2] md:inline-flex">
         {tabsData.map((tab, i) => (
           <button
             key={i}
-            className={`cursor-pointer rounded-full px-6 py-1.5 text-center text-xl transition-all duration-200 ease-in-out ${activeTab === i ? "bg-primary font-medium" : "hover:bg-primary text-black hover:text-white"}`}
+            className={`cursor-pointer rounded-full px-6 py-1.5 text-center text-xl transition-all duration-200 ease-in-out ${activeTab === i ? "text-custom-white bg-primary" : "hover:text-custom-white hover:bg-[#F83A53]"}`}
             onClick={() => handleTabClick(i)}
           >
             {tab.title}
@@ -49,13 +54,13 @@ export default function Solutions() {
               alt={tabsData[activeTab].subTitle}
               className="mx-auto h-fit w-64 md:hidden"
             />
-            <p className="text-muted-text my-6 text-lg font-light">
+            <p className="my-6 text-lg font-light">
               {tabsData[activeTab].overview}
             </p>
-            <ul className="text-muted-text space-y-4 font-light">
+            <ul className="space-y-4 font-light">
               {tabsData[activeTab].content.map((item, index) => (
                 <li key={index} className="flex gap-2">
-                  <FaCheck className="text-primary mt-1.5 min-w-fit" />
+                  <FaCheck className="mt-1.5 min-w-fit text-primary" />
                   <span>{item}</span>
                 </li>
               ))}

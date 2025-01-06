@@ -4,8 +4,16 @@ export const pages = [
     link: "/",
   },
   {
+    name: "Products",
+    link: "/products",
+  },
+  {
     name: "About Us",
     link: "/about",
+  },
+  {
+    name: "Free Tools",
+    link: "/free-tools",
   },
   {
     name: "Contact Us",

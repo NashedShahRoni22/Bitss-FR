@@ -193,11 +193,9 @@ const ContactForm = () => {
         <form
           ref={form}
           onSubmit={submitForm}
-          className="border-light-accent flex flex-col gap-5 rounded border p-6 lg:w-1/2"
+          className="flex flex-col rounded-lg p-6 shadow lg:w-1/2"
         >
-          <label htmlFor="name" className="text-lg font-medium">
-            Name *
-          </label>
+          <label htmlFor="name">Name *</label>
           <input
             type="text"
             id="name"
@@ -206,12 +204,10 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Name"
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           />
 
-          <label htmlFor="email" className="text-lg font-medium">
-            Email *
-          </label>
+          <label htmlFor="email">Email *</label>
           <input
             type="text"
             id="email"
@@ -220,12 +216,10 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Email"
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           />
 
-          <label htmlFor="phone" className="text-lg font-medium">
-            Phone *
-          </label>
+          <label htmlFor="phone">Phone *</label>
           <input
             type="number"
             id="phone"
@@ -234,18 +228,16 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="Phone"
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           />
 
-          <label htmlFor="country" className="text-lg font-medium">
-            Country *
-          </label>
+          <label htmlFor="country">Country *</label>
           <select
             id="country"
             name="country"
             required
             onChange={handleChange}
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           >
             {countries.map((country) => (
               <option key={country.name} value={country.name}>
@@ -254,9 +246,7 @@ const ContactForm = () => {
             ))}
           </select>
 
-          <label htmlFor="subject" className="text-lg font-medium">
-            Subject/Query *
-          </label>
+          <label htmlFor="subject">Subject/Query *</label>
           <input
             type="text"
             id="subject"
@@ -265,12 +255,10 @@ const ContactForm = () => {
             value={formData.subject}
             onChange={handleChange}
             placeholder="Subject"
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           />
 
-          <label htmlFor="skypeId" className="text-lg font-medium">
-            Skype ID
-          </label>
+          <label htmlFor="skypeId">Skype ID</label>
           <input
             type="text"
             id="skypeId"
@@ -278,12 +266,10 @@ const ContactForm = () => {
             value={formData.skypeId}
             onChange={handleChange}
             placeholder="Skype Id (optional)"
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           />
 
-          <label htmlFor="message" className="text-lg font-medium">
-            Enter Message *
-          </label>
+          <label htmlFor="message">Enter Message *</label>
           <textarea
             id="message"
             name="message"
@@ -292,7 +278,7 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             placeholder="Message"
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           />
 
           {/* Captcha Component */}
@@ -306,7 +292,7 @@ const ContactForm = () => {
             value={formData.captchaInput}
             onChange={handleChange}
             placeholder="Captcha *"
-            className="bg-dark-accent focus:border-light-background mt-2 block w-full rounded border border-transparent px-4 py-3 outline-none"
+            className="mb-5 mt-2.5 block w-full rounded border border-transparent bg-[#f2f2f2] px-4 py-3 outline-none"
           />
 
           {invalidCaptcha && (
@@ -321,7 +307,7 @@ const ContactForm = () => {
 
           <button
             type="submit"
-            className="bg-primary hover:bg-primary-hover hover:shadow-custom-red mt-6 flex justify-center rounded px-4 py-3 text-lg font-medium text-white transition-all duration-200 ease-in-out"
+            className="mt-6 flex justify-center rounded bg-primary px-4 py-3 text-lg text-white transition-all duration-200 ease-in-out hover:bg-primary-hover hover:shadow-custom-red"
           >
             {loader ? (
               <p className="flex items-center gap-2">
@@ -358,7 +344,7 @@ const ContactForm = () => {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="invert"
+            className="rounded-lg"
           ></iframe>
         </div>
       </div>

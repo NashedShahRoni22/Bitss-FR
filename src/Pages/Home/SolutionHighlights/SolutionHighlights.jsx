@@ -5,11 +5,11 @@ import { highlitedSolutions } from "../../../data/highlightedSolutions";
 
 export default function SolutionHighlights() {
   return (
-    <section className="bg-dark-accent overflow-hidden px-5 py-10 md:container md:mx-auto md:rounded-[2.5rem] md:px-10 md:py-20">
+    <section className="overflow-hidden px-5 py-10 md:container md:mx-auto md:rounded-[2.5rem] md:px-10 md:py-20">
       <h2 className="text-balance text-3xl font-bold leading-[3.15rem] md:text-[2.5rem]">
         Comprehensive Security Solutions
       </h2>
-      <p className="text-muted-text my-4">
+      <p className="my-4">
         Explore tailored security solutions for WordPress, JavaScript websites,
         networks <br /> and devices. Protect your digital assets with
         cutting-edge technology <br /> for businesses, individuals, and
@@ -17,7 +17,9 @@ export default function SolutionHighlights() {
       </p>
       <Link
         to="/products"
-        className={`group mb-10 inline-flex w-fit items-center rounded-xl border-2 border-blue-500 px-4 py-2.5 font-medium transition-all duration-200 ease-in-out hover:bg-blue-500`}
+        className={
+          "text-custom-white group mb-10 inline-flex w-fit items-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 font-medium transition-all duration-200 ease-in-out"
+        }
       >
         <span className="flex items-center px-3">
           <span className="transition-transform duration-300 group-hover:-translate-x-2">
@@ -34,9 +36,12 @@ export default function SolutionHighlights() {
           alt="dot grid shapes"
           className="absolute -right-6 -top-11 size-28 opacity-0 md:opacity-50"
         />
-        <div className="bg-light-accent relative grid grid-cols-1 gap-4 divide-y-2 divide-blue-500 rounded-xl py-6 md:grid-cols-3 md:divide-x-2 md:divide-y-0">
+        <div className="relative grid grid-cols-1 gap-4 divide-y-2 divide-primary/20 rounded-xl py-6 md:grid-cols-3 md:divide-x-2 md:divide-y-0">
           {highlitedSolutions.map((solution, i) => (
-            <div key={i} className="flex flex-col px-6 py-6 md:py-0">
+            <div
+              key={i}
+              className="bg-custom-white flex flex-col px-6 py-6 md:py-0"
+            >
               <div className="flex-1">
                 <img
                   src={solution.icon}
@@ -46,7 +51,7 @@ export default function SolutionHighlights() {
                 <h4 className="text-[1.375rem] font-medium">
                   {solution.title}
                 </h4>
-                <p className="text-muted-text mb-12 mt-2 text-lg font-light">
+                <p className="mb-12 mt-2 text-lg font-light">
                   {solution.overview}
                 </p>
               </div>

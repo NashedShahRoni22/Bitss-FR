@@ -20,23 +20,23 @@ export default function Services() {
         {solutionsData.map((card, index) => (
           <div
             key={index}
-            className="bg-light-accent flex flex-col justify-between rounded-lg p-6 transition-shadow duration-200 ease-in-out hover:shadow-custom-2"
+            className="flex flex-col justify-between rounded-lg p-6 shadow transition-shadow duration-200 ease-linear hover:shadow-custom-2"
           >
             <h3 className="mb-3 text-center text-2xl font-semibold">
               {card.title}
             </h3>
-            <p className="text-muted-text mb-4">{card.description}</p>
-            <ul className="text-muted-text mb-6 space-y-2 text-sm">
+            <p className="mb-4">{card.description}</p>
+            <ul className="mb-6 space-y-2 text-sm">
               {card.highlights.map((item, idx) => (
                 <li key={idx} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-blue-500"></span>
+                  <span className="h-2 w-2 rounded-full bg-primary"></span>
                   {item}
                 </li>
               ))}
             </ul>
             <Link
               to="/contact"
-              className={`group flex items-center justify-center rounded-full bg-blue-500 px-4 py-2.5 font-medium transition-all duration-200 ease-in-out`}
+              className={`text-custom-white group flex items-center justify-center rounded-full bg-primary px-4 py-2.5 font-medium transition-all duration-200 ease-in-out`}
             >
               <span className="flex items-center px-3">
                 <span className="transition-transform duration-300 group-hover:-translate-x-2">

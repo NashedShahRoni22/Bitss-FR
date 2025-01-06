@@ -4,7 +4,7 @@ import Footer from "../components/shared/Footer/Footer";
 
 export default function MainLayout() {
   return (
-    <main className="bg-background text-light-background font-roboto">
+    <main className="text-dark bg-custom-white font-roboto">
       <Navbar />
       <Outlet />
       <Footer />

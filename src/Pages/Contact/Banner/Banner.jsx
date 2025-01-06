@@ -24,43 +24,37 @@ export default function Banner() {
           <h1 className="mb-6 text-center text-4xl font-bold md:text-left md:text-5xl">
             Contact Us
           </h1>
-          <p className="text-muted-text mb-8 text-center text-lg font-light md:text-left md:text-xl">
+          <p className="mb-8 text-center text-lg font-light md:text-left md:text-xl">
             To make requests for further information, contact us via our social
             channels.
           </p>
 
-          <div className="text-muted-text flex items-center gap-4 md:gap-5">
-            <div className="bg-light-accent rounded-lg p-3 md:p-5">
-              <FaHome className="text-primary text-2xl" />
+          <div className="flex items-center gap-4 md:gap-5">
+            <div className="rounded-lg bg-accent p-3 md:p-5">
+              <FaHome className="text-custom-white text-2xl" />
             </div>
             <div className="flex flex-col gap-1 md:gap-2">
-              <h5 className="text-light-background text-xl font-semibold">
-                Address
-              </h5>
+              <h5 className="text-xl font-semibold">Address</h5>
               <p>8 rue de Dublin, 34200, Sète, France</p>
             </div>
           </div>
 
-          <div className="text-muted-text my-5 flex items-center gap-4 md:gap-5">
-            <div className="bg-light-accent rounded-lg p-3 md:p-5">
-              <FaPhone className="text-primary text-2xl" />
+          <div className="my-5 flex items-center gap-4 md:gap-5">
+            <div className="rounded-lg bg-accent p-3 md:p-5">
+              <FaPhone className="text-custom-white text-2xl" />
             </div>
             <div className="flex flex-col gap-1 md:gap-2">
-              <h5 className="text-light-background text-xl font-semibold">
-                Phone
-              </h5>
+              <h5 className="text-xl font-semibold">Phone</h5>
               <p>+0033666100010</p>
             </div>
           </div>
 
-          <div className="text-muted-text flex items-center gap-4 md:gap-5">
-            <div className="bg-light-accent rounded-lg p-3 md:p-5">
-              <MdMarkEmailRead className="text-primary text-2xl" />
+          <div className="flex items-center gap-4 md:gap-5">
+            <div className="rounded-lg bg-accent p-3 md:p-5">
+              <MdMarkEmailRead className="text-custom-white text-2xl" />
             </div>
             <div className="flex flex-col gap-1 md:gap-2">
-              <h5 className="text-light-background text-xl font-semibold">
-                Email
-              </h5>
+              <h5 className="text-xl font-semibold">Email</h5>
               <p>support@bobosohomail.com</p>
               <p>bfin@bobosohomail.com</p>
             </div>

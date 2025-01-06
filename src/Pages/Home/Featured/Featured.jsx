@@ -34,23 +34,23 @@ export default function Featured() {
             <h2 className="hidden text-balance text-3xl font-bold leading-[3.15rem] md:block md:text-[2.5rem]">
               {feat.title}
             </h2>
-            <p className="text-muted-text mt-4 text-balance text-lg font-light leading-7">
+            <p className="mt-4 text-balance text-lg font-light leading-7">
               {feat.overview}
             </p>
 
             <Link
               to={feat.url}
-              className="hover:bg-primary-hover bg-primary hover:shadow-custom-red my-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:scale-105"
+              className="my-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:scale-105 hover:bg-primary-hover hover:shadow-custom-red"
             >
               Get protected
               <HiOutlineArrowLongRight className="min-w-fit scale-125 text-2xl" />
             </Link>
 
             {feat.features && (
-              <ul className="text-muted-text space-y-2 font-light">
+              <ul className="space-y-2 font-light">
                 {feat.features.map((li, i) => (
                   <li key={i} className="flex gap-2">
-                    <FaCheck className="text-primary mt-1.5 min-w-fit" />
+                    <FaCheck className="mt-1.5 min-w-fit text-primary" />
                     <span>{li}</span>
                   </li>
                 ))}

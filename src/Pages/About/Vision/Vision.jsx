@@ -26,34 +26,34 @@ export default function Vision() {
       {/* Mission & Vision Container */}
       <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
         {/* Mission */}
-        <div>
-          <div className="mb-4 flex items-center gap-3">
+        <div className="rounded-lg px-6 py-8 shadow">
+          <div className="mb-6 flex items-center gap-3">
             <img src={missionIcon} alt="bitss mission" className="size-8" />
             <h3 className="text-2xl font-bold md:text-3xl">Our Mission</h3>
           </div>
-          <p className="text-muted-text mb-4">
+          <p className="mb-4">
             With a team of highly skilled research engineers, we deploy
             cutting-edge technology to combat online hacking, piracy, and
             cybercrime.
           </p>
-          <p className="text-muted-text">
+          <p>
             Our mission is to stay ahead of evolving cyber threats and provide
             businesses with the best security solutions.
           </p>
         </div>
 
         {/* Vision */}
-        <div>
-          <div className="mb-4 flex items-center gap-3">
+        <div className="rounded-lg px-6 py-8 shadow">
+          <div className="mb-6 flex items-center gap-3">
             <img src={visionIcon} alt="bitss vision" className="size-8" />
             <h3 className="text-2xl font-bold md:text-3xl">Our Vision</h3>
           </div>
-          <p className="text-muted-text mb-4">
+          <p className="mb-4">
             Our vision is to deliver the absolute best security solutions for
             our customers, ensuring their safety and peace of mind at every
             step.
           </p>
-          <p className="text-muted-text">
+          <p>
             We are committed to excellence, innovation, and personalized
             service, empowering businesses to thrive securely in a digital
             landscape.

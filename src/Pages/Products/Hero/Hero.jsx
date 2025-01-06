@@ -7,7 +7,7 @@ export default function Hero() {
       <h1 className="mb-6 text-center text-4xl font-bold md:text-5xl">
         Bitss Cyber Security Products
       </h1>
-      <p className="text-muted-text mb-20 w-full text-balance text-center text-xl font-light">
+      <p className="mb-20 w-full text-balance text-center text-xl font-light">
         From anti-spam tools to network protection, explore our range of
         solutions that prioritize your security and peace of mind.
       </p>
@@ -19,9 +19,9 @@ export default function Hero() {
               {link.categories.map((category, i) => (
                 <div
                   key={i}
-                  className={`bg-dark-accent min-h-[250px] rounded-lg border-black/20 p-4 ${i < 4 && i % 2 === 0 && "border-b border-r"} ${i % 2 !== 0 && "border-b border-r"}`}
+                  className="min-h-[250px] rounded-lg p-4 shadow transition-shadow duration-200 ease-linear hover:shadow-custom-2"
                 >
-                  <h3 className="mb-4 flex flex-col gap-4 text-xl font-bold text-white">
+                  <h3 className="mb-4 flex flex-col gap-4 text-xl font-bold">
                     <img
                       src={category.icon}
                       alt=""
@@ -29,12 +29,12 @@ export default function Hero() {
                     />
                     {category.title}
                   </h3>
-                  <div className="text-muted-text space-y-2">
+                  <div className="space-y-2">
                     {category.items.map((product, i) => (
                       <div key={i}>
                         <Link
                           to={product.path}
-                          className="hover:text-accent max-w-fit capitalize transition-all duration-200 ease-in-out"
+                          className="max-w-fit capitalize transition-all duration-200 ease-in-out hover:text-primary"
                         >
                           {product.name}
                         </Link>

@@ -21,20 +21,20 @@ export default function Faq() {
           <div key={faq.id}>
             <h4
               onClick={() => toggleFaqOpen(faq.id)}
-              className="bg-light-accent group flex cursor-pointer items-center justify-between gap-4 rounded-md p-4 text-lg font-medium text-white"
+              className="group flex cursor-pointer items-center justify-between gap-4 rounded-md border border-[#C5D6E0] p-4 text-lg font-medium"
             >
               {faq.que}
               <div
-                className={`group-hover:bg-light-background flex min-h-8 min-w-8 items-center justify-center rounded-full border transition-all duration-200 ease-linear ${faqOpen === faq.id && "text-light-accent bg-light-background rotate-45"}`}
+                className={`group-hover:border-dark flex min-h-8 min-w-8 items-center justify-center rounded-full border border-[#C5D6E0] transition-all duration-200 ease-linear ${faqOpen === faq.id && "bg-dark text-custom-white rotate-45"}`}
               >
-                <AiOutlinePlus className="group-hover:text-light-accent text-xl transition-all duration-200 ease-linear" />
+                <AiOutlinePlus className="text-xl transition-all duration-200 ease-linear" />
               </div>
             </h4>
 
             <div
               className={`grid overflow-hidden px-4 transition-all duration-300 ease-in-out ${faqOpen === faq.id ? "grid-rows-[1fr] pt-4 opacity-100" : "grid-rows-[0fr] opacity-0"}`}
             >
-              <p className="text-muted-text overflow-hidden">{faq.ans}</p>
+              <p className="overflow-hidden">{faq.ans}</p>
             </div>
           </div>
         ))}
