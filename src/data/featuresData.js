@@ -1,6 +1,4 @@
-import webSecureIcon from "../assets/icons/web-shield.png";
-import antispamContactIcon from "../assets/icons/antispam-contact.png";
-import preselectFormIcon from "../assets/icons/pre-select-form.png";
+import bitssIcon from "../assets/icons/bitss.png";
 import webProtect from "../assets/home/website-protection.png";
 import antispamContact from "../assets/home/antispam-cotanct.png";
 import preselectForm from "../assets/home/pre-select-form.png";
@@ -8,11 +6,11 @@ import preselectForm from "../assets/home/pre-select-form.png";
 export const featuresData = [
   {
     image: webProtect,
-    icon: webSecureIcon,
+    icon: bitssIcon,
     name: "Bitss WAP Website Protection",
     title: "Comprehensive Protection for Your Website",
     overview:
-      "Secure your website, prevent data theft, and protect your online assets with real-time threat detection and advanced security measures.",
+      "Secure your website, prevent data theft & protect your online assets with real-time threat detection & advanced security measures.",
     features: [
       "Prevents data theft and intrusion",
       "Blocks hacking, spamming, and ransomware",
@@ -24,7 +22,7 @@ export const featuresData = [
   },
   {
     image: antispamContact,
-    icon: antispamContactIcon,
+    icon: bitssIcon,
     name: "Bitss C Anti-Spam Contact Form",
     title: "Stop Spam & Manage Your Contacts",
     overview:
@@ -40,7 +38,7 @@ export const featuresData = [
   },
   {
     image: preselectForm,
-    icon: preselectFormIcon,
+    icon: bitssIcon,
     name: "Bitss C Preselect Form",
     title: "Customizable Forms with Enhanced Security",
     overview:

@@ -1,8 +1,5 @@
 import webSecurity from "../assets/icons/web-shield.png";
 import dataProtection from "../assets/icons/database-lock.png";
-import antivirus from "../assets/icons/security-lock.png";
-import idVerify from "../assets/icons/id-verify.png";
-import cyberSecurity from "../assets/icons/cyber-security.png";
 
 const navLinks = [
   {
@@ -17,64 +14,40 @@ const navLinks = [
         icon: webSecurity,
         items: [
           {
-            name: "Bitss WAP Website Protection",
-            path: "/products/wap-website-protection",
+            name: "Bitss WAP Protection (WordPress)",
+            path: "/products/wap-website-protection-wp",
           },
           {
-            name: "Bitss C Anti-Spam Contact Form",
-            path: "/products/anti-spam-contact-form",
-          },
-          {
-            name: "Bitss C Preselect Form",
-            path: "/products/c-preselect-form",
+            name: "Bitss WAP Protection (JavaScript)",
+            path: "/products/wap-website-protection-js",
           },
         ],
       },
       {
-        title: "Network and Database Protection",
+        title: "Contact Form Protection",
+        icon: webSecurity,
+        items: [
+          {
+            name: "Bitss C Contact Form (WordPress)",
+            path: "/products/anti-spam-contact-form-wp",
+          },
+          {
+            name: "Bitss C Contact Form (JavaScript)",
+            path: "/products/anti-spam-contact-form-js",
+          },
+        ],
+      },
+      {
+        title: "Database and Virus Protection",
         icon: dataProtection,
         items: [
           {
-            name: "Bitss N Database Network Protection",
-            path: "/products/n-database-network-protection",
+            name: "Bitss VWAR frontline virus protection (WordPress)",
+            path: "/products/virus-protection-wp",
           },
           {
-            name: "Bitss S Server Database Protection",
-            path: "/products/s-server-database-protection",
-          },
-        ],
-      },
-      {
-        title: "Virus and Malware Protection",
-        icon: antivirus,
-        items: [
-          {
-            name: "Bitss Vwar frontline virus protection (Plugin Version)",
-            path: "/products/virus-protection-plugin",
-          },
-          {
-            name: "Bitss Vwar frontline virus protection (Software Version)",
-            path: "/products/virus-protection-software",
-          },
-        ],
-      },
-      {
-        title: "Identity Protection",
-        icon: idVerify,
-        items: [
-          {
-            name: "Bitss V Verifies IT Identity",
-            path: "/products/v-identification-verification",
-          },
-        ],
-      },
-      {
-        title: "Cybersecurity Solutions",
-        icon: cyberSecurity,
-        items: [
-          {
-            name: "Bitss Cyber Security",
-            path: "/products/cyber-security",
+            name: "Bitss VWAR frontline virus protection (JavaScript)",
+            path: "/products/virus-protection-js",
           },
         ],
       },

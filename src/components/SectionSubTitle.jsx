@@ -1,6 +1,8 @@
-export default function SectionSubTitle({ children }) {
+export default function SectionSubTitle({ children, customStyle = false }) {
   return (
-    <p className="mb-20 w-full text-balance text-center text-xl font-light">
+    <p
+      className={`w-full text-balance text-xl font-light ${customStyle ? "mb-6 md:text-left" : "mb-20 text-center"}`}
+    >
       {children}
     </p>
   );

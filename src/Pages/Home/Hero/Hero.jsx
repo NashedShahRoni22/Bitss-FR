@@ -8,20 +8,19 @@ export default function Hero() {
         {/* Text Container */}
         <div className="w-full md:w-1/2">
           <h1 className="mb-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
-            Advanced Frontline Protection for Websites, Servers, Laptops, Forms
-            & Data
+            VWAR and Advance frontline database protection for Websites, Servers
+            and Laptops.
           </h1>
           <p className="mb-8 text-center text-lg font-light md:text-left md:text-xl">
-            Defend your WordPress and JavaScript-powered sites with cutting-edge
-            Anti-Spam Features, Real-Time Threat Detection & Seamless
-            Integration. Protect your databases from hackers, spamming, and
-            unauthorized access to ensure total security.
+            VWAR Software provides database security filtering, cleaning and
+            blocking device codes, that are inplanted in your database to
+            destroy your business.
           </p>
 
           <div className="text-center md:text-left">
             <Link
               to="/products"
-              className="text-custom-white inline-block rounded-full bg-primary px-8 py-3 text-center text-lg font-medium transition-all duration-200 ease-linear hover:bg-primary-hover hover:shadow-custom-red"
+              className="inline-block rounded-full bg-primary px-8 py-3 text-center text-lg font-medium text-custom-white transition-all duration-200 ease-linear hover:bg-primary-hover hover:shadow-custom-red"
             >
               Explore Our Products
             </Link>

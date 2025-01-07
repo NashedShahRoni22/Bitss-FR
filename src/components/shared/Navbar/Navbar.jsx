@@ -44,11 +44,11 @@ export default function Navbar() {
 
               {/* Dropdown for Products */}
               {link.categories && (
-                <div className="bg-custom-white absolute left-0 top-full z-10 hidden min-w-[42rem] grid-cols-2 rounded-lg shadow-custom-1 group-hover:grid">
+                <div className="absolute left-0 top-full z-10 hidden min-w-[42rem] grid-cols-2 rounded-lg bg-custom-white shadow-custom-1 group-hover:grid">
                   {link.categories.map((category, j) => (
                     <div
                       key={j}
-                      className={`${j % 2 === 0 && j < 4 && "border-r"} ${j < 4 && "border-b"} border-accent p-6`}
+                      className={`${j % 2 === 0 && j < 2 && "border-r"} ${j < 2 && "border-b"} border-accent p-6`}
                     >
                       <h3 className="mb-3 flex items-center gap-1.5 font-bold">
                         <img
@@ -77,7 +77,7 @@ export default function Navbar() {
 
               {/* Dropdown for Children */}
               {link.children && (
-                <div className="bg-custom-white absolute left-0 top-full z-10 hidden min-w-max grid-cols-1 gap-4 rounded-lg px-6 py-4 shadow-custom-1 group-hover:grid">
+                <div className="absolute left-0 top-full z-10 hidden min-w-max grid-cols-1 gap-4 rounded-lg bg-custom-white px-6 py-4 shadow-custom-1 group-hover:grid">
                   {link.children.map((subLink, j) => (
                     <Link
                       key={j}

@@ -1,38 +1,52 @@
-import { audienceData } from "../../../data/audienceData";
+import SectionSubTitle from "../../../components/SectionSubTitle";
+import SectionTitle from "../../../components/SectionTitle";
+import SectionContainer from "../../../components/shared/SectionContainer";
 
-const AudienceCards = () => {
+export default function AudienceCards() {
+  const solutions = [
+    {
+      title: "Website Security",
+      overview:
+        "Safeguard your website from malicious attacks and vulnerabilities. Ensure reliable performance and data protection for WordPress and JavaScript-based sites.",
+      icon: "🛡️", // Replace with your SVG or icon component
+    },
+    {
+      title: "Contact Form Protection",
+      overview:
+        "Secure your contact forms against spam and unauthorized submissions. Maintain genuine and seamless communication with your audience.",
+      icon: "📩", // Replace with your SVG or icon component
+    },
+    {
+      title: "Database and Virus Protection",
+      overview:
+        "Protect your databases from cyber threats with advanced virus detection and real-time monitoring for data integrity.",
+      icon: "🗄️", // Replace with your SVG or icon component
+    },
+  ];
+
   return (
-    <section className="px-5 py-10 md:container md:mx-auto md:py-20">
-      {/* Title & Subtitle */}
-      <h2 className="mb-6 text-center text-3xl font-bold md:text-[2.5rem]">
-        Tailored Security Solutions for Every Website Owner
-      </h2>
-      <p className="mb-20 w-full text-balance text-center text-xl font-light">
-        Comprehensive Contact Form Protection for WordPress and JavaScript
-        Websites
-      </p>
-      {/* Cards Container */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {audienceData.map((card) => (
+    <SectionContainer>
+      <SectionTitle>
+        <p className="mx-auto max-w-3xl leading-tight">
+          Advanced Security for Contact Forms, Websites, Servers & Laptops
+        </p>
+      </SectionTitle>
+      <SectionSubTitle>
+        End-to-End Protection Against Spam, Hacking and Ransomware Across Your
+        WordPress and JavaScript Sites
+      </SectionSubTitle>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {solutions.map((solution, index) => (
           <div
-            key={card.id}
-            className="flex flex-col items-center rounded-lg p-6 text-center shadow transition-shadow duration-200 ease-linear hover:shadow-custom-2"
+            key={index}
+            className="flex flex-col rounded-lg p-6 text-center shadow transition-shadow duration-200 ease-linear hover:shadow-custom-2"
           >
-            <img
-              src={card.image}
-              alt={card.title}
-              className="mb-4 size-20 object-cover"
-            />
-            <span className="mb-2 rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-primary">
-              {card.badge}
-            </span>
-            <h3 className="text-lg font-bold">{card.title}</h3>
-            <p className="mt-2 text-balance text-sm">{card.description}</p>
+            <div className="mb-4 text-center text-4xl">{solution.icon}</div>
+            <h3 className="mb-2 text-xl font-semibold">{solution.title}</h3>
+            <p className="font-light">{solution.overview}</p>
           </div>
         ))}
       </div>
-    </section>
+    </SectionContainer>
   );
-};
-
-export default AudienceCards;
+}
