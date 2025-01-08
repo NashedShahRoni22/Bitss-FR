@@ -1,13 +1,16 @@
 import Hero from "./Hero/Hero";
-import IntroVideo from "./IntroVideo/IntroVideo";
 import Pricing from "./Pricing/Pricing";
+import VideoSection from "../../components/VideoSection";
 
 export default function FreeTools() {
   return (
     <main>
       <Hero />
       <Pricing />
-      <IntroVideo />
+      <VideoSection
+        productName="Bitss C Secure Contact Form"
+        videoUrl="https://bitss.fr/wp-content/uploads/2024/07/preselect-2.mp4"
+      />
     </main>
   );
 }

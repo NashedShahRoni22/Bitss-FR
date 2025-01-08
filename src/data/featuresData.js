@@ -18,7 +18,7 @@ export const featuresData = [
       "Ensures secure FTP and routine entry",
       "Protects revenue and client data",
     ],
-    url: "/products/wap-website-protection",
+    url: "/products/wap-website-protection-wp",
   },
   {
     image: antispamContact,

@@ -1,5 +1,4 @@
-import webSecurity from "../assets/icons/web-shield.png";
-import dataProtection from "../assets/icons/database-lock.png";
+import bitssIcon from "../assets/icons/bitss.png";
 
 const navLinks = [
   {
@@ -10,8 +9,8 @@ const navLinks = [
     name: "Products",
     categories: [
       {
-        title: "Website Security",
-        icon: webSecurity,
+        title: "Website Login Protection",
+        icon: bitssIcon,
         items: [
           {
             name: "Bitss WAP Protection (WordPress)",
@@ -25,7 +24,7 @@ const navLinks = [
       },
       {
         title: "Contact Form Protection",
-        icon: webSecurity,
+        icon: bitssIcon,
         items: [
           {
             name: "Bitss C Contact Form (WordPress)",
@@ -39,7 +38,7 @@ const navLinks = [
       },
       {
         title: "Database and Virus Protection",
-        icon: dataProtection,
+        icon: bitssIcon,
         items: [
           {
             name: "Bitss VWAR frontline virus protection (WordPress)",

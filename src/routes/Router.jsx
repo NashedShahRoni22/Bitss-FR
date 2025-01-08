@@ -4,7 +4,8 @@ import Home from "../Pages/Home/Home";
 import Products from "../Pages/Products/Products";
 import About from "../Pages/About/About";
 import FreeTools from "../Pages/FreeTools/FreeTools";
-import Contact from "../Pages/Home/Contact/Contact";
+import Contact from "../Pages/Contact/Contact";
+import WapWP from "../Pages/WapWP/WapWP";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/products/wap-website-protection-wp",
+        element: <WapWP />,
       },
     ],
   },

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { homeFaq } from "../../../data/faq/homeFaq";
 
-export default function Faq() {
+export default function Faq({ faqData }) {
   const [faqOpen, setFaqOpen] = useState("");
 
   const toggleFaqOpen = (id) => {
@@ -17,7 +16,7 @@ export default function Faq() {
 
       {/* FAQ Container */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {homeFaq.map((faq) => (
+        {faqData.map((faq) => (
           <div key={faq.id}>
             <h4
               onClick={() => toggleFaqOpen(faq.id)}
@@ -25,7 +24,7 @@ export default function Faq() {
             >
               {faq.que}
               <div
-                className={`group-hover:border-dark flex min-h-8 min-w-8 items-center justify-center rounded-full border border-[#C5D6E0] transition-all duration-200 ease-linear ${faqOpen === faq.id && "bg-dark text-custom-white rotate-45"}`}
+                className={`flex min-h-8 min-w-8 items-center justify-center rounded-full border border-[#C5D6E0] transition-all duration-200 ease-linear group-hover:border-dark ${faqOpen === faq.id && "rotate-45 bg-dark text-custom-white"}`}
               >
                 <AiOutlinePlus className="text-xl transition-all duration-200 ease-linear" />
               </div>

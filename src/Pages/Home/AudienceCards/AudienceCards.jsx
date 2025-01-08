@@ -5,22 +5,22 @@ import SectionContainer from "../../../components/shared/SectionContainer";
 export default function AudienceCards() {
   const solutions = [
     {
-      title: "Website Security",
+      title: "Bitss WAP Website Security",
       overview:
         "Safeguard your website from malicious attacks and vulnerabilities. Ensure reliable performance and data protection for WordPress and JavaScript-based sites.",
-      icon: "🛡️", // Replace with your SVG or icon component
+      icon: "🛡️",
     },
     {
-      title: "Contact Form Protection",
+      title: "Bitss C Contact Form Protection",
       overview:
         "Secure your contact forms against spam and unauthorized submissions. Maintain genuine and seamless communication with your audience.",
-      icon: "📩", // Replace with your SVG or icon component
+      icon: "📩",
     },
     {
-      title: "Database and Virus Protection",
+      title: "Bitss VWAR Database and Virus Protection",
       overview:
         "Protect your databases from cyber threats with advanced virus detection and real-time monitoring for data integrity.",
-      icon: "🗄️", // Replace with your SVG or icon component
+      icon: "🗄️",
     },
   ];
 

@@ -1,6 +1,6 @@
 import webSecurityIcon from "../assets/icons/web-shield.png";
 import networkSecurityIcon from "../assets/icons/network-security.png";
-import virusProtectIcon from "../assets/icons/virus-shield-white.png";
+import virusProtectIcon from "../assets/icons/virus-shield.png";
 
 export const highlitedSolutions = [
   {
