@@ -9,7 +9,8 @@ const navLinks = [
     name: "Products",
     categories: [
       {
-        title: "Website Login Protection",
+        title: "Bitss WAP",
+        subTitle: "Website Login Protection",
         icon: bitssIcon,
         items: [
           {
@@ -23,7 +24,8 @@ const navLinks = [
         ],
       },
       {
-        title: "Contact Form Protection",
+        title: "Bitss C Contact Form",
+        subTitle: "Anti spam & Virus Protection",
         icon: bitssIcon,
         items: [
           {
@@ -37,7 +39,9 @@ const navLinks = [
         ],
       },
       {
-        title: "Database and Virus Protection",
+        title: "Bitss VWAR",
+        subTitle:
+          "Provides Database Security, Filtering to Clean & Block Device Codes that are implemented in your database to destroy you business",
         icon: bitssIcon,
         items: [
           {

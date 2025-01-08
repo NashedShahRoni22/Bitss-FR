@@ -48,16 +48,20 @@ export default function Navbar() {
                   {link.categories.map((category, j) => (
                     <div
                       key={j}
-                      className={`${j % 2 === 0 && j < 2 && "border-r"} ${j < 2 && "border-b"} border-accent p-6`}
+                      className={`${j % 2 === 0 && j < 2 && "border-r"} ${j < 2 && "border-b"} border-accent p-6 ${j > 1 ? "col-span-2" : "col-span-1"}`}
                     >
-                      <h3 className="mb-3 flex items-center gap-1.5 font-bold">
+                      <div className="mb-3 flex gap-1.5">
                         <img
                           src={category.icon}
                           alt=""
                           className="size-7 object-cover"
                         />
-                        {category.title}
-                      </h3>
+                        <div>
+                          <h3 className="font-bold">{category.title}</h3>
+                          <p className="text-xs">({category.subTitle})</p>
+                        </div>
+                      </div>
+
                       <div className="space-y-2">
                         {category.items.map((product, k) => (
                           <Link
