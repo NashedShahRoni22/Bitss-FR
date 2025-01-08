@@ -9,8 +9,6 @@ export default function Solutions() {
     setActiveTab(i);
   };
 
-  console.log(activeTab);
-
   return (
     <section className="px-5 py-10 text-center md:container md:mx-auto md:py-20">
       <h2 className="mb-14 text-center text-3xl font-bold md:text-[2.5rem]">
@@ -34,7 +32,7 @@ export default function Solutions() {
         {tabsData.map((tab, i) => (
           <button
             key={i}
-            className={`cursor-pointer rounded-full px-6 py-1.5 text-center text-xl transition-all duration-200 ease-in-out ${activeTab === i ? "text-custom-white bg-primary" : "hover:text-custom-white hover:bg-[#F83A53]"}`}
+            className={`cursor-pointer rounded-full px-6 py-1.5 text-center text-xl transition-all duration-200 ease-in-out ${activeTab === i ? "bg-primary text-custom-white" : "hover:bg-[#F83A53] hover:text-custom-white"}`}
             onClick={() => handleTabClick(i)}
           >
             {tab.title}
