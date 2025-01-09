@@ -3,18 +3,27 @@ import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import { Link } from "react-router";
 
-export default function Pricing() {
+export default function Pricing({ isWpVersion }) {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8 md:flex-row md:gap-16">
         {/* Left Section: Title */}
         <div className="w-full md:w-1/2">
-          <h3 className="mb-2.5 text-xl font-medium text-primary">
+          <h3 className="mb-2.5 text-center text-xl font-medium text-primary md:text-left">
             Affordable Pricing
           </h3>
           <SectionTitle mdTextLeft={true}>
-            Bitss WAP Website <br /> Admin Panel Protection
+            Bitss C Antispam for <br /> Contact Forms
           </SectionTitle>
+          <h3 className="mb-2.5 text-center text-xl font-medium md:text-left">
+            Also available in:{" "}
+            <Link
+              to="/products/c-contact-form/js"
+              className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+            >
+              {isWpVersion ? "JavaScript version" : "WordPress Plugin"}
+            </Link>
+          </h3>
         </div>
 
         {/* Right Section: Pricing and Features */}
@@ -32,23 +41,31 @@ export default function Pricing() {
           <ul className="mt-2.5 space-y-2 font-light">
             <li className="flex items-center gap-2">
               <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Bitss C Anti-Spam Contact Form
+              Automated Updates
             </li>
             <li className="flex items-center gap-2">
               <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Training & Support
+              Seamless Integration
             </li>
             <li className="flex items-center gap-2">
               <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Licence Upgrade
+              Customizable Protection Settings
             </li>
             <li className="flex items-center gap-2">
               <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Bitss WAP Installation by Bitss Engineers (€75 one-time fee)
+              Real-Time Threat Monitoring
             </li>
             <li className="flex items-center gap-2">
               <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Yearly Backups (10 total) with 1 copy per month
+              Improved Contact Management
+            </li>
+            <li className="flex items-center gap-2">
+              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
+              Bitss C User Manual
+            </li>
+            <li className="flex items-center gap-2">
+              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
+              Training, Upgrades and Support
             </li>
           </ul>
 

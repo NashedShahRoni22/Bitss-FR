@@ -2,7 +2,7 @@ import SectionSubTitle from "../../../components/SectionSubTitle";
 import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 
-export default function Features() {
+export default function Features({ isWpVersion }) {
   const features = [
     {
       title: "Cloud-Based Protection",
@@ -40,8 +40,9 @@ export default function Features() {
     <SectionContainer>
       <SectionTitle>Key Features of Bitss WAP Cyber Security</SectionTitle>
       <SectionSubTitle>
-        Discover how Bitss WAP enhances your WordPress site with cutting-edge
-        protection against data theft, hacking & online threats.
+        {isWpVersion
+          ? " Discover how Bitss WAP enhances your WordPress site with cutting-edge protection against data theft, hacking & online threats."
+          : "Protect your JavaScript websites and custom projects from hacking, intrusion and data theft with Bitss WAP."}
       </SectionSubTitle>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

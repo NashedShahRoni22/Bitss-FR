@@ -15,11 +15,11 @@ const navLinks = [
         items: [
           {
             name: "Bitss WAP Protection (WordPress)",
-            path: "/products/wap-website-protection-wp",
+            path: "/products/wap-website-protection/wp",
           },
           {
             name: "Bitss WAP Protection (JavaScript)",
-            path: "/products/wap-website-protection-js",
+            path: "/products/wap-website-protection/js",
           },
         ],
       },
@@ -30,11 +30,11 @@ const navLinks = [
         items: [
           {
             name: "Bitss C Contact Form (WordPress)",
-            path: "/products/anti-spam-contact-form-wp",
+            path: "/products/c-contact-form/wp",
           },
           {
             name: "Bitss C Contact Form (JavaScript)",
-            path: "/products/anti-spam-contact-form-js",
+            path: "/products/c-contact-form/js",
           },
         ],
       },
@@ -45,12 +45,12 @@ const navLinks = [
         icon: bitssIcon,
         items: [
           {
-            name: "Bitss VWAR frontline virus protection (WordPress)",
-            path: "/products/virus-protection-wp",
+            name: "Bitss VWAR frontline protection (WordPress)",
+            path: "/products/vwar-frontline/wp",
           },
           {
-            name: "Bitss VWAR frontline virus protection (JavaScript)",
-            path: "/products/virus-protection-js",
+            name: "Bitss VWAR frontline protection (JavaScript)",
+            path: "/products/vwar-frontline/js",
           },
         ],
       },
