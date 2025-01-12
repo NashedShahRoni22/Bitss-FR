@@ -2,19 +2,27 @@ import { MdCheck } from "react-icons/md";
 import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import { Link } from "react-router";
+const features = [
+  "Automatic Directory Scanner",
+  "Manual Directory Scanner",
+  "Detection Timestamp",
+  "Modification Duration",
+  "Risk Level Assessment",
+  "Suspicious Code Detection",
+  "File Modification Overview",
+  "Suspicious Code Neutralization",
+  "Real-Time Email Notifications",
+];
 
-export default function Pricing({ isWpVersion }) {
-  const features = [
-    "Automatic Directory Scanner",
-    "Manual Directory Scanner",
-    "Detection Timestamp",
-    "Modification Duration",
-    "Risk Level Assessment",
-    "Suspicious Code Detection",
-    "File Modification Overview",
-    "Suspicious Code Neutralization",
-    "Real-Time Email Notifications",
-  ];
+export default function Pricing({ currentVersion }) {
+  const pricingData = {
+    js: "29.50",
+    wp: "29.50",
+    software: "49.50",
+    server: "69.50",
+  };
+
+  const pricing = pricingData[currentVersion] || "29.50";
 
   return (
     <SectionContainer>
@@ -29,7 +37,7 @@ export default function Pricing({ isWpVersion }) {
           </SectionTitle>
           <h3 className="mb-2.5 text-center text-xl font-medium md:text-left">
             Also available in:{" "}
-            {isWpVersion ? (
+            {currentVersion === "wp" ? (
               <Link
                 to="/products/vwar-frontline/js"
                 className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
@@ -50,12 +58,7 @@ export default function Pricing({ isWpVersion }) {
         {/* Right Section: Pricing and Features */}
         <div className="w-full md:w-1/2">
           {/* Pricing */}
-          <p className="mb-2.5 text-3xl font-semibold">
-            Yearly: €75{" "}
-            <span className="text-xl">
-              (Only €6.25<span className="text-sm font-medium">/Month</span>)
-            </span>
-          </p>
+          <p className="mb-2.5 text-3xl font-semibold">Yearly: €{pricing}</p>
           <p className="mt-4">One-time installation by Bitss team: €25</p>
 
           {/* Features List */}

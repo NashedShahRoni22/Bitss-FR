@@ -48,12 +48,7 @@ export default function Pricing({ isWpVersion }) {
         {/* Right Section: Pricing and Features */}
         <div className="w-full md:w-1/2">
           {/* Pricing */}
-          <p className="mb-2.5 text-3xl font-semibold">
-            Yearly: €195{" "}
-            <span className="text-xl">
-              (Only €16.25<span className="text-sm font-medium">/Month</span>)
-            </span>
-          </p>
+          <p className="mb-2.5 text-3xl font-semibold">Yearly: €19.50</p>
 
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>

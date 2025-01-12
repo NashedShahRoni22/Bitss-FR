@@ -1,40 +1,47 @@
 import SectionSubTitle from "../../../components/SectionSubTitle";
 import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
+const features = [
+  {
+    title: "Realtime Auto-Scanning",
+    description:
+      "Constant monitoring with customizable scan intervals: Realtime, Hourly, Twice Daily, or Once Daily.",
+  },
+  {
+    title: "Realtime Malware Neutralization",
+    description:
+      "Automatically neutralizes malware in real-time, with a simple 'Yes' or 'No' interaction.",
+  },
+  {
+    title: "Manual Malware Scanning",
+    description:
+      "Manually scan for malware with detailed reports, including threat levels and scan duration.",
+  },
+  {
+    title: "Neutralized Files Management",
+    description:
+      "Store and manage neutralized malware; choose to permanently remove or restore it.",
+  },
+  {
+    title: "Malware-to-JPEG Conversion",
+    description:
+      "Converts neutralized malware into a JPEG image for better tracking and analysis.",
+  },
+  {
+    title: "Modified Files Tracker",
+    description:
+      "Track and review file modifications in the last 24 hours, 7 days, or 15 days.",
+  },
+];
 
-export default function Features({ isWpVersion }) {
-  const features = [
-    {
-      title: "Automatic Directory Scanner",
-      description:
-        "Bitss Vwar automatically scans your WordPress website directories for potential threats, ensuring proactive virus detection and protection.",
-    },
-    {
-      title: "Manual Directory Scanner",
-      description:
-        "Manually initiate directory scans at any time to identify and neutralize threats, giving you full control over your website's security.",
-    },
-    {
-      title: "Detection Timestamp",
-      description:
-        "Each detected threat is timestamped, providing you with a clear log of when potential issues were identified for easier tracking and resolution.",
-    },
-    {
-      title: "Modification Duration",
-      description:
-        "Monitor the duration of file modifications on your WordPress site to detect suspicious activity and prevent unauthorized changes.",
-    },
-    {
-      title: "Suspicious Code Detection",
-      description:
-        "Bitss Vwar scans your site for suspicious or malicious code, instantly identifying and alerting you to potential security breaches.",
-    },
-    {
-      title: "Real-Time Email Notifications",
-      description:
-        "Stay informed with real-time email notifications about potential threats, allowing you to act quickly and protect your WordPress website.",
-    },
-  ];
+export default function Features({ currentVersion }) {
+  const versionDescriptions = {
+    js: "JavaScript Website",
+    wp: "WordPress Website",
+    software: "Device",
+    server: "Server",
+  };
+  const versionDescription = versionDescriptions[currentVersion] || "Website";
 
   return (
     <SectionContainer>
@@ -42,8 +49,8 @@ export default function Features({ isWpVersion }) {
         Key Features of Bitss VWAR Frontline Protection
       </SectionTitle>
       <SectionSubTitle>
-        Advanced Tools for Real-Time Virus Detection and Protection for Your
-        {isWpVersion ? " WordPress" : " JavaScript"} Website
+        Advanced Tools for Real-Time Virus Detection and Protection for Your{" "}
+        {versionDescription}
       </SectionSubTitle>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

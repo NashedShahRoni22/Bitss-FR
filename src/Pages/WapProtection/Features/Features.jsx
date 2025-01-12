@@ -5,7 +5,7 @@ import SectionContainer from "../../../components/shared/SectionContainer";
 export default function Features({ isWpVersion }) {
   const features = [
     {
-      title: "Cloud-Based Protection",
+      title: "Blacklist IP Management",
       description:
         "Bitss WAP & Bitss C provide robust protection for websites in the cloud.",
     },

@@ -52,6 +52,14 @@ const navLinks = [
             name: "Bitss VWAR frontline protection (JavaScript)",
             path: "/products/vwar-frontline/js",
           },
+          {
+            name: "Bitss VWAR frontline protection (Device)",
+            path: "/products/vwar-frontline/software",
+          },
+          {
+            name: "Bitss VWAR frontline protection (Server)",
+            path: "/products/vwar-frontline/server",
+          },
         ],
       },
     ],
