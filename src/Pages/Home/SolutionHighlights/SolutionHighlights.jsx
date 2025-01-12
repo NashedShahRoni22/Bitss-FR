@@ -18,7 +18,7 @@ export default function SolutionHighlights() {
       <Link
         to="/products"
         className={
-          "text-custom-white group mb-10 inline-flex w-fit items-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 font-medium transition-all duration-200 ease-in-out"
+          "group mb-10 inline-flex w-fit items-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 font-medium text-custom-white transition-all duration-200 ease-in-out"
         }
       >
         <span className="flex items-center px-3">
@@ -36,25 +36,21 @@ export default function SolutionHighlights() {
           alt="dot grid shapes"
           className="absolute -right-6 -top-11 size-28 opacity-0 md:opacity-50"
         />
-        <div className="relative grid grid-cols-1 gap-4 divide-y-2 divide-primary/20 rounded-xl py-6 md:grid-cols-3 md:divide-x-2 md:divide-y-0">
+        <div className="relative grid grid-cols-1 gap-4 py-6 md:grid-cols-3">
           {highlitedSolutions.map((solution, i) => (
             <div
               key={i}
-              className="bg-custom-white flex flex-col px-6 py-6 md:py-0"
+              className="rounded-xl border border-primary/20 bg-custom-white p-5"
             >
-              <div className="flex-1">
-                <img
-                  src={solution.icon}
-                  alt={solution.title}
-                  className="mb-3 size-8 md:size-10"
-                />
-                <h4 className="text-[1.375rem] font-medium">
-                  {solution.title}
-                </h4>
-                <p className="mb-12 mt-2 text-lg font-light">
-                  {solution.overview}
-                </p>
-              </div>
+              <img
+                src={solution.icon}
+                alt={solution.title}
+                className="mb-3 size-8 md:size-10"
+              />
+              <h4 className="text-[1.375rem] font-medium">{solution.title}</h4>
+              <p className="mb-12 mt-2 text-lg font-light">
+                {solution.overview}
+              </p>
             </div>
           ))}
         </div>

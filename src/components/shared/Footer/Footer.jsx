@@ -28,7 +28,7 @@ export default function Footer() {
               id="email"
               className="rounded-l border-none bg-[#f2f2f2] px-4 py-1.5 outline-none"
             />
-            <button className="text-custom-white rounded-r bg-primary px-4 py-1.5">
+            <button className="rounded-r bg-primary px-4 py-1.5 text-custom-white transition-all duration-200 ease-in-out hover:bg-primary-hover">
               Subscribe
             </button>
           </div>
@@ -104,7 +104,7 @@ export default function Footer() {
       <div className="flex flex-col justify-between gap-8 px-5 py-6 md:container md:mx-auto md:flex-row md:items-center md:px-0">
         <p className="flex gap-2 md:items-center">
           <AiOutlineCopyright className="mt-0.5 min-w-fit text-2xl md:mt-0" />
-          2024 BFIN Company All rights Reserved | 8 rue de Dublin, 34200, Sète,
+          2025 BFIN Company All rights Reserved | 8 rue de Dublin, 34200, Sète,
           France.
         </p>
         <div className="flex items-center justify-center gap-7 md:justify-normal">

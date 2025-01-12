@@ -4,7 +4,18 @@ import SectionContainer from "../../../components/shared/SectionContainer";
 import { Link } from "react-router";
 
 export default function Pricing({ isWpVersion }) {
-  console.log(isWpVersion);
+  const features = [
+    "Automatic Directory Scanner",
+    "Manual Directory Scanner",
+    "Detection Timestamp",
+    "Modification Duration",
+    "Risk Level Assessment",
+    "Suspicious Code Detection",
+    "File Modification Overview",
+    "Suspicious Code Neutralization",
+    "Real-Time Email Notifications",
+  ];
+
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8 md:flex-row md:gap-16">
@@ -39,39 +50,23 @@ export default function Pricing({ isWpVersion }) {
         {/* Right Section: Pricing and Features */}
         <div className="w-full md:w-1/2">
           {/* Pricing */}
-          <p className="mb-2.5 text-3xl font-semibold">Yearly: €7.50</p>
+          <p className="mb-2.5 text-3xl font-semibold">
+            Yearly: €75{" "}
+            <span className="text-xl">
+              (Only €6.25<span className="text-sm font-medium">/Month</span>)
+            </span>
+          </p>
+          <p className="mt-4">One-time installation by Bitss team: €25</p>
 
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>
           <ul className="mt-2.5 space-y-2 font-light">
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Automated Updates
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Seamless Integration
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Customizable Protection Settings
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Real-Time Threat Monitoring
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Improved Contact Management
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Bitss C User Manual
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Training, Upgrades and Support
-            </li>
+            {features.map((feat, i) => (
+              <li key={i} className="flex items-center gap-2">
+                <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
+                {feat}
+              </li>
+            ))}
           </ul>
 
           {/* Call-to-Action Button */}

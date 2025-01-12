@@ -15,7 +15,7 @@ const WapProtection = () => {
     <main>
       <Hero isWpVersion={isWpVersion} />
       <Features isWpVersion={isWpVersion} />
-      <Pricing />
+      <Pricing isWpVersion={isWpVersion} />
       <VideoSection
         productName="Bitss WAP Website Admin Panel Protection"
         videoUrl="https://bitss.fr/wp-content/uploads/2024/07/bitts.fr_.mp4"

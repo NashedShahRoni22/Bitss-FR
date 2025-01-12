@@ -1,9 +1,9 @@
 import Hero from "./Hero/Hero";
 import KeyFeatures from "../../components/KeyFeatures";
+import Pricing from "./Pricing/Pricing";
 import Faq from "../../components/Faq";
 import { cContactFormWp } from "../../data/faq/cContactFormWp";
 import useIsWpVersion from "../../hooks/useIsWpVersion";
-import Pricing from "./Pricing/Pricing";
 
 export default function CContactFormWp() {
   const isWpVersion = useIsWpVersion();

@@ -18,12 +18,12 @@ export const featuresData = [
       "Ensures secure FTP and routine entry",
       "Protects revenue and client data",
     ],
-    url: "/products/wap-website-protection-wp",
+    url: "/products/wap-website-protection/wp",
   },
   {
     image: antispamContact,
     icon: bitssIcon,
-    name: "Bitss C Anti-Spam Contact Form",
+    name: "Bitss C Contact Form",
     title: "Stop Spam & Manage Your Contacts",
     overview:
       "Improve your contact form's security with anti-spam features, customizable settings, and real-time threat monitoring.",
@@ -34,7 +34,7 @@ export const featuresData = [
       "Real-time threat monitoring",
       "Supports WordPress and other platforms",
     ],
-    url: "/products/anti-spam-contact-form",
+    url: "/products/c-contact-form/wp",
   },
   {
     image: preselectForm,

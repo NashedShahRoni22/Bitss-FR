@@ -3,7 +3,14 @@ import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import { Link } from "react-router";
 
-export default function Pricing() {
+export default function Pricing({ isWpVersion }) {
+  const features = [
+    "Bitss C Anti-Spam Contact Form",
+    "Yearly Backups (10 total) with 1 copy per month",
+    "Licence Upgrade",
+    "Training & Support",
+  ];
+
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8 md:flex-row md:gap-16">
@@ -13,38 +20,43 @@ export default function Pricing() {
             Affordable Pricing
           </h3>
           <SectionTitle mdTextLeft={true}>
-            Bitss WAP Website <br /> Admin Panel Protection
+            Bitss C Anti-spam <br /> for Contact Forms
           </SectionTitle>
+          <h3 className="mb-2.5 text-center text-xl font-medium md:text-left">
+            Also available in:{" "}
+            {isWpVersion ? (
+              <Link
+                to="/products/c-contact-form/js"
+                className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+              >
+                JavaScript version
+              </Link>
+            ) : (
+              <Link
+                to="/products/c-contact-form/wp"
+                className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+              >
+                WordPress Plugin
+              </Link>
+            )}
+          </h3>
         </div>
 
         {/* Right Section: Pricing and Features */}
         <div className="w-full md:w-1/2">
           {/* Pricing */}
           <p className="mb-2.5 text-3xl font-semibold">Yearly: €7.50</p>
+          <p className="mt-4">One-time installation by Bitss team: €75</p>
 
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>
           <ul className="mt-2.5 space-y-2 font-light">
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Bitss C Anti-Spam Contact Form
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Training & Support
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Licence Upgrade
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Bitss WAP Installation by Bitss Engineers (€75 one-time fee)
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Yearly Backups (10 total) with 1 copy per month
-            </li>
+            {features.map((feat, i) => (
+              <li key={i} className="flex items-center gap-2">
+                <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
+                {feat}
+              </li>
+            ))}
           </ul>
 
           {/* Call-to-Action Button */}

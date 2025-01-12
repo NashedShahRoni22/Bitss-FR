@@ -4,6 +4,16 @@ import SectionContainer from "../../../components/shared/SectionContainer";
 import { Link } from "react-router";
 
 export default function Pricing({ isWpVersion }) {
+  const features = [
+    "Automated Updates",
+    "Seamless Integration",
+    "Customizable Protection Settings",
+    "Real-Time Threat Monitoring",
+    "Improved Contact Management",
+    "Bitss C User Manual",
+    "Training, Upgrades and Support",
+  ];
+
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8 md:flex-row md:gap-16">
@@ -13,16 +23,25 @@ export default function Pricing({ isWpVersion }) {
             Affordable Pricing
           </h3>
           <SectionTitle mdTextLeft={true}>
-            Bitss C Antispam for <br /> Contact Forms
+            Bitss WAP Website <br /> Admin Panel Protection
           </SectionTitle>
           <h3 className="mb-2.5 text-center text-xl font-medium md:text-left">
             Also available in:{" "}
-            <Link
-              to="/products/c-contact-form/js"
-              className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
-            >
-              {isWpVersion ? "JavaScript version" : "WordPress Plugin"}
-            </Link>
+            {isWpVersion ? (
+              <Link
+                to="/products/wap-website-protection/js"
+                className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+              >
+                JavaScript version
+              </Link>
+            ) : (
+              <Link
+                to="/products/wap-website-protection/wp"
+                className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+              >
+                WordPress Plugin
+              </Link>
+            )}
           </h3>
         </div>
 
@@ -39,34 +58,12 @@ export default function Pricing({ isWpVersion }) {
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>
           <ul className="mt-2.5 space-y-2 font-light">
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Automated Updates
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Seamless Integration
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Customizable Protection Settings
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Real-Time Threat Monitoring
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Improved Contact Management
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Bitss C User Manual
-            </li>
-            <li className="flex items-center gap-2">
-              <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
-              Training, Upgrades and Support
-            </li>
+            {features.map((feat, i) => (
+              <li key={i} className="flex items-center gap-2">
+                <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
+                {feat}
+              </li>
+            ))}
           </ul>
 
           {/* Call-to-Action Button */}

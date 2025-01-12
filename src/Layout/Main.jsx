@@ -2,7 +2,7 @@ import { Outlet, ScrollRestoration } from "react-router";
 import Navbar from "../components/shared/Navbar/Navbar";
 import Footer from "../components/shared/Footer/Footer";
 
-export default function MainLayout() {
+export default function Main() {
   return (
     <main className="bg-custom-white font-roboto text-dark">
       <ScrollRestoration />

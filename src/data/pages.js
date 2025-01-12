@@ -19,12 +19,4 @@ export const pages = [
     name: "Contact Us",
     link: "/contact",
   },
-  {
-    name: "Blogs",
-    link: "/blogs",
-  },
-  {
-    name: "FAQ",
-    link: "/faq",
-  },
 ];

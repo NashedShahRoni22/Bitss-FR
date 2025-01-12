@@ -12,7 +12,7 @@ export default function Hero({ isWpVersion }) {
         <div className="w-full md:w-1/2">
           <ProductVersion mdTextLeft={true} />
           <SectionTitle mdTextLeft={true}>
-            Bitss C Antispam for Contact Forms
+            Bitss C Anti-spam for <br /> Contact Forms
           </SectionTitle>
           <SectionSubTitle customStyle={true}>
             Eliminate Spam on Your {isWpVersion ? "WordPress" : "JavaScript"}{" "}

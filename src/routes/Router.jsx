@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import MainLayout from "../Layout/MainLayout";
+import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Products from "../Pages/Products/Products";
 import About from "../Pages/About/About";
@@ -12,7 +12,7 @@ import Vwar from "../Pages/Vwar/Vwar";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    element: <Main />,
     children: [
       {
         path: "/",
