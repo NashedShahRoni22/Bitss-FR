@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import heroImg from "../../../assets/home/hero.png";
+import bitssLogo from "../../../assets/icons/bitss.png";
 
 export default function Hero() {
   return (
@@ -7,9 +8,10 @@ export default function Hero() {
       <div className="flex w-full flex-col items-center justify-center gap-8 px-5 py-10 md:container md:mx-auto md:flex-row md:py-20">
         {/* Text Container */}
         <div className="w-full md:w-1/2">
-          <h1 className="mb-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
-            VWAR and Advance frontline database protection for Websites, Servers
-            and Laptops.
+          <img src={bitssLogo} alt="bitss logo" className="size-16" />
+          <h1 className="my-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
+            VWAR Advance Frontline database protection for Websites, Servers &
+            Laptops
           </h1>
           <p className="mb-8 text-center text-lg font-light md:text-left md:text-xl">
             VWAR Software provides database security filtering, cleaning and

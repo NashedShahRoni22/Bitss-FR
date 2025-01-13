@@ -53,7 +53,7 @@ const navLinks = [
             path: "/products/vwar-frontline/js",
           },
           {
-            name: "Bitss VWAR frontline protection (Device)",
+            name: "Bitss VWAR frontline protection (Windows Device)",
             path: "/products/vwar-frontline/software",
           },
           {

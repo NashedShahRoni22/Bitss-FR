@@ -35,24 +35,45 @@ export default function Pricing({ currentVersion }) {
           <SectionTitle mdTextLeft={true}>
             Bitss VWAR: Frontline <br /> Protection
           </SectionTitle>
-          <h3 className="mb-2.5 text-center text-xl font-medium md:text-left">
-            Also available in:{" "}
-            {currentVersion === "wp" ? (
-              <Link
-                to="/products/vwar-frontline/js"
-                className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
-              >
-                JavaScript version
-              </Link>
-            ) : (
-              <Link
-                to="/products/vwar-frontline/wp"
-                className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
-              >
-                WordPress Plugin
-              </Link>
-            )}
-          </h3>
+          <div className="flex flex-col gap-2.5 md:flex-row">
+            <h3 className="mb-2.5 min-w-fit text-center text-xl font-medium md:text-left">
+              Also available in:{" "}
+            </h3>
+            <div className="mt-0.5 space-x-1.5 text-center md:text-left">
+              {currentVersion !== "wp" && (
+                <Link
+                  to="/products/vwar-frontline/wp"
+                  className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+                >
+                  WordPress Plugin,
+                </Link>
+              )}
+              {currentVersion !== "js" && (
+                <Link
+                  to="/products/vwar-frontline/js"
+                  className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+                >
+                  JavaScript version,
+                </Link>
+              )}
+              {currentVersion !== "software" && (
+                <Link
+                  to="/products/vwar-frontline/software"
+                  className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+                >
+                  Software version,
+                </Link>
+              )}
+              {currentVersion !== "server" && (
+                <Link
+                  to="/products/vwar-frontline/server"
+                  className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"
+                >
+                  Server version
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Right Section: Pricing and Features */}

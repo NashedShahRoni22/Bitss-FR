@@ -25,16 +25,26 @@ export default function Banner() {
           <p className="mb-6 text-lg font-light md:text-xl">
             BITSS.fr by BFIN SASU is a French IT research and software
             engineering company. We are a leading entity in cybersecurity,
-            anti-hacking, and intrusion research.
+            anti-hacking and intrusion research.
           </p>
           <ul className="mb-8 list-disc pl-6 font-light">
             <li>
               Safeguarding your digital infrastructure with cutting-edge
               technology.
             </li>
-            <li>Protection for networks, servers, websites, and devices.</li>
+            <li>
+              Protection for networks, servers, websites, laptops or any
+              devices.
+            </li>
             <li>
               Services catered to businesses, enterprises, and individuals.
+            </li>
+            <li>
+              Our ongoing research aims to stay ahead of evolving cyber threats.
+            </li>
+            <li>
+              Dedicated research engineers to combat online hacking, pirating
+              and virus warfare crimes.
             </li>
           </ul>
           <Link

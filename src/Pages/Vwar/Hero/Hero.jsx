@@ -7,14 +7,14 @@ export default function Hero({ currentVersion }) {
   const versionTitles = {
     js: "JavaScript",
     wp: "WordPress",
-    software: "Software",
+    software: "Windows Software",
     server: "Server",
   };
 
   const versionDescriptions = {
     js: "JavaScript Website",
     wp: "WordPress Website",
-    software: "Device",
+    software: "Windows Devices",
     server: "Server",
   };
 
@@ -30,7 +30,7 @@ export default function Hero({ currentVersion }) {
         <HeroTitle>Bitss VWAR Frontline Protection</HeroTitle>
         <HeroSubTitle>
           Protect Your {versionDescription} – Detect, Block and Eliminate
-          Viruses with Advanced Scanning and Real-Time Protection
+          Viruses <br /> with Advanced Scanning and Real-Time Protection
         </HeroSubTitle>
 
         <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
@@ -51,7 +51,7 @@ export default function Hero({ currentVersion }) {
               to="/products/anti-spam-contact-form"
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
-              Buy & Secure Website Now
+              Buy & Secure Now
             </Link>
           )}
         </div>

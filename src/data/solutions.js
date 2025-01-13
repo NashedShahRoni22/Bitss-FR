@@ -1,32 +1,32 @@
 export const solutionsData = [
   {
-    title: "Network Security",
-    description:
-      "Comprehensive protection for your network against threats and vulnerabilities.",
-    highlights: [
-      "Bitss N for Network Protection",
-      "Real-time monitoring",
-      "Firewall and DDoS Protection",
-    ],
-  },
-  {
-    title: "Server Protection",
-    description:
-      "Dedicated security solutions for servers to prevent data breaches and unauthorized access.",
-    highlights: [
-      "Bitss S for Server Protection",
-      "Advanced Encryption",
-      "Access Control",
-    ],
-  },
-  {
     title: "Website Protection",
     description:
-      "Enhanced security for WordPress, custom websites, and all other platforms.",
+      "Comprehensive protection for WordPress, JavaScript-based websites, and other web applications.",
     highlights: [
-      "WordPress / Joomla",
-      "React Custom Sites",
-      "All Other Websites",
+      "Bitss WAP",
+      "WordPress and JavaScript Protection",
+      "Real-time Threat Mitigation",
+    ],
+  },
+  {
+    title: "Contact Form Security",
+    description:
+      "Secure your website's contact forms against spam and unwanted submissions.",
+    highlights: [
+      "Bitss C Contact Form",
+      "Spam Prevention for WordPress and JavaScript",
+      "Easy Integration",
+    ],
+  },
+  {
+    title: "Security for Websites & Devices",
+    description:
+      "Protect your websites, devices and servers with advanced frontline protection.",
+    highlights: [
+      "Bitss VWAR",
+      "Frontline Protection for Websites, Windows Devices, and Servers",
+      "Versatile and Scalable Security",
     ],
   },
 ];

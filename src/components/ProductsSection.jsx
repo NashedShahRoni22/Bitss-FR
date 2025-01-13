@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import navLinks from "../../../data/navLinks";
+import navLinks from "../data/navLinks";
 
-export default function Hero() {
+export default function ProductsSection() {
   return (
     <section className="px-5 py-10 md:container md:mx-auto md:py-20">
       <h1 className="mb-6 text-center text-4xl font-bold md:text-5xl">

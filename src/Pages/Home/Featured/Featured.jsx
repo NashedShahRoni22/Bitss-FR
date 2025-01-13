@@ -40,10 +40,16 @@ export default function Featured() {
 
             <Link
               to={feat.url}
-              className="my-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-center text-lg font-medium text-white transition-all duration-200 ease-linear hover:scale-105 hover:bg-primary-hover hover:shadow-custom-red"
+              className={
+                "group my-8 inline-flex items-center justify-center rounded-full bg-primary px-3.5 py-2 text-lg font-medium text-custom-white transition-all duration-200 ease-linear"
+              }
             >
-              Get protected
-              <HiOutlineArrowLongRight className="min-w-fit scale-125 text-2xl" />
+              <span className="flex items-center px-3">
+                <span className="transition-transform duration-300 group-hover:-translate-x-2">
+                  Get Protected
+                </span>
+              </span>
+              <HiOutlineArrowLongRight className="-ml-3 min-w-fit scale-0 opacity-0 transition-opacity duration-300 group-hover:scale-150 group-hover:opacity-100" />
             </Link>
 
             {feat.features && (

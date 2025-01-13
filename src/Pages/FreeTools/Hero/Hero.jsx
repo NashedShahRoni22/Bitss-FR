@@ -46,7 +46,7 @@ export default function Hero() {
               Download Free Version
             </button>
             <Link
-              to="/products/anti-spam-contact-form"
+              to="/products/c-contact-form/wp"
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
               Buy Premium Version

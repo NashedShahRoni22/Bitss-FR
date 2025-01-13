@@ -38,7 +38,7 @@ export default function Features({ currentVersion }) {
   const versionDescriptions = {
     js: "JavaScript Website",
     wp: "WordPress Website",
-    software: "Device",
+    software: "Windows Devices",
     server: "Server",
   };
   const versionDescription = versionDescriptions[currentVersion] || "Website";
@@ -49,7 +49,7 @@ export default function Features({ currentVersion }) {
         Key Features of Bitss VWAR Frontline Protection
       </SectionTitle>
       <SectionSubTitle>
-        Advanced Tools for Real-Time Virus Detection and Protection for Your{" "}
+        Advanced Tools for Real-Time Virus Detection and Protection for your{" "}
         {versionDescription}
       </SectionSubTitle>
 

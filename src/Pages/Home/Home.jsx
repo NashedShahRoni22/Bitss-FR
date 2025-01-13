@@ -1,17 +1,18 @@
 import Hero from "./Hero/Hero";
-import Solutions from "./Solutions/Solutions";
 import Featured from "./Featured/Featured";
+import Solutions from "./Solutions/Solutions";
 import SolutionHighlights from "./SolutionHighlights/SolutionHighlights";
-import AudienceCards from "./AudienceCards/AudienceCards";
 import Contact from "./Contact/Contact";
 import Faq from "../../components/Faq";
 import { homeFaq } from "../../data/faq/homeFaq";
+import ProductsSection from "../../components/ProductsSection";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <AudienceCards />
+      <ProductsSection />
+      {/* <AudienceCards /> */}
       <Featured />
       <Solutions />
       <SolutionHighlights />

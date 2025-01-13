@@ -28,15 +28,15 @@ export default function Services() {
             <p className="mb-4">{card.description}</p>
             <ul className="mb-6 space-y-2 text-sm">
               {card.highlights.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-primary"></span>
+                <li key={idx} className="flex gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-primary"></span>
                   {item}
                 </li>
               ))}
             </ul>
             <Link
               to="/contact"
-              className={`text-custom-white group flex items-center justify-center rounded-full bg-primary px-4 py-2.5 font-medium transition-all duration-200 ease-in-out`}
+              className={`group flex items-center justify-center rounded-full bg-primary px-4 py-2.5 font-medium text-custom-white transition-all duration-200 ease-in-out`}
             >
               <span className="flex items-center px-3">
                 <span className="transition-transform duration-300 group-hover:-translate-x-2">
