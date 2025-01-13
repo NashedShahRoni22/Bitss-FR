@@ -8,7 +8,11 @@ export default function Hero() {
       <div className="flex w-full flex-col items-center justify-center gap-8 px-5 py-10 md:container md:mx-auto md:flex-row md:py-20">
         {/* Text Container */}
         <div className="w-full md:w-1/2">
-          <img src={bitssLogo} alt="bitss logo" className="size-16" />
+          <img
+            src={bitssLogo}
+            alt="bitss logo"
+            className="size-16 rounded-lg"
+          />
           <h1 className="my-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
             VWAR Advance Frontline database protection for Websites, Servers &
             Laptops
@@ -34,7 +38,7 @@ export default function Hero() {
           <img
             src={heroImg}
             alt="bitss world wide connection"
-            className="mx-auto h-fit w-full max-w-md md:ml-auto"
+            className="mx-auto h-fit w-full max-w-md rounded-xl md:ml-auto"
           />
         </div>
       </div>
