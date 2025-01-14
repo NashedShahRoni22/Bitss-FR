@@ -36,7 +36,8 @@ export default function Hero({ isWpVersion }) {
                 Download User Manual
               </a>
               <Link
-                to="/products/anti-spam-contact-form"
+                to="https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=19.50"
+                target="_blanck"
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
                 Buy & Secure Website
@@ -44,7 +45,8 @@ export default function Hero({ isWpVersion }) {
             </>
           ) : (
             <Link
-              to="/products/anti-spam-contact-form"
+              to="https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=19.50"
+              target="_blanck"
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
               Buy & Secure Website Now

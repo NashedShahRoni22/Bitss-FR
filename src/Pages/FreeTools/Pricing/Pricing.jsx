@@ -93,7 +93,7 @@ export default function Pricing() {
               </a>
             ) : (
               <Link
-                to="/products/anti-spam-contact-form"
+                to="/products/c-contact-form/wp"
                 className="mt-6 block w-full rounded border border-[#0073e6] bg-[#0073e6] px-3.5 py-1.5 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-[#1461ad] hover:bg-[#1461ad] hover:shadow-custom-2 md:w-fit"
               >
                 Buy Now

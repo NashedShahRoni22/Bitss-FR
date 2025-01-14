@@ -14,16 +14,7 @@ const features = [
   "Real-Time Email Notifications",
 ];
 
-export default function Pricing({ currentVersion }) {
-  const pricingData = {
-    js: "29.50",
-    wp: "29.50",
-    software: "49.50",
-    server: "69.50",
-  };
-
-  const pricing = pricingData[currentVersion] || "29.50";
-
+export default function Pricing({ currentVersion, pricing }) {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8 md:flex-row md:gap-16">
@@ -95,7 +86,8 @@ export default function Pricing({ currentVersion }) {
 
           {/* Call-to-Action Button */}
           <Link
-            to="/"
+            to={`https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=${pricing}`}
+            target="_blanck"
             className="mt-8 block w-full rounded-md bg-accent py-3.5 text-center text-custom-white transition-all duration-200 ease-linear hover:bg-[#0d2535] hover:shadow-custom-2"
           >
             Buy & Activate Protection

@@ -3,7 +3,7 @@ import HeroSubTitle from "../../../components/HeroSubTitle";
 import HeroTitle from "../../../components/HeroTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 
-export default function Hero({ currentVersion }) {
+export default function Hero({ currentVersion, pricing }) {
   const versionTitles = {
     js: "JavaScript",
     wp: "WordPress",
@@ -44,7 +44,8 @@ export default function Hero({ currentVersion }) {
                 Download User Manual
               </a>
               <Link
-                to="/products/anti-spam-contact-form"
+                to={`https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=${pricing}`}
+                target="_blanck"
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
                 Buy & Secure Website
@@ -52,7 +53,8 @@ export default function Hero({ currentVersion }) {
             </>
           ) : (
             <Link
-              to="/products/anti-spam-contact-form"
+              to={`https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=${pricing}`}
+              target="_blanck"
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
               Buy & Secure Now
