@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 gap-8 border-b border-[#C5D6E0] px-5 pb-12 md:container md:mx-auto md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Link to={"/"}>
-            <img className="w-32" src={logo} alt="bitss logo" />
+            <img className="w-32" src={logo} alt="bitss logo" loading="lazy" />
           </Link>
           <p className="mt-3 text-2xl">By BFINIT Cosmopolitan</p>
           <p className="mt-3">

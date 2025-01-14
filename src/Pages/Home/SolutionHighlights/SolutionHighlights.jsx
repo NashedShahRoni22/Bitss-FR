@@ -34,6 +34,7 @@ export default function SolutionHighlights() {
         <img
           src={dotShapes}
           alt="dot grid shapes"
+          loading="lazy"
           className="absolute -right-6 -top-11 size-28 opacity-0 md:opacity-50"
         />
         <div className="relative grid grid-cols-1 gap-4 py-6 md:grid-cols-3">
@@ -45,6 +46,7 @@ export default function SolutionHighlights() {
               <img
                 src={solution.icon}
                 alt={solution.title}
+                loading="lazy"
                 className="mb-3 size-8 md:size-10"
               />
               <h4 className="text-[1.375rem] font-medium">{solution.title}</h4>

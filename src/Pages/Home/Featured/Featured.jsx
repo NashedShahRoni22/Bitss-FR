@@ -13,7 +13,12 @@ export default function Featured() {
         >
           <div className="w-full md:w-1/2 md:text-left">
             <div className="mb-3 flex items-center gap-2.5 md:hidden md:justify-center">
-              <img src={feat.icon} alt={feat.name} className="size-6" />
+              <img
+                src={feat.icon}
+                alt={feat.name}
+                loading="lazy"
+                className="size-6"
+              />
               <p className="font-medium">{feat.name}</p>
             </div>
             <h2 className="mb-6 text-3xl font-bold md:hidden md:text-[2.5rem]">
@@ -22,13 +27,19 @@ export default function Featured() {
             <img
               src={feat.image}
               alt={feat.name}
+              loading="lazy"
               className="h-fit w-full max-w-lg"
             />
           </div>
 
           <div className="w-full md:w-1/2 md:text-left">
             <div className="mb-4 hidden items-center gap-2.5 md:flex">
-              <img src={feat.icon} alt={feat.name} className="size-8" />
+              <img
+                src={feat.icon}
+                alt={feat.name}
+                loading="lazy"
+                className="size-8"
+              />
               <p className="text-lg font-bold">{feat.name}</p>
             </div>
             <h2 className="hidden text-balance text-3xl font-bold leading-[3.15rem] md:block md:text-[2.5rem]">

@@ -11,6 +11,7 @@ export default function Hero() {
           <img
             src={bitssLogo}
             alt="bitss logo"
+            loading="lazy"
             className="size-16 rounded-lg"
           />
           <h1 className="my-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
@@ -38,6 +39,7 @@ export default function Hero() {
           <img
             src={heroImg}
             alt="bitss world wide connection"
+            loading="lazy"
             className="mx-auto h-fit w-full max-w-md rounded-xl md:ml-auto"
           />
         </div>

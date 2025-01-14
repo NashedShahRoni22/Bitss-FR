@@ -20,7 +20,7 @@ export default function Navbar() {
         {/* Logo */}
         <div>
           <Link to="/">
-            <img src={logo} alt="bitss logo" className="w-20" />
+            <img src={logo} alt="bitss logo" loading="lazy" className="w-20" />
           </Link>
         </div>
 
@@ -53,7 +53,8 @@ export default function Navbar() {
                       <div className="mb-3 flex gap-1.5">
                         <img
                           src={category.icon}
-                          alt=""
+                          alt={category.title}
+                          loading="lazy"
                           className="size-7 object-cover"
                         />
                         <div>

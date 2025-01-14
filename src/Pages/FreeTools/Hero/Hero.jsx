@@ -42,9 +42,12 @@ export default function Hero() {
           </ul>
 
           <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            <button className="w-full rounded-md border border-accent px-6 py-3 text-center shadow transition-all duration-200 ease-in-out hover:bg-accent hover:text-custom-white hover:shadow-custom-2 md:w-fit">
+            <a
+              href="/bitss-contact-form.zip"
+              className="w-full rounded-md border border-accent px-6 py-3 text-center shadow transition-all duration-200 ease-in-out hover:bg-accent hover:text-custom-white hover:shadow-custom-2 md:w-fit"
+            >
               Download Free Version
-            </button>
+            </a>
             <Link
               to="/products/c-contact-form/wp"
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"

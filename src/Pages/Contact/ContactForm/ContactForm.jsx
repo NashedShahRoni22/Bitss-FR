@@ -326,6 +326,7 @@ const ContactForm = () => {
               <img
                 src={bittsLogo}
                 alt="bitss logo"
+                loading="lazy"
                 className="size-[100px] object-cover"
               />
               <p className="text-xs">

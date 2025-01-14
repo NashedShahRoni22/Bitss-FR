@@ -50,6 +50,7 @@ export default function Solutions() {
             <img
               src={tabsData[activeTab].image}
               alt={tabsData[activeTab].subTitle}
+              loading="lazy"
               className="mx-auto h-fit w-64 md:hidden"
             />
             <p className="my-6 text-lg font-light">
@@ -68,6 +69,7 @@ export default function Solutions() {
             <img
               src={tabsData[activeTab].image}
               alt={tabsData[activeTab].subTitle}
+              loading="lazy"
               className="ml-auto h-fit w-full max-w-md"
             />
           </div>

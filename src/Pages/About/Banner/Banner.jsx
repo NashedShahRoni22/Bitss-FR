@@ -14,6 +14,7 @@ export default function Banner() {
           <img
             src={bitssGif}
             alt="bitss cybersecurity"
+            loading="lazy"
             className="h-auto w-full rounded-lg object-cover"
           />
         </div>

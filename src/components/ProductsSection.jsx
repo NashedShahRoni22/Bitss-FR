@@ -24,7 +24,8 @@ export default function ProductsSection() {
                   <h3 className="mb-4 flex flex-col gap-4 text-xl font-bold">
                     <img
                       src={category.icon}
-                      alt=""
+                      alt={category.title}
+                      loading="lazy"
                       className="size-8 object-cover"
                     />
                     {category.title}

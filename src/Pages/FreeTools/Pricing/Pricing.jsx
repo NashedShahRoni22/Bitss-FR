@@ -85,9 +85,12 @@ export default function Pricing() {
             </ul>
 
             {price.title === "Free" ? (
-              <button className="mt-6 block w-full rounded border border-accent px-3.5 py-1.5 text-center shadow transition-all duration-200 ease-in-out hover:bg-accent hover:text-custom-white hover:shadow-custom-2 md:w-fit">
+              <a
+                href="/bitss-contact-form.zip"
+                className="mt-6 block w-full rounded border border-accent px-3.5 py-1.5 text-center shadow transition-all duration-200 ease-in-out hover:bg-accent hover:text-custom-white hover:shadow-custom-2 md:w-fit"
+              >
                 Download Free
-              </button>
+              </a>
             ) : (
               <Link
                 to="/products/anti-spam-contact-form"

@@ -19,7 +19,12 @@ export default function Vision() {
           {/* Mission */}
           <div className="rounded-lg px-6 py-8 shadow">
             <div className="mb-6 flex items-center gap-3">
-              <img src={missionIcon} alt="bitss mission" className="size-8" />
+              <img
+                src={missionIcon}
+                alt="bitss mission"
+                loading="lazy"
+                className="size-8"
+              />
               <h3 className="text-2xl font-bold md:text-3xl">Our Mission</h3>
             </div>
             <p className="mb-4">
@@ -36,7 +41,12 @@ export default function Vision() {
           {/* Vision */}
           <div className="rounded-lg px-6 py-8 shadow">
             <div className="mb-6 flex items-center gap-3">
-              <img src={visionIcon} alt="bitss vision" className="size-8" />
+              <img
+                src={visionIcon}
+                alt="bitss vision"
+                loading="lazy"
+                className="size-8"
+              />
               <h3 className="text-2xl font-bold md:text-3xl">Our Vision</h3>
             </div>
             <p className="mb-4">
