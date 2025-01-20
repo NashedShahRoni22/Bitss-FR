@@ -7,32 +7,32 @@ export default function Features({ isWpVersion }) {
     {
       title: "Blacklist IP Management",
       description:
-        "Bitss WAP & Bitss C provide robust protection for websites in the cloud.",
+        "Efficiently block IPs flagged for spam or failed logins and customize restriction levels for enhanced security.",
     },
     {
-      title: "Secure Entry and FTP",
+      title: "IP Blocking Levels",
       description:
-        "Ensures secure routine access and FTP entry, safeguarding sensitive data.",
+        "Set thresholds to deny access automatically to malicious users, ensuring secure and seamless user experiences.",
     },
     {
-      title: "Virus and Intrusion Defense",
+      title: "Effortless IP Unblocking",
       description:
-        "Effectively blocks virus attacks and prevents hacking, intrusion, and database piracy.",
+        "Quickly restore access by removing IPs from the blacklist with a simple, user-friendly process.",
     },
     {
-      title: "Comprehensive Threat Protection",
+      title: "Whitelist IP Management",
       description:
-        "Protects against threats via all entry ports, securing multiple access points.",
+        "Easily manage trusted IPs to ensure uninterrupted admin access while maintaining top-level security.",
     },
     {
-      title: "Enhanced Website Security",
+      title: "Admin IP Control",
       description:
-        "Installing Bitss software enhances overall website security and strengthens procedures.",
+        "Register admin IPs with custom validation periods for smooth, secure access to administrative functions.",
     },
     {
-      title: "Safeguard Online Assets",
+      title: "Real-Time User Monitoring",
       description:
-        "Protects your online assets and ensures the integrity of your digital property.",
+        "Track logged-in users and remotely log out suspicious sessions directly from the admin panel.",
     },
   ];
 

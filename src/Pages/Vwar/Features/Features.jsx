@@ -10,12 +10,12 @@ const features = [
   {
     title: "Realtime Malware Neutralization",
     description:
-      "Automatically neutralizes malware in real-time, with a simple 'Yes' or 'No' interaction.",
+      "Detect and neutralize malware instantly with user control options to automate or manually approve actions.",
   },
   {
     title: "Manual Malware Scanning",
     description:
-      "Manually scan for malware with detailed reports, including threat levels and scan duration.",
+      "Initiate manual scans, view detailed reports of detected malware, and neutralize threats with a single click.",
   },
   {
     title: "Neutralized Files Management",
@@ -25,12 +25,12 @@ const features = [
   {
     title: "Malware-to-JPEG Conversion",
     description:
-      "Converts neutralized malware into a JPEG image for better tracking and analysis.",
+      "Convert neutralized malware into a JPEG for visual documentation, automatically sent to the admin’s email.",
   },
   {
     title: "Modified Files Tracker",
     description:
-      "Track and review file modifications in the last 24 hours, 7 days, or 15 days.",
+      "Continuously monitor directory changes, categorize modifications by time frames, and analyze changes to identify potential threats.",
   },
 ];
 

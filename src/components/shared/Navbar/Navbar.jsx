@@ -100,7 +100,7 @@ export default function Navbar() {
 
         {/* Desktop Login Button */}
         <Link
-          to="/login"
+          to="https://bitss.fr/my-account"
           className="hidden items-center gap-1.5 text-sm hover:text-primary md:flex"
         >
           <HiOutlineUserCircle className="text-xl" /> My Account
