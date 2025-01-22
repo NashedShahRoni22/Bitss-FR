@@ -5,6 +5,7 @@ import Faq from "../../components/Faq";
 import { useParams } from "react-router";
 import VideoSection from "../../components/VideoSection";
 import { vwarFaq } from "../../data/faq/vwarFaq";
+import MalwareTable from "./MalwareTable/MalwareTable";
 
 const Vwar = () => {
   const { version } = useParams();
@@ -25,6 +26,7 @@ const Vwar = () => {
       <Hero currentVersion={currentVersion} pricing={pricing} />
       <Features currentVersion={currentVersion} />
       <Pricing currentVersion={currentVersion} pricing={pricing} />
+      <MalwareTable />
       <VideoSection
         productName="Bitss VWAR Frontline Protection"
         videoUrl="https://bitss.fr/wp-content/uploads/2024/08/Copy-of-WordPress-sites-are-facing-more-cyber-attacks-these-days.mp4"
