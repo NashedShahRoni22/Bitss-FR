@@ -26,7 +26,7 @@ export default function ProductsSection() {
                       src={category.icon}
                       alt={category.title}
                       loading="lazy"
-                      className="size-8 object-cover"
+                      className="size-16 object-cover"
                     />
                     {category.title}
                   </h3>

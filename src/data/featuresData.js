@@ -1,4 +1,5 @@
 import bitssIcon from "../assets/icons/bitss.png";
+import wapIcon from "../assets/icons/bitss-wap.png";
 import webProtect from "../assets/home/website-protection.png";
 import antispamContact from "../assets/home/antispam-cotanct.png";
 import preselectForm from "../assets/home/pre-select-form.png";
@@ -6,7 +7,7 @@ import preselectForm from "../assets/home/pre-select-form.png";
 export const featuresData = [
   {
     image: webProtect,
-    icon: bitssIcon,
+    icon: wapIcon,
     name: "Bitss WAP Website Protection",
     title: "Comprehensive Login Protection for your Website",
     overview:

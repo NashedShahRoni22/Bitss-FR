@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { BsDot } from "react-icons/bs";
 import {
@@ -13,6 +13,17 @@ import logo from "../../../assets/logo/logo.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleScroll = () => {
+    setMenuOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <nav className="border-b border-[#C5D6E0]">
@@ -55,7 +66,7 @@ export default function Navbar() {
                           src={category.icon}
                           alt={category.title}
                           loading="lazy"
-                          className="size-7 object-cover"
+                          className="size-10 object-cover"
                         />
                         <div>
                           <h3 className="font-bold">{category.title}</h3>

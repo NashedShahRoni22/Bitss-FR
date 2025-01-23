@@ -12,7 +12,7 @@ export default function Hero() {
             src={bitssLogo}
             alt="bitss logo"
             loading="lazy"
-            className="size-16 rounded-lg"
+            className="mx-auto size-16 rounded-lg md:mx-0"
           />
           <h1 className="my-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
             VWAR Advance Frontline database protection for Websites, Servers &

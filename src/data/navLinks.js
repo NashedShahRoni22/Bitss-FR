@@ -1,4 +1,5 @@
 import bitssIcon from "../assets/icons/bitss.png";
+import wapIcon from "../assets/icons/bitss-wap.png";
 
 const navLinks = [
   {
@@ -11,7 +12,7 @@ const navLinks = [
       {
         title: "Bitss WAP",
         subTitle: "Website Login Protection",
-        icon: bitssIcon,
+        icon: wapIcon,
         items: [
           {
             name: "Bitss WAP Protection (WordPress)",
