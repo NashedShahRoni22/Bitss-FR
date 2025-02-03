@@ -1,13 +1,27 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { hostingProducts } from "../../../data/hostingProducts";
-import { products } from "../../../data/products";
-import { pages } from "../../../data/pages";
-import logo from "../../../assets/logo/logo.png";
-import { bitssProducts } from "../../../data/bitssProducts";
 import { AiOutlineCopyright } from "react-icons/ai";
 import { BsFacebook, BsInstagram, BsTwitterX, BsYoutube } from "react-icons/bs";
+import { products } from "../../../data/products";
+import { pages } from "../../../data/pages";
+import { bitssProducts } from "../../../data/bitssProducts";
+import logo from "../../../assets/logo/logo.png";
 
 export default function Footer() {
+  const [hostingProducts, setHostingProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchHostingProducts = async () => {
+      const res = await fetch(
+        "https://hpanel.bfinit.com/api/product/categories",
+      );
+      const data = await res.json();
+      setHostingProducts(data.data);
+    };
+
+    fetchHostingProducts();
+  }, []);
+
   return (
     <footer className="border-t border-[#C5D6E0] py-10 md:mt-20">
       <div className="grid grid-cols-1 gap-8 border-b border-[#C5D6E0] px-5 pb-12 md:container md:mx-auto md:grid-cols-2 lg:grid-cols-12">
@@ -61,8 +75,9 @@ export default function Footer() {
           <div className="flex flex-col gap-2 space-y-2.5 text-sm">
             {hostingProducts.map((product, i) => (
               <Link
-                to={product.link}
                 key={i}
+                to={`https://bfinit.com/hosting-products/${product.id}`}
+                target="_blanck"
                 className="flex gap-2.5 transition-all duration-200 ease-in-out hover:underline"
               >
                 {product.name}

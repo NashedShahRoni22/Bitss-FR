@@ -13,6 +13,41 @@ import logo from "../../../assets/logo/logo.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hostingProducts, setHostingProducts] = useState([]);
+  const [updatedMenuItems, setUpdatedMenuItems] = useState(navLinks);
+
+  // fetching hosting products
+  useEffect(() => {
+    const fetchHostingProducts = async () => {
+      const response = await fetch(
+        "https://hpanel.bfinit.com/api/product/categories",
+      );
+      const data = await response.json();
+      setHostingProducts(data.data);
+    };
+
+    fetchHostingProducts();
+  }, []);
+
+  // Update the MenuItems when hostingProducts changes
+  useEffect(() => {
+    if (hostingProducts.length > 0) {
+      const updatedChild = hostingProducts.map((product) => ({
+        name: product.name,
+        link: `https://bfinit.com/hosting-products/${product.id}`,
+      }));
+      const updatedMenu = updatedMenuItems.map((item) => {
+        if (item.name === "Hosting") {
+          return {
+            ...item,
+            children: updatedChild,
+          };
+        }
+        return item;
+      });
+      setUpdatedMenuItems(updatedMenu);
+    }
+  }, [hostingProducts]);
 
   const handleScroll = () => {
     setMenuOpen(false);
@@ -37,7 +72,7 @@ export default function Navbar() {
 
         {/* Desktop Nav Links */}
         <div className="hidden items-center md:flex">
-          {navLinks.map((link, i) => (
+          {updatedMenuItems.map((link, i) => (
             <div key={i} className="group relative p-3">
               {/* Main Nav Link */}
               <Link
@@ -98,6 +133,7 @@ export default function Navbar() {
                     <Link
                       key={j}
                       to={subLink.path || subLink.link}
+                      target="_blank"
                       className="block text-sm capitalize transition-all duration-200 ease-in-out hover:text-primary"
                     >
                       {subLink.name}
@@ -133,7 +169,12 @@ export default function Navbar() {
         </button>
 
         {/* Mobile Dropdown Menu */}
-        {menuOpen && <MobileNav setMenuOpen={setMenuOpen} />}
+        {menuOpen && (
+          <MobileNav
+            setMenuOpen={setMenuOpen}
+            updatedMenuItems={updatedMenuItems}
+          />
+        )}
       </div>
     </nav>
   );

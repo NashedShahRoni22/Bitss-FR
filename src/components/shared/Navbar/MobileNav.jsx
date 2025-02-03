@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { HiOutlineChevronDown } from "react-icons/hi2";
-import navLinks from "../../../data/navLinks";
 import { LuDot } from "react-icons/lu";
 
-export default function MobileNav({ setMenuOpen }) {
+export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
   const [showSubLinks, setShowSubLinks] = useState("");
 
   const toggleSubLinks = (i) => {
@@ -13,7 +12,7 @@ export default function MobileNav({ setMenuOpen }) {
 
   return (
     <div className="absolute left-0 top-20 min-h-[calc(100dvh-80px)] w-full space-y-4 border bg-white p-5 md:hidden">
-      {navLinks.map((link, index) => (
+      {updatedMenuItems.map((link, index) => (
         <div key={index}>
           {!link.children && !link.categories && (
             <NavLink to={link.path} onClick={() => setMenuOpen(false)}>

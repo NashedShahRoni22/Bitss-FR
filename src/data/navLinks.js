@@ -1,4 +1,5 @@
-import bitssIcon from "../assets/icons/bitss.png";
+import bitssVwar from "../assets/logo/bitss-vwar.png";
+import bitssC from "../assets/logo/bitss-c.png";
 import wapIcon from "../assets/icons/bitss-wap.png";
 
 const navLinks = [
@@ -9,6 +10,21 @@ const navLinks = [
   {
     name: "Products",
     categories: [
+      {
+        title: "Bitss C Contact Form",
+        subTitle: "Anti spam & Virus Protection",
+        icon: bitssC,
+        items: [
+          {
+            name: "Bitss C Contact Form (WordPress)",
+            path: "/products/c-contact-form/wp",
+          },
+          {
+            name: "Bitss C Contact Form (JavaScript)",
+            path: "/products/c-contact-form/js",
+          },
+        ],
+      },
       {
         title: "Bitss WAP",
         subTitle: "Website Login Protection",
@@ -25,25 +41,10 @@ const navLinks = [
         ],
       },
       {
-        title: "Bitss C Contact Form",
-        subTitle: "Anti spam & Virus Protection",
-        icon: bitssIcon,
-        items: [
-          {
-            name: "Bitss C Contact Form (WordPress)",
-            path: "/products/c-contact-form/wp",
-          },
-          {
-            name: "Bitss C Contact Form (JavaScript)",
-            path: "/products/c-contact-form/js",
-          },
-        ],
-      },
-      {
         title: "Bitss VWAR",
         subTitle:
           "Provides Database Security, Filtering to Clean & Block Device Codes that are implemented in your database to destroy you business",
-        icon: bitssIcon,
+        icon: bitssVwar,
         items: [
           {
             name: "Bitss VWAR frontline protection (WordPress)",
@@ -67,28 +68,7 @@ const navLinks = [
   },
   {
     name: "Hosting",
-    children: [
-      {
-        name: "Fully Managed Dedicated Server",
-        link: "https://bfinit.com/fully-managed-dedicated-server",
-      },
-      {
-        name: "Fully Managed Virtual Dedicated Server",
-        link: "https://bfinit.com/fully-managed-virtual-dedicated-server",
-      },
-      {
-        name: "Self Managed Dedicated Server",
-        link: "https://bfinit.com/self-managed-dedicated-server",
-      },
-      {
-        name: "Fully Managed Pure Website Hosting",
-        link: "https://bfinit.com/fully-managed-pure-web-hosting",
-      },
-      {
-        name: "Self Managed Pure Website Hosting",
-        link: "https://bfinit.com/self-managed-pure-web-hosting",
-      },
-    ],
+    children: [],
   },
   {
     name: "About us",

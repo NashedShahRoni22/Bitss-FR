@@ -15,32 +15,33 @@ export default function ProductsSection() {
       {navLinks.map(
         (link, i) =>
           link.name === "Products" && (
-            <div key={i} className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div key={i} className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {link.categories.map((category, i) => (
                 <div
                   key={i}
                   className="min-h-[250px] rounded-lg p-4 shadow transition-shadow duration-200 ease-linear hover:shadow-custom-2"
                 >
-                  <h3 className="mb-4 flex flex-col gap-4 text-xl font-bold">
+                  <div className="mb-4 flex h-full items-center gap-8">
                     <img
                       src={category.icon}
                       alt={category.title}
                       loading="lazy"
-                      className="size-16 object-cover"
+                      className="size-40 object-cover"
                     />
-                    {category.title}
-                  </h3>
-                  <div className="space-y-2">
-                    {category.items.map((product, i) => (
-                      <div key={i}>
-                        <Link
-                          to={product.path}
-                          className="max-w-fit capitalize transition-all duration-200 ease-in-out hover:text-primary"
-                        >
-                          {product.name}
-                        </Link>
-                      </div>
-                    ))}
+
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-bold">{category.title}</h3>
+                      {category.items.map((product, i) => (
+                        <div key={i}>
+                          <Link
+                            to={product.path}
+                            className="max-w-fit capitalize transition-all duration-200 ease-in-out hover:text-primary"
+                          >
+                            {product.name}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
