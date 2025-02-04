@@ -1,5 +1,6 @@
-import bitssIcon from "../assets/icons/bitss.png";
+import bitssC from "../assets/logo/bitss-c.png";
 import wapIcon from "../assets/icons/bitss-wap.png";
+import vwarIcon from "../assets/logo/bitss-vwar.png";
 import webProtect from "../assets/home/website-protection.png";
 import antispamContact from "../assets/home/antispam-cotanct.png";
 import preselectForm from "../assets/home/pre-select-form.png";
@@ -23,7 +24,7 @@ export const featuresData = [
   },
   {
     image: antispamContact,
-    icon: bitssIcon,
+    icon: bitssC,
     name: "Bitss C Contact Form",
     title: "Stop Spam & Manage your Contacts",
     overview:
@@ -40,7 +41,7 @@ export const featuresData = [
   },
   {
     image: preselectForm,
-    icon: bitssIcon,
+    icon: vwarIcon,
     name: "Bitss VWAR Frontline Protection",
     title: "Complete Security Across Platforms",
     overview:

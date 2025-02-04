@@ -1,7 +1,8 @@
+import { Link } from "react-router";
 import { MdCheck } from "react-icons/md";
 import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
-import { Link } from "react-router";
+import { saveProductInfo } from "../../../utils/saveProductInfo";
 const features = [
   "Automatic Directory Scanner",
   "Manual Directory Scanner",
@@ -14,7 +15,7 @@ const features = [
   "Real-Time Email Notifications",
 ];
 
-export default function Pricing({ currentVersion, pricing }) {
+export default function Pricing({ currentVersion, productInfo }) {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8 md:flex-row md:gap-16">
@@ -70,7 +71,9 @@ export default function Pricing({ currentVersion, pricing }) {
         {/* Right Section: Pricing and Features */}
         <div className="w-full md:w-1/2">
           {/* Pricing */}
-          <p className="mb-2.5 text-3xl font-semibold">Yearly: €{pricing}</p>
+          <p className="mb-2.5 text-3xl font-semibold">
+            Yearly: €{productInfo.price.toFixed(2)}
+          </p>
           <p className="mt-4">One-time installation by Bitss team: €25</p>
 
           {/* Features List */}
@@ -86,8 +89,8 @@ export default function Pricing({ currentVersion, pricing }) {
 
           {/* Call-to-Action Button */}
           <Link
-            to={`https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=${pricing}`}
-            target="_blanck"
+            onClick={() => saveProductInfo(productInfo)}
+            to="/payment"
             className="mt-8 block w-full rounded-md bg-accent py-3.5 text-center text-custom-white transition-all duration-200 ease-linear hover:bg-[#0d2535] hover:shadow-custom-2"
           >
             Buy & Activate Protection

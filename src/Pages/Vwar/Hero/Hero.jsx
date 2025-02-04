@@ -2,15 +2,9 @@ import { Link } from "react-router";
 import HeroSubTitle from "../../../components/HeroSubTitle";
 import HeroTitle from "../../../components/HeroTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
+import { saveProductInfo } from "../../../utils/saveProductInfo";
 
-export default function Hero({ currentVersion, pricing }) {
-  const versionTitles = {
-    js: "JavaScript",
-    wp: "WordPress",
-    software: "Windows Software",
-    server: "Server",
-  };
-
+export default function Hero({ currentVersion, productInfo }) {
   const versionDescriptions = {
     js: "JavaScript Website",
     wp: "WordPress Website",
@@ -18,14 +12,13 @@ export default function Hero({ currentVersion, pricing }) {
     server: "Server",
   };
 
-  const versionTitle = versionTitles[currentVersion] || "WordPress";
   const versionDescription = versionDescriptions[currentVersion] || "Website";
 
   return (
     <SectionContainer>
       <div className="w-full">
         <h3 className="mb-2.5 text-center text-xl font-medium text-primary">
-          {versionTitle} Version
+          {productInfo.version} Version
         </h3>
         <HeroTitle>Bitss VWAR Frontline Protection</HeroTitle>
         <HeroSubTitle>
@@ -44,8 +37,8 @@ export default function Hero({ currentVersion, pricing }) {
                 Download User Manual
               </a>
               <Link
-                to={`https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=${pricing}`}
-                target="_blanck"
+                onClick={() => saveProductInfo(productInfo)}
+                to="/payment"
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
                 Buy & Secure Website
@@ -53,8 +46,8 @@ export default function Hero({ currentVersion, pricing }) {
             </>
           ) : (
             <Link
-              to={`https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=${pricing}`}
-              target="_blanck"
+              onClick={() => saveProductInfo(productInfo)}
+              to="/payment"
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
               Buy & Secure Now

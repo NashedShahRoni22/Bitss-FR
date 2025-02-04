@@ -2,7 +2,7 @@ import SectionSubTitle from "../../../components/SectionSubTitle";
 import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 
-export default function Features({ isWpVersion }) {
+export default function Features({ productInfo }) {
   const features = [
     {
       title: "Blacklist IP Management",
@@ -40,7 +40,7 @@ export default function Features({ isWpVersion }) {
     <SectionContainer>
       <SectionTitle>Key Features of Bitss WAP Cyber Security</SectionTitle>
       <SectionSubTitle>
-        {isWpVersion
+        {productInfo.version === "Wordpress"
           ? " Discover how Bitss WAP enhances your WordPress site with cutting-edge protection against data theft, hacking & online threats."
           : "Protect your JavaScript websites and custom projects from hacking, intrusion and data theft with Bitss WAP."}
       </SectionSubTitle>

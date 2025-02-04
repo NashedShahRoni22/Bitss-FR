@@ -8,6 +8,7 @@ import Contact from "../Pages/Contact/Contact";
 import WapProtection from "../Pages/WapProtection/WapProtection";
 import CContactFormWp from "../Pages/CContactForm/CContactForm";
 import Vwar from "../Pages/Vwar/Vwar";
+import Payment from "../Pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/products/vwar-frontline/:version",
         element: <Vwar />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
       },
     ],
   },

@@ -4,8 +4,9 @@ import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import contactFormImg from "../../../assets/bitss-c-contact-form/hero.webp";
 import ProductVersion from "../../../components/ProductVersion";
+import { saveProductInfo } from "../../../utils/saveProductInfo";
 
-export default function Hero({ isWpVersion }) {
+export default function Hero({ productInfo }) {
   return (
     <SectionContainer>
       <div className="flex flex-col items-center gap-8 md:flex-row md:gap-16">
@@ -15,13 +16,14 @@ export default function Hero({ isWpVersion }) {
             Bitss C Anti-spam for <br /> Contact Forms
           </SectionTitle>
           <SectionSubTitle customStyle={true}>
-            Eliminate Spam on Your {isWpVersion ? "WordPress" : "JavaScript"}{" "}
+            Eliminate Spam on Your{" "}
+            {productInfo.version === "Wordpress" ? "WordPress" : "JavaScript"}{" "}
             Website – Secure Your Contact Page, Enhance Communication, and
             Protect Your Online Presence.
           </SectionSubTitle>
 
           <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            {isWpVersion ? (
+            {productInfo.version === "Wordpress" ? (
               <>
                 <a
                   href="/bitss-c-user-manual.pdf"
@@ -31,8 +33,8 @@ export default function Hero({ isWpVersion }) {
                   Download User Manual
                 </a>
                 <Link
-                  to="https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=7.50"
-                  target="_blanck"
+                  onClick={() => saveProductInfo(productInfo)}
+                  to="/payment"
                   className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
                 >
                   Buy & Secure Website
@@ -40,8 +42,8 @@ export default function Hero({ isWpVersion }) {
               </>
             ) : (
               <Link
-                to="https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=7.50"
-                target="_blanck"
+                onClick={() => saveProductInfo(productInfo)}
+                to="/payment"
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
                 Buy & Secure Website Now

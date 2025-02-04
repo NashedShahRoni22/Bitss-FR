@@ -3,20 +3,21 @@ import HeroSubTitle from "../../../components/HeroSubTitle";
 import HeroTitle from "../../../components/HeroTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import ProductVersion from "../../../components/ProductVersion";
+import { saveProductInfo } from "../../../utils/saveProductInfo";
 
-export default function Hero({ isWpVersion }) {
+export default function Hero({ productInfo }) {
   return (
     <SectionContainer>
       <div className="w-full">
         <ProductVersion />
         <HeroTitle>
           Bitss WAP Database & <br />
-          {isWpVersion
+          {productInfo.version === "Wordpress"
             ? "Website Cyber Security Plugin"
             : "Website Cyber Security Solution"}
         </HeroTitle>
         <HeroSubTitle>
-          {isWpVersion
+          {productInfo.version === "Wordpress"
             ? "An Enforced Protection to Login access to Lock out Hackers, Pirates, Intrusion & Prevention Database Theft"
             : [
                 "Comprehensive Security for JavaScript Websites: Seamless Integration with Frameworks, Static Sites,",
@@ -26,7 +27,7 @@ export default function Hero({ isWpVersion }) {
         </HeroSubTitle>
 
         <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
-          {isWpVersion ? (
+          {productInfo.version === "Wordpress" ? (
             <>
               <a
                 href="/bitss-wap-user-manual.pdf"
@@ -36,8 +37,8 @@ export default function Hero({ isWpVersion }) {
                 Download User Manual
               </a>
               <Link
-                to="https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=19.50"
-                target="_blanck"
+                onClick={() => saveProductInfo(productInfo)}
+                to="/payment"
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
                 Buy & Secure Website
@@ -45,8 +46,8 @@ export default function Hero({ isWpVersion }) {
             </>
           ) : (
             <Link
-              to="https://www.bobosohomail.com/email_ins/signUp_email.php?registration_from=1&user=1&package=business&price=19.50"
-              target="_blanck"
+              onClick={() => saveProductInfo(productInfo)}
+              to="/payment"
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
               Buy & Secure Website Now

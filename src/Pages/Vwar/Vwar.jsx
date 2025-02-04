@@ -10,22 +10,28 @@ import MalwareTable from "./MalwareTable/MalwareTable";
 const Vwar = () => {
   const { version } = useParams();
 
-  const pricingData = {
-    js: "29.50",
-    wp: "29.50",
-    software: "49.50",
-    server: "69.50",
-  };
-
   const validVersions = ["js", "wp", "software", "server"];
   const currentVersion = validVersions.includes(version) ? version : "wp";
-  const pricing = pricingData[currentVersion] || "29.50";
+
+  const versionPriceInfo = {
+    wp: { name: "WordPress", price: 29.5 },
+    js: { name: "JavaScript", price: 29.5 },
+    software: { name: "Windows Software", price: 49.5 },
+    server: { name: "Server", price: 69.5 },
+  };
+
+  const productInfo = {
+    name: "Bitss VWAR Frontline Protection",
+    version: versionPriceInfo[currentVersion]?.name,
+    price: versionPriceInfo[currentVersion]?.price,
+    currency: "EUR",
+  };
 
   return (
     <main>
-      <Hero currentVersion={currentVersion} pricing={pricing} />
+      <Hero currentVersion={currentVersion} productInfo={productInfo} />
       <Features currentVersion={currentVersion} />
-      <Pricing currentVersion={currentVersion} pricing={pricing} />
+      <Pricing currentVersion={currentVersion} productInfo={productInfo} />
       <MalwareTable />
       <VideoSection
         productName="Bitss VWAR Frontline Protection"

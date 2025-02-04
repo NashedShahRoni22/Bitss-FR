@@ -38,7 +38,7 @@ export default function Featured() {
                 src={feat.icon}
                 alt={feat.name}
                 loading="lazy"
-                className="size-16"
+                className="h-auto w-24 object-cover"
               />
               <p className="text-lg font-bold">{feat.name}</p>
             </div>

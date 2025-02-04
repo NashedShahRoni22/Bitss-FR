@@ -11,11 +11,18 @@ const WapProtection = () => {
   const isWpVersion = useIsWpVersion();
   const faqData = isWpVersion ? wapWordpressFaq : wapJsFaq;
 
+  const productInfo = {
+    name: "Bitss WAP Protection",
+    version: isWpVersion ? "Wordpress" : "JavaScript",
+    price: 19.5,
+    currency: "EUR",
+  };
+
   return (
     <main>
-      <Hero isWpVersion={isWpVersion} />
-      <Features isWpVersion={isWpVersion} />
-      <Pricing isWpVersion={isWpVersion} />
+      <Hero productInfo={productInfo} />
+      <Features isWpVersion={isWpVersion} productInfo={productInfo} />
+      <Pricing isWpVersion={isWpVersion} productInfo={productInfo} />
       <VideoSection
         productName="Bitss WAP Website Admin Panel Protection"
         videoUrl="https://bitss.fr/wp-content/uploads/2024/07/bitts.fr_.mp4"
