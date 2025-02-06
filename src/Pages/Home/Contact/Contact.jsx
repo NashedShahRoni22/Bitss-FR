@@ -3,7 +3,7 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 
 export default function Contact() {
   return (
-    <section className="relative bg-cover bg-center bg-no-repeat px-5 py-10 md:container md:mx-auto md:py-20">
+    <section className="relative bg-cover bg-center bg-no-repeat px-5 py-10 md:container md:mx-auto md:py-20 bg-red-50 rounded">
       <h2 className="mb-6 text-balance text-center text-3xl font-bold leading-[3.15rem] md:text-[2.5rem]">
         Which Cybersecurity Solution is Best for you?
       </h2>

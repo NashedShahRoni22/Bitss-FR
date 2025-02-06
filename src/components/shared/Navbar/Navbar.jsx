@@ -146,12 +146,12 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Login Button */}
-        <Link
+        {/* <Link
           to="https://bitss.fr/my-account"
           className="hidden items-center gap-1.5 text-sm hover:text-primary md:flex"
         >
           <HiOutlineUserCircle className="text-xl" /> My Account
-        </Link>
+        </Link> */}
 
         {/* Mobile Menu Toggle Button */}
         <button className="md:hidden">

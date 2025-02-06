@@ -9,7 +9,7 @@ export default function Featured() {
       {featuresData.map((feat, i) => (
         <section
           key={i}
-          className={`flex flex-col justify-between gap-8 px-5 py-10 md:container md:mx-auto md:items-center md:gap-16 md:py-20 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+          className={`flex flex-col justify-between gap-8 px-5 py-10 md:container md:mx-auto md:items-center md:gap-16 md:py-20 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} ${i % 2 === 0 ? "bg-red-50 rounded" : "bg-none"}`}
         >
           <div className="w-full md:w-1/2 md:text-left">
             <div className="mb-3 flex flex-col gap-2.5 md:hidden md:justify-center">

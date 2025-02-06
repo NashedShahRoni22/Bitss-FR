@@ -19,9 +19,10 @@ export default function Hero() {
             Laptops
           </h1>
           <p className="mb-8 text-center text-lg font-light md:text-left md:text-xl">
-            VWAR Software provides database security filtering, cleaning and
-            blocking device codes, that are inplanted in your database to
-            destroy your business.
+            VWAR Software provides database security filtering of malware:
+            Identifies malware, neutralises, and removes malware that are
+            inplanted in your device database to destroy your business.
+            Efficient for websites / servers / laptops ordinators.
           </p>
 
           <div className="text-center md:text-left">
