@@ -90,7 +90,7 @@ export default function Navbar() {
 
               {/* Dropdown for Products */}
               {link.categories && (
-                <div className="absolute left-0 top-full z-10 hidden min-w-[42rem] grid-cols-2 rounded-lg bg-custom-white shadow-custom-1 group-hover:grid">
+                <div className="absolute right-0 top-full z-10 hidden min-w-[42rem] grid-cols-2 rounded-lg bg-custom-white shadow-custom-1 group-hover:grid">
                   {link.categories.map((category, j) => (
                     <div
                       key={j}
