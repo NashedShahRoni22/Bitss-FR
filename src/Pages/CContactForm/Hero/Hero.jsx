@@ -12,12 +12,12 @@ export default function Hero({ productInfo }) {
       <div className="flex flex-col items-center gap-8 md:flex-row md:gap-16">
         <div className="w-full md:w-1/2">
           <ProductVersion mdTextLeft={true} />
-          <SectionTitle mdTextLeft={true}>
-            Bitss C Anti-spam for <br /> Contact Forms
+          <SectionTitle mdTextLeft={true}> 
+            Bitss C Anti-spam for website <br /> client contact forms
           </SectionTitle>
           <SectionSubTitle customStyle={true}>
-            Eliminate Spam on Your{" "}
-            {productInfo.version === "Wordpress" ? "WordPress" : "JavaScript"}{" "}
+            Blocks spam and viruses on your{" "}
+            {/* {productInfo.version === "Wordpress" ? "WordPress" : "JavaScript"}{" "} */}
             Website – Secure Your Contact Page, Enhance Communication, and
             Protect Your Online Presence.
           </SectionSubTitle>

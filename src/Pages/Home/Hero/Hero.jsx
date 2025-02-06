@@ -15,7 +15,7 @@ export default function Hero() {
             className="mx-auto size-16 rounded-lg md:mx-0"
           />
           <h1 className="my-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
-            VWAR Advance Frontline database protection for Websites, Servers &
+            VWAR advance frontline malware database protection for Websites, Servers &
             Laptops
           </h1>
           <p className="mb-8 text-center text-lg font-light md:text-left md:text-xl">

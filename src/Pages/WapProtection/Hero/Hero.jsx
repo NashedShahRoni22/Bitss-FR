@@ -11,10 +11,7 @@ export default function Hero({ productInfo }) {
       <div className="w-full">
         <ProductVersion />
         <HeroTitle>
-          Bitss WAP Database & <br />
-          {productInfo.version === "Wordpress"
-            ? "Website Cyber Security Plugin"
-            : "Website Cyber Security Solution"}
+          Bitss WAP login enforcement protection for website admin login access
         </HeroTitle>
         <HeroSubTitle>
           {productInfo.version === "Wordpress"
@@ -24,6 +21,9 @@ export default function Hero({ productInfo }) {
                 <br key={36527} />,
                 "and Custom JavaScript Projects to Prevent Hacking, Intrusion and Database Theft.",
               ]}
+          <br />
+          Bitss WAP provides additional protection to databases, client base and
+          website.
         </HeroSubTitle>
 
         <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">

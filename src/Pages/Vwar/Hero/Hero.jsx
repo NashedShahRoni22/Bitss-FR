@@ -20,9 +20,9 @@ export default function Hero({ currentVersion, productInfo }) {
         <h3 className="mb-2.5 text-center text-xl font-medium text-primary">
           {productInfo.version} Version
         </h3>
-        <HeroTitle>Bitss VWAR Frontline Protection</HeroTitle>
+        <HeroTitle>Bitss VWAR Frontline Malware Protection</HeroTitle>
         <HeroSubTitle>
-          Protect Your {versionDescription} – Detect, Block and Eliminate
+          Protect Your {versionDescription} – Detect, Block and Eliminate Malware &
           Viruses <br /> with Advanced Scanning and Real-Time Protection
         </HeroSubTitle>
 

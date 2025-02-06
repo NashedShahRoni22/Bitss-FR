@@ -28,6 +28,9 @@ export default function Banner() {
             engineering company. We are a leading entity in cybersecurity,
             anti-hacking and intrusion research.
           </p>
+          <p className="mb-6 text-lg font-light md:text-xl">
+            Our Data Centers offers secured hosting, redundancy management and bitss cyber security protection as a free options.
+          </p>
           <ul className="mb-8 list-disc pl-6 font-light">
             <li>
               Safeguarding your digital infrastructure with cutting-edge
