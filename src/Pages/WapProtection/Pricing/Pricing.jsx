@@ -50,7 +50,7 @@ export default function Pricing({ productInfo }) {
         <div className="w-full md:w-1/2">
           {/* Pricing */}
           <p className="mb-2.5 text-3xl font-semibold">Yearly: €19.50</p>
-          <p className="mt-4">One-time installation by Bitss team: €75</p>
+          <p className="mt-4">One-time installation by Bitss team: €7.50</p>
 
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>
