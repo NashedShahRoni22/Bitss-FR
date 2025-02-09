@@ -4,3 +4,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.goog-te-gadget {
+    color: transparent  !important;
+  }
+  /* Change the text color */
+  select.goog-te-combo {
+    color: #000 !important;
+    border: 1px solid #F71735; 
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  /* Remove the outline on focus */
+  select.goog-te-combo:focus {
+    outline: none;
+    border: 1px solid #F71735; 
+  }
+  #google_translate_element a {
+    display: none !important;
+  }

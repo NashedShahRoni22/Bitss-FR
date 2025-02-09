@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import heroImg from "../../../assets/home/hero.png";
+import heroImg from "../../../assets/home/bitss-hero.jpeg";
 import bitssLogo from "../../../assets/icons/bitss.png";
 
 export default function Hero() {
