@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import heroImg from "../../../assets/home/bitss-hero.jpeg";
+import heroImg from "../../../assets/home/bitss-hero.webp";
 import bitssLogo from "../../../assets/icons/bitss.png";
 
 export default function Hero() {
@@ -15,8 +15,8 @@ export default function Hero() {
             className="mx-auto size-16 rounded-lg md:mx-0"
           />
           <h1 className="my-6 text-balance text-center text-4xl font-bold md:text-left md:text-5xl">
-            VWAR advance frontline malware database protection for Websites, Servers &
-            Laptops
+            VWAR advance frontline malware database protection for Websites,
+            Servers & Laptops
           </h1>
           <p className="mb-8 text-center text-lg font-light md:text-left md:text-xl">
             VWAR Software provides database security filtering of malware:
@@ -41,7 +41,7 @@ export default function Hero() {
             src={heroImg}
             alt="bitss world wide connection"
             loading="lazy"
-            className="mx-auto h-fit w-full max-w-md rounded-xl md:ml-auto"
+            className="h-[440px] w-full rounded-xl md:ml-auto md:h-auto md:max-w-lg"
           />
         </div>
       </div>
