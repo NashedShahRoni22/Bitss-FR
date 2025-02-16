@@ -1,13 +1,7 @@
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import usePaymentCalculation from "../../../hooks/usePaymentCalculation";
 
-export default function Step2({
-  register,
-  watchStep2,
-  emailStep1,
-  setStep,
-  setValue,
-}) {
+export default function Step2({ register, watchStep2, setStep, setValue }) {
   const {
     paymentData,
     selectedCurrency,
@@ -25,6 +19,39 @@ export default function Step2({
       ? watchStep2[1] && watchStep2[1].trim() !== ""
       : true;
   const isNextEnabled = watchStep2[0] && isCouponValid;
+
+  // Check if the email is available in the bobosohomail.com domain
+  const isBobosohoEmailAvailable = async (email) => {
+    const isValid = /^[a-zA-Z0-9._%+-]+@bobosohomail\.com$/.test(email);
+    if (isValid) {
+      try {
+        const response = await fetch(
+          "https://bobosohomail.com:8443/api/v2/cli/mail/call",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": "8322d0fd-75a8-417e-9eb0-155ec4df16b5",
+            },
+            body: JSON.stringify({
+              params: ["--info", email],
+            }),
+          },
+        );
+
+        const data = await response.json();
+        if (data.code === 1) {
+          console.log(`${email} is available`);
+        } else if (data.code === 0) {
+          console.log(`${email} is not available`);
+        } else {
+          console.log("Error checking email availability", data);
+        }
+      } catch (error) {
+        console.error("Error checking email availability", error);
+      }
+    }
+  };
 
   return (
     <>
@@ -133,24 +160,25 @@ export default function Step2({
           />
         </div>
         <div className="col-span-12 md:col-span-6">
-          <label htmlFor="customerEmail">Email</label>
+          <label htmlFor="bobosoho-email">Bobosoho Email</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            readOnly
             type="email"
-            id="customerEmail"
-            value={emailStep1}
-            {...register("customerEmail")}
+            id="bobosoho-email"
+            placeholder="demo@bobosohomail.com"
+            {...register("bobosoho-email", {
+              required: true,
+              onChange: (e) => isBobosohoEmailAvailable(e.target.value),
+            })}
           />
         </div>
         <div className="col-span-12 md:col-span-6">
           <label htmlFor="password">Password</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            disabled
             type="text"
             id="password"
-            {...register("password")}
+            {...register("password", { required: true })}
           />
         </div>
       </div>

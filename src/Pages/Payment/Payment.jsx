@@ -10,8 +10,6 @@ export default function Payment() {
   const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
       country: "",
-      password:
-        "Default password is 'password'. You can change it after login.",
     },
   });
 
@@ -20,14 +18,13 @@ export default function Payment() {
     "customerName",
     "businessName",
     "mobile",
-    "customerEmail",
+    "contact-email",
     "phone",
     "country",
     "address",
   ]);
-  const watchStep2 = watch(["duration", "coupon"]);
+  const watchStep2 = watch(["bobosoho-email", "duration", "coupon"]);
   const watchStep3 = watch(["paymentMethod"]);
-  const emailStep1 = watch("customerEmail");
   const selectedCurrency = watch("currency");
 
   // Handle payment form submit
@@ -101,7 +98,6 @@ export default function Payment() {
           <Step2
             register={register}
             watchStep2={watchStep2}
-            emailStep1={emailStep1}
             setValue={setValue}
             selectedCurrency={selectedCurrency}
             setStep={setStep}

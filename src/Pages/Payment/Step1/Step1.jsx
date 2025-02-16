@@ -40,12 +40,12 @@ export default function Step1({ register, watchStep1, setStep }) {
         </div>
 
         <div className="col-span-12 md:col-span-6">
-          <label htmlFor="customerEmail">Email *</label>
+          <label htmlFor="contact-email">Contact Email *</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
             type="email"
-            id="customerEmail"
-            {...register("customerEmail", {
+            id="contact-email"
+            {...register("contact-email", {
               required: true,
             })}
           />
