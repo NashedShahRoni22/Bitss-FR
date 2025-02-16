@@ -35,7 +35,7 @@ const Vwar = () => {
       <MalwareTable />
       <VideoSection
         productName="Bitss VWAR Frontline Protection"
-        videoUrl="https://bitss.fr/wp-content/uploads/2024/08/Copy-of-WordPress-sites-are-facing-more-cyber-attacks-these-days.mp4"
+        videoUrl="https://www.youtube.com/shorts/h-89lgUWCRI"
       />
       <Faq faqData={vwarFaq} />
     </main>
