@@ -84,7 +84,7 @@ export default function usePaymentCalculation(setValue) {
 
   // if user don't click any input values set value by default in the form
   useEffect(() => {
-    setValue("serviceName", paymentData.title);
+    setValue("serviceName", paymentData.name);
     setValue("currency", selectedCurrency);
     setValue("basePrice", (paymentData.price * currencyRate).toFixed(2));
     setValue("duration", duration);

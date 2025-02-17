@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Step1({ register, watchStep1, setStep }) {
+export default function Step1({ register, setStep, isStep1Valid }) {
   const [countries, setCountries] = useState([]);
 
   // get all countries data
@@ -40,13 +40,17 @@ export default function Step1({ register, watchStep1, setStep }) {
         </div>
 
         <div className="col-span-12 md:col-span-6">
-          <label htmlFor="contact-email">Contact Email *</label>
+          <label htmlFor="contactEmail">Contact Email *</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
             type="email"
-            id="contact-email"
-            {...register("contact-email", {
+            id="contactEmail"
+            {...register("contactEmail", {
               required: true,
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Invalid email address",
+              },
             })}
           />
         </div>
@@ -75,7 +79,7 @@ export default function Step1({ register, watchStep1, setStep }) {
           <label htmlFor="mobile">Mobile *</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            type="number"
+            type="text"
             id="mobile"
             {...register("mobile", {
               required: true,
@@ -87,7 +91,7 @@ export default function Step1({ register, watchStep1, setStep }) {
           <label htmlFor="phone">Phone *</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            type="number"
+            type="text"
             id="phone"
             {...register("phone", {
               required: true,
@@ -131,9 +135,9 @@ export default function Step1({ register, watchStep1, setStep }) {
       {/* Form Step Changing Buttons */}
       <div className="mt-14 flex justify-center">
         <button
-          className={`rounded border border-primary px-6 py-1.5 text-lg font-semibold ${watchStep1.every(Boolean) ? "bg-primary text-white" : "bg-white"}`}
+          className={`rounded border border-primary px-6 py-1.5 text-lg font-semibold ${isStep1Valid ? "bg-primary text-white" : "bg-white"}`}
           onClick={() => setStep(2)}
-          disabled={!watchStep1.every(Boolean)}
+          disabled={!isStep1Valid}
         >
           Next
         </button>

@@ -7,10 +7,34 @@ import Step3 from "./Step3/Step3";
 export default function Payment() {
   const [paymentData, setPaymentData] = useState("");
   const [step, setStep] = useState(1);
-  const { register, handleSubmit, watch, setValue } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    getValues,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
+      customerName: "",
+      businessName: "",
+      contactEmail: "",
       country: "",
+      mobile: "",
+      phone: "",
+      fax: "",
+      secondaryPhone: "",
+      address: "",
+      serviceName: "",
+      currency: "",
+      basePrice: "",
+      duration: "",
+      payableAmount: "",
+      originalAmount: "",
+      bobosohoEmail: "",
+      password: "",
     },
+    mode: "onChange",
   });
 
   // Watch input fileds
@@ -18,12 +42,16 @@ export default function Payment() {
     "customerName",
     "businessName",
     "mobile",
-    "contact-email",
+    "contactEmail",
     "phone",
     "country",
     "address",
   ]);
-  const watchStep2 = watch(["bobosoho-email", "duration", "coupon"]);
+
+  const isStep1Valid =
+    watchStep1.every(Boolean) &&
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(watchStep1[3]);
+  const watchStep2 = watch(["bobosohoEmail", "password", "duration"]);
   const watchStep3 = watch(["paymentMethod"]);
   const selectedCurrency = watch("currency");
 
@@ -88,7 +116,7 @@ export default function Payment() {
         {step === 1 && (
           <Step1
             register={register}
-            watchStep1={watchStep1}
+            isStep1Valid={isStep1Valid}
             setStep={setStep}
           />
         )}
@@ -100,7 +128,9 @@ export default function Payment() {
             watchStep2={watchStep2}
             setValue={setValue}
             selectedCurrency={selectedCurrency}
+            errors={errors}
             setStep={setStep}
+            getValues={getValues}
           />
         )}
 

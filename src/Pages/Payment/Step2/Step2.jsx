@@ -1,7 +1,34 @@
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import usePaymentCalculation from "../../../hooks/usePaymentCalculation";
+import { useEffect, useState } from "react";
+import { validateEmailAvailability } from "../../../utils/validateEmailAvailability";
+import { HiOutlineEye } from "react-icons/hi2";
+import { HiOutlineEyeOff } from "react-icons/hi";
+import { createBobosohoEmail } from "../../../utils/createBobosohoEmail";
 
-export default function Step2({ register, watchStep2, setStep, setValue }) {
+const debounce = (func, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
+
+const debouncedValidateEmailAvailability = debounce(
+  validateEmailAvailability,
+  300,
+);
+
+export default function Step2({
+  register,
+  watchStep2,
+  setStep,
+  setValue,
+  errors,
+  getValues,
+}) {
   const {
     paymentData,
     selectedCurrency,
@@ -12,45 +39,76 @@ export default function Step2({ register, watchStep2, setStep, setValue }) {
     payableAmount,
     originalAmount,
   } = usePaymentCalculation(setValue);
+  const [emailAvailable, setEmailAvailable] = useState(null);
+  const [emailLoading, setEmailLoading] = useState(false);
+  // const [subMissionLoading, setSubMissionLoading] = useState(false);
+  const [emailPrefix, setEmailPrefix] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Toggle password hide & show
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   // Check if the coupon field is visible and has a value if required
   const isCouponValid =
     watchStep2[0] === "coupon"
       ? watchStep2[1] && watchStep2[1].trim() !== ""
       : true;
-  const isNextEnabled = watchStep2[0] && isCouponValid;
 
-  // Check if the email is available in the bobosohomail.com domain
-  const isBobosohoEmailAvailable = async (email) => {
-    const isValid = /^[a-zA-Z0-9._%+-]+@bobosohomail\.com$/.test(email);
-    if (isValid) {
-      try {
-        const response = await fetch(
-          "https://bobosohomail.com:8443/api/v2/cli/mail/call",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "x-api-key": "8322d0fd-75a8-417e-9eb0-155ec4df16b5",
-            },
-            body: JSON.stringify({
-              params: ["--info", email],
-            }),
-          },
+  // Handle User Input for Email Prefix
+  const handleEmailChange = (e) => {
+    const inputValue = e.target.value.replace(/[^a-zA-Z0-9._-]/g, ""); // Restrict special characters
+    setEmailPrefix(inputValue);
+    const fullEmail = `${inputValue}@bobosohomail.com`;
+    setValue("bobosohoEmail", fullEmail); // Update react-hook-form value
+
+    if (inputValue === "") {
+      setEmailAvailable(null); // Reset email availability when the input is empty
+    } else {
+      // Skip validation if email is the default
+      if (fullEmail !== "@bobosohomail.com") {
+        debouncedValidateEmailAvailability(
+          fullEmail,
+          setEmailAvailable,
+          setEmailLoading,
         );
-
-        const data = await response.json();
-        if (data.code === 1) {
-          console.log(`${email} is available`);
-        } else if (data.code === 0) {
-          console.log(`${email} is not available`);
-        } else {
-          console.log("Error checking email availability", data);
-        }
-      } catch (error) {
-        console.error("Error checking email availability", error);
+      } else {
+        setEmailAvailable(false); // Force "not available" when it's the default email
       }
     }
+  };
+
+  // show bobosomail and user typed email
+  const appendToFixedEmail = (input) => {
+    const fixedDomain = "@bobosohomail.com";
+    return input + fixedDomain;
+  };
+
+  // Check Next Button Enable or Disable
+  const isNextEnabled =
+    watchStep2.every(Boolean) &&
+    isCouponValid &&
+    emailAvailable &&
+    !errors.password;
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      debouncedValidateEmailAvailability.cancel?.();
+    };
+  }, []);
+
+  const handleNextButton = () => {
+    const bobosohoEmail = getValues().bobosohoEmail + "@bobosohomail.com";
+    const password = getValues().password;
+    // setStep(3);
+    const result = createBobosohoEmail(
+      bobosohoEmail,
+      password,
+      // setSubMissionLoading,
+    );
+    console.log(result);
   };
 
   return (
@@ -159,27 +217,83 @@ export default function Step2({ register, watchStep2, setStep, setValue }) {
             {...register("originalAmount")}
           />
         </div>
+
+        {/* email field */}
         <div className="col-span-12 md:col-span-6">
-          <label htmlFor="bobosoho-email">Bobosoho Email</label>
+          <label htmlFor="bobosohoEmail">Choose Bobosoho Email *</label>
           <input
-            className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            type="email"
-            id="bobosoho-email"
-            placeholder="demo@bobosohomail.com"
-            {...register("bobosoho-email", {
+            className={`mt-3 w-full rounded border px-4 py-2 outline-none ${emailAvailable === false && "border-red-600"} ${emailAvailable === true && getValues().bobosohoEmail !== "@bobosohomail.com" && "border-green-600"}`}
+            type="text"
+            id="bobosohoEmail"
+            placeholder="yourname@bobosohomail.com"
+            value={emailPrefix}
+            {...register("bobosohoEmail", {
               required: true,
-              onChange: (e) => isBobosohoEmailAvailable(e.target.value),
+              onChange: handleEmailChange,
             })}
           />
+          {emailLoading && <p className="mt-2 text-sm">Loading....</p>}
+          {!emailLoading &&
+            getValues().bobosohoEmail &&
+            getValues().bobosohoEmail !== "@bobosohomail.com" &&
+            emailAvailable !== null && (
+              <p
+                className={`mt-2 text-sm ${emailAvailable && !emailLoading ? "text-green-600" : "text-red-600"}`}
+              >
+                <span className="font-medium">
+                  {appendToFixedEmail(emailPrefix)}
+                </span>{" "}
+                email is
+                {emailAvailable ? " available" : " not available"}!
+              </p>
+            )}
         </div>
+
+        {/* password field */}
         <div className="col-span-12 md:col-span-6">
-          <label htmlFor="password">Password</label>
-          <input
-            className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            type="text"
-            id="password"
-            {...register("password", { required: true })}
-          />
+          <label htmlFor="password">Password *</label>
+          <div className="relative mt-3 w-full">
+            <input
+              className={`w-full rounded border py-2 pl-4 pr-12 outline-none ${getValues().password && !errors.password && "border-green-400"} ${getValues().password.length > 0 && errors.password && "border-red-600"}`}
+              type={showPassword ? "text" : "password"}
+              id="password"
+              {...register("password", {
+                required: true,
+                pattern:
+                  /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{13,}$/,
+              })}
+            />
+
+            {showPassword ? (
+              <HiOutlineEye
+                onClick={togglePassword}
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer bg-white text-2xl"
+              />
+            ) : (
+              <HiOutlineEyeOff
+                onClick={togglePassword}
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer bg-white text-2xl"
+              />
+            )}
+          </div>
+          {getValues().password && errors.password && (
+            <div className="mt-1.5 text-sm text-red-600">
+              <p>
+                Your password must be at least 13 characters long and include:
+              </p>
+              <ul className="mt-1 list-disc pl-4">
+                <li>One uppercase letter (A-Z)</li>
+                <li>One lowercase letter (a-z)</li>
+                <li>One number (0-9)</li>
+                <li>One special character (e.g., !, @, #, $, etc.)</li>
+              </ul>
+            </div>
+          )}
+          {getValues().password && !errors.password && (
+            <p className="mt-1.5 text-sm text-green-600">
+              Password is valid and secured!
+            </p>
+          )}
         </div>
       </div>
 
@@ -195,7 +309,7 @@ export default function Step2({ register, watchStep2, setStep, setValue }) {
 
         <button
           className={`rounded border border-primary px-6 py-1.5 text-lg font-semibold ${isNextEnabled ? "bg-primary text-white" : "bg-white"}`}
-          onClick={() => setStep(3)}
+          onClick={handleNextButton}
           disabled={!isNextEnabled}
         >
           Next
