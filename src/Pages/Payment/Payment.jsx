@@ -6,7 +6,7 @@ import Step3 from "./Step3/Step3";
 
 export default function Payment() {
   const [paymentData, setPaymentData] = useState("");
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
   const {
     register,
     handleSubmit,
@@ -140,6 +140,7 @@ export default function Payment() {
             register={register}
             watchStep3={watchStep3}
             setStep={setStep}
+            getValues={getValues}
           />
         )}
       </form>

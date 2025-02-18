@@ -5,6 +5,7 @@ import { validateEmailAvailability } from "../../../utils/validateEmailAvailabil
 import { HiOutlineEye } from "react-icons/hi2";
 import { HiOutlineEyeOff } from "react-icons/hi";
 import { createBobosohoEmail } from "../../../utils/createBobosohoEmail";
+import Loader from "../../../components/shared/Loader";
 
 const debounce = (func, delay) => {
   let timeoutId;
@@ -102,7 +103,7 @@ export default function Step2({
   const handleNextButton = () => {
     const bobosohoEmail = getValues().bobosohoEmail + "@bobosohomail.com";
     const password = getValues().password;
-    // setStep(3);
+    setStep(3);
     const result = createBobosohoEmail(
       bobosohoEmail,
       password,
@@ -232,7 +233,7 @@ export default function Step2({
               onChange: handleEmailChange,
             })}
           />
-          {emailLoading && <p className="mt-2 text-sm">Loading....</p>}
+          {emailLoading && <Loader />}
           {!emailLoading &&
             getValues().bobosohoEmail &&
             getValues().bobosohoEmail !== "@bobosohomail.com" &&
