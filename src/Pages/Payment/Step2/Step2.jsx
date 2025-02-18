@@ -221,18 +221,25 @@ export default function Step2({
 
         {/* email field */}
         <div className="col-span-12 md:col-span-6">
-          <label htmlFor="bobosohoEmail">Choose Bobosoho Email *</label>
-          <input
-            className={`mt-3 w-full rounded border px-4 py-2 outline-none ${emailAvailable === false && "border-red-600"} ${emailAvailable === true && getValues().bobosohoEmail !== "@bobosohomail.com" && "border-green-600"}`}
-            type="text"
-            id="bobosohoEmail"
-            placeholder="yourname@bobosohomail.com"
-            value={emailPrefix}
-            {...register("bobosohoEmail", {
-              required: true,
-              onChange: handleEmailChange,
-            })}
-          />
+          <label htmlFor="bobosohoEmail">Choose Bobosoho Username *</label>
+          <div className="mt-3 flex items-center">
+            <input
+              className={`w-full rounded-l border border-r-0 px-4 py-2 outline-none ${emailAvailable === false && "border-red-600"} ${emailAvailable === true && getValues().bobosohoEmail !== "@bobosohomail.com" && "border-green-600"}`}
+              type="text"
+              id="bobosohoEmail"
+              placeholder="Pick a username (ex. walterwhite)"
+              value={emailPrefix}
+              {...register("bobosohoEmail", {
+                required: true,
+                onChange: handleEmailChange,
+              })}
+            />
+            <div
+              className={`min-w-fit rounded-r border bg-gray-50 px-4 py-2 ${emailAvailable === false && "border-red-600"} ${emailAvailable === true && getValues().bobosohoEmail !== "@bobosohomail.com" && "border-green-600"}`}
+            >
+              @bobosohomail.com
+            </div>
+          </div>
           {emailLoading && <Loader />}
           {!emailLoading &&
             getValues().bobosohoEmail &&
