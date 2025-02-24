@@ -1,7 +1,13 @@
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import BankTransferDetails from "../../../components/BankTransferDetails";
 
-export default function Step3({ register, watchStep3, setStep, getValues }) {
+export default function Step3({
+  register,
+  watchStep3,
+  setStep,
+  getValues,
+  loading,
+}) {
   const paymentMethod = getValues().paymentMethod;
   const isPaypal = paymentMethod === "paypal";
   const isStripe = paymentMethod === "stripe";
@@ -15,7 +21,7 @@ export default function Step3({ register, watchStep3, setStep, getValues }) {
           <h2 className="text-2xl font-semibold">Select Payment Method</h2>
 
           <div className="my-8 space-y-4">
-            <div className="flex items-center gap-2 text-lg">
+            {/* <div className="flex items-center gap-2 text-lg">
               <input
                 type="radio"
                 id="paypal"
@@ -24,9 +30,9 @@ export default function Step3({ register, watchStep3, setStep, getValues }) {
                 className="size-5"
               />
               <label htmlFor="paypal">Pay with Paypal</label>
-            </div>
+            </div> */}
 
-            <div className="flex items-center gap-2 text-lg">
+            {/* <div className="flex items-center gap-2 text-lg">
               <input
                 type="radio"
                 id="stripe"
@@ -35,7 +41,7 @@ export default function Step3({ register, watchStep3, setStep, getValues }) {
                 className="size-5"
               />
               <label htmlFor="stripe">Pay with Card (Stripe)</label>
-            </div>
+            </div> */}
 
             <div className="flex items-center gap-2 text-lg">
               <input
@@ -67,7 +73,7 @@ export default function Step3({ register, watchStep3, setStep, getValues }) {
         <button
           className={`rounded border border-primary px-6 py-1.5 text-lg font-semibold ${watchStep3.every(Boolean) ? "bg-primary text-white" : "bg-white"}`}
           type="submit"
-          disabled={!watchStep3.every(Boolean)}
+          disabled={!watchStep3.every(Boolean) || loading}
         >
           Proceed To Checkout
         </button>

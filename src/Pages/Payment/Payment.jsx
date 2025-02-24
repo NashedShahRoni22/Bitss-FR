@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import Step1 from "./Step1/Step1";
 import Step2 from "./Step2/Step2";
 import Step3 from "./Step3/Step3";
+import { generateInvoiceId } from "../../utils/generateInvoiceId";
 
 export default function Payment() {
+  const baseUrl = import.meta.env.VITE_Base_Url;
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState("");
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const {
     register,
     handleSubmit,
@@ -43,7 +48,6 @@ export default function Payment() {
     "businessName",
     "mobile",
     "contactEmail",
-    "phone",
     "country",
     "address",
   ]);
@@ -56,8 +60,51 @@ export default function Payment() {
   const selectedCurrency = watch("currency");
 
   // Handle payment form submit
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const {
+      customerName,
+      contactEmail,
+      address,
+      country,
+      serviceName,
+      paymentMethod,
+      payableAmount,
+      password,
+    } = data;
+
+    const paymentInfo = {
+      order_id: generateInvoiceId(),
+      name: customerName,
+      user_name: customerName,
+      email: contactEmail,
+      address,
+      country,
+      software: serviceName,
+      payment_type: paymentMethod,
+      price: payableAmount,
+      password,
+      status: true,
+    };
+
+    try {
+      const res = await fetch(`${baseUrl}/payments/bitss/payment/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(paymentInfo),
+      });
+      const data = await res.json();
+      if (data.success === true) {
+        setLoading(false);
+        window.alert(data.message);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+      window.alert(error.message);
+    }
   };
 
   // Get payment data from local storage
@@ -141,6 +188,7 @@ export default function Payment() {
             watchStep3={watchStep3}
             setStep={setStep}
             getValues={getValues}
+            loading={loading}
           />
         )}
       </form>
