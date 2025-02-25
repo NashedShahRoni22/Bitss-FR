@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import Step1 from "./Step1/Step1";
 import Step2 from "./Step2/Step2";
 import Step3 from "./Step3/Step3";
-import { generateInvoiceId } from "../../utils/generateInvoiceId";
 
 export default function Payment() {
   const baseUrl = import.meta.env.VITE_Base_Url;
+  const localProductInfo = JSON.parse(localStorage.getItem("productInfo"));
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState("");
@@ -38,6 +38,7 @@ export default function Payment() {
       originalAmount: "",
       bobosohoEmail: "",
       password: "",
+      paymentMethod: "bank",
     },
     mode: "onChange",
   });
@@ -45,22 +46,23 @@ export default function Payment() {
   // Watch input fileds
   const watchStep1 = watch([
     "customerName",
-    "businessName",
-    "mobile",
     "contactEmail",
     "country",
+    "mobile",
     "address",
   ]);
 
   const isStep1Valid =
     watchStep1.every(Boolean) &&
-    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(watchStep1[3]);
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(watchStep1[1]);
   const watchStep2 = watch(["bobosohoEmail", "password", "duration"]);
   const watchStep3 = watch(["paymentMethod"]);
   const selectedCurrency = watch("currency");
 
   // Handle payment form submit
   const onSubmit = async (data) => {
+    setLoading(true);
+
     const {
       customerName,
       contactEmail,
@@ -70,12 +72,14 @@ export default function Payment() {
       paymentMethod,
       payableAmount,
       password,
+      bobosohoEmail,
+      currency,
+      duration,
     } = data;
 
     const paymentInfo = {
-      order_id: generateInvoiceId(),
       name: customerName,
-      user_name: customerName,
+      user_name: bobosohoEmail,
       email: contactEmail,
       address,
       country,
@@ -83,7 +87,8 @@ export default function Payment() {
       payment_type: paymentMethod,
       price: payableAmount,
       password,
-      status: true,
+      currencey: currency,
+      duration: duration.toString(),
     };
 
     try {
@@ -98,7 +103,14 @@ export default function Payment() {
       if (data.success === true) {
         setLoading(false);
         window.alert(data.message);
-        navigate("/");
+
+        const productInfo = JSON.stringify({
+          ...localProductInfo,
+          ...paymentInfo,
+          ...data.data,
+        });
+        localStorage.setItem("productInfo", productInfo);
+        navigate("/invoice");
       }
     } catch (error) {
       console.error(error);

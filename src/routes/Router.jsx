@@ -9,6 +9,7 @@ import WapProtection from "../Pages/WapProtection/WapProtection";
 import CContactFormWp from "../Pages/CContactForm/CContactForm";
 import Vwar from "../Pages/Vwar/Vwar";
 import Payment from "../Pages/Payment/Payment";
+import Invoice from "../Pages/Invoice/Invoice";
 
 export const router = createBrowserRouter([
   {
@@ -52,5 +53,9 @@ export const router = createBrowserRouter([
         element: <Payment />,
       },
     ],
+  },
+  {
+    path: "/invoice",
+    element: <Invoice />,
   },
 ]);

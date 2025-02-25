@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 export default function BankTransferDetails() {
   return (
-    <div className="w-full rounded border bg-white p-6 md:w-1/2">
+    <div className="w-full p-6">
       {/* Bank Information */}
       <h2 className="mb-4 text-center text-2xl font-bold">
         Our Bank Transfer Details

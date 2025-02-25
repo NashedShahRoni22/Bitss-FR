@@ -104,12 +104,12 @@ export default function Step2({
     const bobosohoEmail = getValues().bobosohoEmail + "@bobosohomail.com";
     const password = getValues().password;
     setStep(3);
-    const result = createBobosohoEmail(
-      bobosohoEmail,
-      password,
-      // setSubMissionLoading,
-    );
-    console.log(result);
+    // const result = createBobosohoEmail(
+    //   bobosohoEmail,
+    //   password,
+    //   // setSubMissionLoading,
+    // );
+    // console.log(result);
   };
 
   return (
@@ -177,7 +177,7 @@ export default function Step2({
             <option value={1}>1 Months</option>
             <option value={6}>6 Months (20% Discount)</option>
             <option value={12}>12 Months (33% Discount)</option>
-            <option value={"coupon"}>12 Months with coupon code</option>
+            {/* <option value={"coupon"}>12 Months with coupon code</option> */}
           </select>
         </div>
 

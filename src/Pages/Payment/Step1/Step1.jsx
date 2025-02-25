@@ -27,7 +27,7 @@ export default function Step1({ register, setStep, isStep1Valid }) {
           />
         </div>
 
-        <div className="col-span-12 w-full md:col-span-6">
+        {/* <div className="col-span-12 w-full md:col-span-6">
           <label htmlFor="businessName">Business Name *</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
@@ -37,7 +37,7 @@ export default function Step1({ register, setStep, isStep1Valid }) {
               required: true,
             })}
           />
-        </div>
+        </div> */}
 
         <div className="col-span-12 md:col-span-6">
           <label htmlFor="contactEmail">Contact Email *</label>
@@ -79,7 +79,7 @@ export default function Step1({ register, setStep, isStep1Valid }) {
           <label htmlFor="mobile">Mobile *</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            type="text"
+            type="number"
             id="mobile"
             {...register("mobile", {
               required: true,
@@ -87,7 +87,7 @@ export default function Step1({ register, setStep, isStep1Valid }) {
           />
         </div>
 
-        <div className="col-span-12 md:col-span-6">
+        {/* <div className="col-span-12 md:col-span-6">
           <label htmlFor="phone">Phone (optional)</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
@@ -95,9 +95,9 @@ export default function Step1({ register, setStep, isStep1Valid }) {
             id="phone"
             {...register("phone")}
           />
-        </div>
+        </div> */}
 
-        <div className="col-span-12 md:col-span-6">
+        {/* <div className="col-span-12 md:col-span-6">
           <label htmlFor="fax">Fax (optional)</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
@@ -105,9 +105,9 @@ export default function Step1({ register, setStep, isStep1Valid }) {
             id="fax"
             {...register("fax")}
           />
-        </div>
+        </div> */}
 
-        <div className="col-span-12 md:col-span-6">
+        {/* <div className="col-span-12 md:col-span-6">
           <label htmlFor="secondaryPhone">Secondary Phone (optional)</label>
           <input
             className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
@@ -115,7 +115,7 @@ export default function Step1({ register, setStep, isStep1Valid }) {
             id="secondaryPhone"
             {...register("secondaryPhone")}
           />
-        </div>
+        </div> */}
 
         <div className="col-span-12">
           <label htmlFor="address">Address *</label>
