@@ -25,7 +25,7 @@ export default function Pricing({ productInfo }) {
           </SectionTitle>
           <h3 className="mb-2.5 text-center text-xl font-medium md:text-left">
             Also available in:{" "}
-            {productInfo.version === "Wordpress" ? (
+            {productInfo.version === "WordPress" ? (
               <Link
                 to="/products/c-contact-form/js"
                 className="text-base font-normal underline transition-all duration-200 ease-in-out hover:text-primary"

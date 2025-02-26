@@ -22,8 +22,9 @@ export default function Hero({ currentVersion, productInfo }) {
         </h3>
         <HeroTitle>Bitss VWAR Frontline Malware Protection</HeroTitle>
         <HeroSubTitle>
-          Protect Your {versionDescription} – Detect, Block and Eliminate Malware &
-          Viruses <br /> with Advanced Scanning and Real-Time Protection
+          Protect Your {versionDescription} – Detect, Block and Eliminate
+          Malware & Viruses <br /> with Advanced Scanning and Real-Time
+          Protection
         </HeroSubTitle>
 
         <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">

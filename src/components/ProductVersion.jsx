@@ -7,7 +7,7 @@ export default function ProductVersion({ mdTextLeft = false }) {
     <h3
       className={`mb-2.5 text-center text-xl font-medium text-primary ${mdTextLeft && "md:text-left"}`}
     >
-      {isWpVersion ? "Wordpress" : "JavaScript"} Version
+      {isWpVersion ? "WordPress" : "JavaScript"} Version
     </h3>
   );
 }

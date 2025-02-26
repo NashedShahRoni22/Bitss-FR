@@ -4,12 +4,22 @@ import { generateDate } from "../../utils/generateDate";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
 const productFiles = {
-  "Bitss WAP Protection": "/bitss-wap-premium.zip",
-  "Bitss VWAR Frontline Protection": "bitss-vwar-premium-1.0.1.zip",
+  WordPress: {
+    "Bitss C Contact Form": "/bitss-c-contact-form-wp-premium.zip",
+    "Bitss WAP Protection": "/bitss-wap-protection-wp-premium.zip",
+    "Bitss VWAR Frontline Protection": "bitss-vwar-wp-premium.zip",
+  },
+  JavaScript: {
+    "Bitss C Contact Form": "/bitss-c-contact-form-js-premium.zip",
+  },
 };
 
 export default function Invoice() {
   const [orderData, setOrderData] = useState({});
+  const downloadUrl =
+    orderData?.version && orderData?.software
+      ? productFiles[orderData.version]?.[orderData.software]
+      : "";
 
   useEffect(() => {
     const savedData = localStorage.getItem("productInfo");
@@ -46,7 +56,7 @@ export default function Invoice() {
             onClick={handlePrint}
             className="rounded bg-blue-500 px-4 py-2 text-white"
           >
-            Print & Download
+            Print
           </button>
         </div>
 
@@ -100,7 +110,7 @@ export default function Invoice() {
               <th className="w-full border border-gray-300 px-4 py-2 text-left">
                 Duration
               </th>
-              <th className="w-fit border border-gray-300 px-4 py-2 text-left">
+              <th className="w-full border border-gray-300 px-4 py-2 text-left">
                 Price
               </th>
             </tr>
@@ -108,8 +118,14 @@ export default function Invoice() {
           <tbody>
             <tr className="border border-gray-300 text-[15px]">
               <td className="border px-4 py-2">{orderData?.software}</td>
-              <td className="border px-4 py-2">{orderData?.duration} months</td>
-              <td className="border px-4 py-2">€{orderData?.price}</td>
+              <td className="border px-4 py-2">
+                <p className="min-w-20">{orderData?.duration} Months</p>
+              </td>
+              <td className="border px-4 py-2">
+                <p className="min-w-20">
+                  {orderData?.price} {orderData?.currencey}
+                </p>
+              </td>
             </tr>
             {orderData &&
               orderData?.addonsSoftwares &&
@@ -117,42 +133,56 @@ export default function Invoice() {
               orderData?.addonsSoftwares?.map((addon, i) => (
                 <tr key={i} className="border border-gray-300 text-[15px]">
                   <td className="border px-4 py-2">{addon.name}</td>
-                  <td className="border px-4 py-2">€{addon.price}</td>
+                  <td className="border px-4 py-2">
+                    {addon.price} {orderData?.currencey}
+                  </td>
                 </tr>
               ))}
 
             {orderData.duePrice && (
               <tr className="border border-gray-300 bg-gray-100 text-[17px]">
                 <td className="border px-4 py-2 text-right">Due</td>
-                <td className="border px-4 py-2">€{orderData?.duePrice}</td>
+                <td className="border px-4 py-2">
+                  {orderData?.duePrice} {orderData?.currencey}
+                </td>
               </tr>
             )}
 
             {orderData.partialPrice ? (
               <tr className="border border-gray-300 bg-gray-100 text-[17px] font-semibold">
                 <td className="border px-4 py-2 text-right">Total</td>
-                <td className="border px-4 py-2">€{orderData?.partialPrice}</td>
+                <td className="border px-4 py-2">
+                  {orderData?.partialPrice} {orderData?.currencey}
+                </td>
               </tr>
             ) : (
               <tr className="border border-gray-300 bg-gray-100 text-[17px] font-semibold">
                 <td colSpan={2} className="border px-4 py-2 text-right">
                   Total
                 </td>
-                <td className="border px-4 py-2">€{orderData?.price}</td>
+                <td className="border px-4 py-2">
+                  {orderData?.price} {orderData?.currencey}
+                </td>
               </tr>
             )}
           </tbody>
         </table>
 
-        <div className="mt-8 flex justify-center">
-          <a
-            href={productFiles[orderData.software]}
-            className="flex items-center justify-center gap-2 rounded bg-blue-500 px-4 py-2 text-lg font-medium text-white transition-all duration-200 ease-linear hover:bg-blue-600"
-          >
-            Download Software
-            <FaCloudDownloadAlt />
-          </a>
-        </div>
+        {downloadUrl ? (
+          <div className="mt-8 flex justify-center">
+            <a
+              href={downloadUrl}
+              className="flex items-center justify-center gap-2 rounded bg-blue-500 px-4 py-2 text-lg font-medium text-white transition-all duration-200 ease-linear hover:bg-blue-600"
+            >
+              Download Software
+              <FaCloudDownloadAlt />
+            </a>
+          </div>
+        ) : (
+          <p className="mt-8 text-center text-lg font-semibold">
+            Our Support Team will Contact with you within 48 Hours
+          </p>
+        )}
 
         <p className="mt-8 text-lg font-semibold">
           Congratulations! <br />

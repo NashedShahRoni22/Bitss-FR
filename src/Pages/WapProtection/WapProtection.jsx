@@ -13,7 +13,7 @@ const WapProtection = () => {
 
   const productInfo = {
     name: "Bitss WAP Protection",
-    version: isWpVersion ? "Wordpress" : "JavaScript",
+    version: isWpVersion ? "WordPress" : "JavaScript",
     price: 19.5,
     currency: "EUR",
   };

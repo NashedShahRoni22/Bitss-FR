@@ -14,7 +14,7 @@ export default function Hero({ productInfo }) {
           Bitss WAP login enforcement protection for website admin login access
         </HeroTitle>
         <HeroSubTitle>
-          {productInfo.version === "Wordpress"
+          {productInfo.version === "WordPress"
             ? "An Enforced Protection to Login access to Lock out Hackers, Pirates, Intrusion & Prevention Database Theft"
             : [
                 "Comprehensive Security for JavaScript Websites: Seamless Integration with Frameworks, Static Sites,",
@@ -27,7 +27,7 @@ export default function Hero({ productInfo }) {
         </HeroSubTitle>
 
         <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
-          {productInfo.version === "Wordpress" ? (
+          {productInfo.version === "WordPress" ? (
             <>
               <a
                 href="/bitss-wap-user-manual.pdf"

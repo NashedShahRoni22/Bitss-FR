@@ -11,7 +11,7 @@ export default function CContactFormWp() {
 
   const productInfo = {
     name: "Bitss C Contact Form",
-    version: isWpVersion ? "Wordpress" : "JavaScript",
+    version: isWpVersion ? "WordPress" : "JavaScript",
     price: 7.5,
     currency: "EUR",
   };
