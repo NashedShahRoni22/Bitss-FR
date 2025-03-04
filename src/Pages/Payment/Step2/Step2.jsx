@@ -91,7 +91,8 @@ export default function Step2({
     watchStep2.every(Boolean) &&
     isCouponValid &&
     emailAvailable &&
-    !errors.password;
+    !errors.password &&
+    !errors.domain;
 
   // Cleanup on unmount
   useEffect(() => {
@@ -302,6 +303,22 @@ export default function Step2({
               Password is valid and secured!
             </p>
           )}
+        </div>
+
+        {/* domain field */}
+        <div className="col-span-12">
+          <label htmlFor="domain">Domain *</label>
+          <input
+            className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
+            type="text"
+            id="domain"
+            placeholder="example.com"
+            {...register("domain", {
+              required: true,
+              pattern:
+                /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/,
+            })}
+          />
         </div>
       </div>
 

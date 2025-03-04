@@ -10,6 +10,9 @@ import CContactFormWp from "../Pages/CContactForm/CContactForm";
 import Vwar from "../Pages/Vwar/Vwar";
 import Payment from "../Pages/Payment/Payment";
 import Invoice from "../Pages/Invoice/Invoice";
+import CookiePolicy from "../Pages/CookiePolicy/CookiePolicy";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +54,18 @@ export const router = createBrowserRouter([
       {
         path: "/payment",
         element: <Payment />,
+      },
+      {
+        path: "/cookie-policy",
+        element: <CookiePolicy />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/terms-and-conditions",
+        element: <TermsAndConditions />,
       },
     ],
   },
