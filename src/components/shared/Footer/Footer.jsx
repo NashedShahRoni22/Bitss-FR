@@ -5,7 +5,7 @@ import { BsFacebook, BsInstagram, BsTwitterX, BsYoutube } from "react-icons/bs";
 import { products } from "../../../data/products";
 import { pages } from "../../../data/pages";
 import { bitssProducts } from "../../../data/bitssProducts";
-import logo from "../../../assets/logo/logo.png";
+import logo from "../../../assets/logo/bitss-logo.png";
 
 export default function Footer() {
   const [hostingProducts, setHostingProducts] = useState([]);
