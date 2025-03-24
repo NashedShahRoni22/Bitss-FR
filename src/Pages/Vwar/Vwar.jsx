@@ -25,6 +25,7 @@ const Vwar = () => {
     version: versionPriceInfo[currentVersion]?.name,
     price: versionPriceInfo[currentVersion]?.price,
     currency: "EUR",
+    packageType: "vwar",
   };
 
   return (

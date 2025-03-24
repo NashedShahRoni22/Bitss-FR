@@ -16,6 +16,7 @@ const WapProtection = () => {
     version: isWpVersion ? "WordPress" : "JavaScript",
     price: 19.5,
     currency: "EUR",
+    packageType: "vwap",
   };
 
   return (

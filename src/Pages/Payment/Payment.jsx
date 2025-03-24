@@ -73,15 +73,25 @@ export default function Payment() {
       paymentMethod,
       payableAmount,
       password,
-      bobosohoEmail,
       currency,
       duration,
       domain,
     } = data;
 
+    // Convert duration to an integer
+    const durationInMonths = parseInt(duration, 10);
+
+    // Get today's date
+    const currentDate = new Date();
+
+    // Add the selected months to the current date
+    currentDate.setMonth(currentDate.getMonth() + durationInMonths);
+
+    // Format the date as "YYYY-MM-DD"
+    const validTill = currentDate.toISOString().split("T")[0];
+
     const paymentInfo = {
       name: customerName,
-      user_name: bobosohoEmail,
       email: contactEmail,
       address,
       country,
@@ -90,8 +100,11 @@ export default function Payment() {
       price: payableAmount,
       password,
       currencey: currency,
-      duration: duration.toString(),
+      valid_till: validTill,
       domain,
+      package_type: localProductInfo.packageType,
+      item_type: localProductInfo.version.toLowerCase(),
+      status: true,
     };
 
     try {
