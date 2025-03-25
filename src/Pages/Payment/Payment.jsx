@@ -76,6 +76,7 @@ export default function Payment() {
       currency,
       duration,
       domain,
+      bobosohoEmail,
     } = data;
 
     // Convert duration to an integer
@@ -93,6 +94,7 @@ export default function Payment() {
     const paymentInfo = {
       name: customerName,
       email: contactEmail,
+      user_name: bobosohoEmail,
       address,
       country,
       software: serviceName,
