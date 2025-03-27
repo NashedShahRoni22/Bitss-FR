@@ -62,78 +62,103 @@ export default function Payment() {
 
   // Handle payment form submit
   const onSubmit = async (data) => {
-    setLoading(true);
+    if (data.paymentMethod === "stripe") {
+      try {
+        const res = await fetch(
+          "http://localhost:5000/api/stripe/create-checkout-session",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              productName: data.serviceName,
+              duration: data.duration,
+              price: data.payableAmount,
+              currency: data.currency,
+            }),
+          },
+        );
 
-    const {
-      customerName,
-      contactEmail,
-      address,
-      country,
-      serviceName,
-      paymentMethod,
-      payableAmount,
-      password,
-      currency,
-      duration,
-      domain,
-      bobosohoEmail,
-    } = data;
-
-    // Convert duration to an integer
-    const durationInMonths = parseInt(duration, 10);
-
-    // Get today's date
-    const currentDate = new Date();
-
-    // Add the selected months to the current date
-    currentDate.setMonth(currentDate.getMonth() + durationInMonths);
-
-    // Format the date as "YYYY-MM-DD"
-    const validTill = currentDate.toISOString().split("T")[0];
-
-    const paymentInfo = {
-      name: customerName,
-      email: contactEmail,
-      user_name: bobosohoEmail,
-      address,
-      country,
-      software: serviceName,
-      payment_type: paymentMethod,
-      price: payableAmount,
-      password,
-      currencey: currency,
-      valid_till: validTill,
-      domain,
-      package_type: localProductInfo.packageType,
-      item_type: localProductInfo.version.toLowerCase(),
-      status: true,
-    };
-
-    try {
-      const res = await fetch(`${baseUrl}/payments/bitss/payment/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(paymentInfo),
-      });
-      const data = await res.json();
-      if (data.success === true) {
-        setLoading(false);
-        window.alert(data.message);
-
-        const productInfo = JSON.stringify({
-          ...localProductInfo,
-          ...paymentInfo,
-          ...data.data,
-        });
-        localStorage.setItem("productInfo", productInfo);
-        navigate("/invoice");
+        const { url } = await res.json();
+        window.location.href = url; // Redirect user to Stripe Checkout
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-      window.alert(error.message);
+    } else if (data.paymentMethod === "bank") {
+      setLoading(true);
+
+      const {
+        customerName,
+        contactEmail,
+        address,
+        country,
+        serviceName,
+        paymentMethod,
+        payableAmount,
+        password,
+        currency,
+        duration,
+        domain,
+        bobosohoEmail,
+      } = data;
+
+      // Convert duration to an integer
+      const durationInMonths = parseInt(duration, 10);
+
+      // Get today's date
+      const currentDate = new Date();
+
+      // Add the selected months to the current date
+      currentDate.setMonth(currentDate.getMonth() + durationInMonths);
+
+      // Format the date as "YYYY-MM-DD"
+      const validTill = currentDate.toISOString().split("T")[0];
+
+      const paymentInfo = {
+        name: customerName,
+        email: contactEmail,
+        user_name: bobosohoEmail,
+        address,
+        country,
+        software: serviceName,
+        payment_type: paymentMethod,
+        price: payableAmount,
+        password,
+        currencey: currency,
+        valid_till: validTill,
+        domain,
+        package_type: localProductInfo.packageType,
+        item_type: localProductInfo.version.toLowerCase(),
+        status: true,
+      };
+
+      try {
+        const res = await fetch(`${baseUrl}/payments/bitss/payment/create`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(paymentInfo),
+        });
+        const data = await res.json();
+        if (data.success === true) {
+          setLoading(false);
+          window.alert(data.message);
+
+          const productInfo = JSON.stringify({
+            ...localProductInfo,
+            ...paymentInfo,
+            ...data.data,
+          });
+          localStorage.setItem("productInfo", productInfo);
+          navigate("/invoice");
+        }
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+        window.alert(error.message);
+      }
     }
   };
 
