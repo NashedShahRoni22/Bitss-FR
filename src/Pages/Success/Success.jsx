@@ -5,14 +5,14 @@ import { useNavigate } from "react-router";
 export default function Success() {
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /* useEffect(() => {
     const timer = setTimeout(() => {
       // Redirect to home after 5 seconds
       navigate("/");
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, [navigate]); */
 
   return (
     <section className="bg-gray-50">

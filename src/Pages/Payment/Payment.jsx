@@ -62,15 +62,18 @@ export default function Payment() {
 
   // Handle payment form submit
   const onSubmit = async (data) => {
+    console.log(data);
+
     if (data.paymentMethod === "stripe") {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/stripe/create-checkout-session",
+          "https://paymentapi.bfinit.com/api/v1/online/payments/stripe",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
+            credentials: "include",
             body: JSON.stringify({
               productName: data.serviceName,
               duration: data.duration,
@@ -80,8 +83,11 @@ export default function Payment() {
           },
         );
 
-        const { url } = await res.json();
-        window.location.href = url; // Redirect user to Stripe Checkout
+        const serverData = await res.json();
+        if (serverData) {
+          console.log(serverData);
+          // window.location.href = serverData.url; // Redirect user to Stripe Checkout
+        }
       } catch (error) {
         console.error(error);
       }
@@ -130,7 +136,7 @@ export default function Payment() {
         domain,
         package_type: localProductInfo.packageType,
         item_type: localProductInfo.version.toLowerCase(),
-        status: true,
+        status: data.paymentMethod === "stripe" ? "paid" : "unpaid",
       };
 
       try {
