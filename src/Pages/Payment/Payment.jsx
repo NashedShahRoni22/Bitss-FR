@@ -64,7 +64,55 @@ export default function Payment() {
   const onSubmit = async (data) => {
     console.log(data);
 
+    const {
+      customerName,
+      contactEmail,
+      address,
+      country,
+      serviceName,
+      paymentMethod,
+      payableAmount,
+      password,
+      currency,
+      duration,
+      domain,
+      bobosohoEmail,
+    } = data;
+
     if (data.paymentMethod === "stripe") {
+      // Convert duration to an integer
+      const durationInMonths = parseInt(duration, 10);
+
+      // Get today's date
+      const currentDate = new Date();
+
+      // Add the selected months to the current date
+      currentDate.setMonth(currentDate.getMonth() + durationInMonths);
+
+      // Format the date as "YYYY-MM-DD"
+      const validTill = currentDate.toISOString().split("T")[0];
+
+      const paymentInfo = {
+        name: customerName,
+        user_name: bobosohoEmail,
+        email: contactEmail,
+        address: address,
+        country: country,
+        software: serviceName,
+        payment_type: "stripe",
+        price: payableAmount,
+        password: password,
+        currencey: currency,
+        valid_till: validTill,
+        domain: domain,
+        package_type: localProductInfo.packageType,
+        item_type: localProductInfo.version.toLowerCase(),
+        version: localProductInfo.version.toLowerCase(),
+        status: "paid",
+        isVerified: false,
+        isDeleted: false,
+      };
+
       try {
         const res = await fetch(
           "https://paymentapi.bfinit.com/api/v1/online/payments/stripe",
@@ -73,7 +121,6 @@ export default function Payment() {
             headers: {
               "Content-Type": "application/json",
             },
-            credentials: "include",
             body: JSON.stringify({
               productName: data.serviceName,
               duration: data.duration,
@@ -85,29 +132,18 @@ export default function Payment() {
 
         const serverData = await res.json();
         if (serverData) {
-          console.log(serverData);
-          // window.location.href = serverData.url; // Redirect user to Stripe Checkout
+          localStorage.setItem(
+            "stripeSuccessInfo",
+            JSON.stringify(paymentInfo),
+          );
+          localStorage.setItem("productInfo", JSON.stringify(paymentInfo));
+          window.location.href = serverData.url;
         }
       } catch (error) {
         console.error(error);
       }
     } else if (data.paymentMethod === "bank") {
       setLoading(true);
-
-      const {
-        customerName,
-        contactEmail,
-        address,
-        country,
-        serviceName,
-        paymentMethod,
-        payableAmount,
-        password,
-        currency,
-        duration,
-        domain,
-        bobosohoEmail,
-      } = data;
 
       // Convert duration to an integer
       const durationInMonths = parseInt(duration, 10);
@@ -148,16 +184,17 @@ export default function Payment() {
           body: JSON.stringify(paymentInfo),
         });
         const data = await res.json();
+
         if (data.success === true) {
           setLoading(false);
           window.alert(data.message);
 
-          const productInfo = JSON.stringify({
+          const productInfo = {
             ...localProductInfo,
             ...paymentInfo,
             ...data.data,
-          });
-          localStorage.setItem("productInfo", productInfo);
+          };
+          localStorage.setItem("productInfo", JSON.stringify(productInfo));
           navigate("/invoice");
         }
       } catch (error) {

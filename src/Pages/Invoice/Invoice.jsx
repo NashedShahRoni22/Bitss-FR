@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { generateDate } from "../../utils/generateDate";
-import { FaCloudDownloadAlt } from "react-icons/fa";
+// import { FaCloudDownloadAlt } from "react-icons/fa";
 
-const productFiles = {
+/* const productFiles = {
   WordPress: {
     "Bitss C Contact Form": "/bitss-c-contact-form-wp-premium.zip",
     "Bitss WAP Protection": "/bitss-wap-protection-wp-premium.zip",
@@ -12,14 +12,14 @@ const productFiles = {
   JavaScript: {
     "Bitss C Contact Form": "/bitss-c-contact-form-js-premium.zip",
   },
-};
+}; */
 
 export default function Invoice() {
   const [orderData, setOrderData] = useState({});
-  const downloadUrl =
+  /* const downloadUrl =
     orderData?.version && orderData?.software
       ? productFiles[orderData.version]?.[orderData.software]
-      : "";
+      : ""; */
 
   useEffect(() => {
     const savedData = localStorage.getItem("productInfo");
@@ -85,7 +85,8 @@ export default function Invoice() {
         </p>
 
         <p className="mt-1 capitalize">
-          <span className="font-semibold">Version:</span> {orderData?.version}
+          <span className="font-semibold">Version:</span>{" "}
+          {orderData?.version || orderData?.item_type}
         </p>
 
         {orderData.freeProduct && (
@@ -168,7 +169,7 @@ export default function Invoice() {
           </tbody>
         </table>
 
-        {downloadUrl ? (
+        {/* {downloadUrl ? (
           <div className="mt-8 flex justify-center">
             <a
               href={downloadUrl}
@@ -182,7 +183,7 @@ export default function Invoice() {
           <p className="mt-8 text-center text-lg font-semibold">
             Our Support Team will Contact with you within 48 Hours
           </p>
-        )}
+        )} */}
 
         <p className="mt-8 text-lg font-semibold">
           Congratulations! <br />

@@ -1,18 +1,33 @@
+import { Link, useNavigate } from "react-router";
 import { HiCheckCircle } from "react-icons/hi2";
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useState } from "react";
 
 export default function Success() {
+  const baseUrl = import.meta.env.VITE_Base_Url;
+  const stripePaymentInfo = localStorage.getItem("stripeSuccessInfo");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  /* useEffect(() => {
-    const timer = setTimeout(() => {
-      // Redirect to home after 5 seconds
-      navigate("/");
-    }, 5000);
+  const postData = () => {
+    setLoading(true);
+    fetch(`${baseUrl}/payments/bitss/payment/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: stripePaymentInfo,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success === true) {
+          setLoading(false);
+          localStorage.setItem("productInfo", JSON.stringify(data.data));
+          navigate("/invoice");
+        }
+      });
 
-    return () => clearTimeout(timer);
-  }, [navigate]); */
+    setLoading(false);
+  };
 
   return (
     <section className="bg-gray-50">
@@ -32,7 +47,7 @@ export default function Success() {
               being processed.
             </p>
 
-            <div className="mb-8 w-full rounded-lg border border-gray-200 bg-gray-50 p-6">
+            {/* <div className="mb-8 w-full rounded-lg border border-gray-200 bg-gray-50 p-6">
               <h2 className="mb-4 text-xl font-semibold text-gray-800">
                 Order Summary
               </h2>
@@ -50,26 +65,27 @@ export default function Success() {
                 <span className="text-gray-600">Total:</span>
                 <span className="font-medium">$99.99</span>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex w-full flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-              <button
-                onClick={() => navigate("/orders")}
-                className="flex-1 rounded-md bg-indigo-600 px-6 py-3 text-center text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                View Order
-              </button>
-              <button
-                onClick={() => navigate("/")}
+              {/*  <Link
                 className="flex-1 rounded-md border border-gray-300 px-6 py-3 text-center text-gray-700 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                to="/"
               >
-                Continue Shopping
+                Go Back to Home
+              </Link> */}
+              <button
+                className="flex-1 rounded-md bg-indigo-600 px-6 py-3 text-center text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                disabled={loading}
+                onClick={postData}
+              >
+                {loading ? "Invoice Processing..." : "View Invoice"}
               </button>
             </div>
 
-            <p className="mt-8 text-sm text-gray-500">
+            {/* <p className="mt-8 text-sm text-gray-500">
               You&apos;ll be redirected to the homepage in 5 seconds...
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
