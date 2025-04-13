@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import Step1 from "./Step1/Step1";
 import Step2 from "./Step2/Step2";
 import Step3 from "./Step3/Step3";
+import { calculateValidTill } from "../../utils/calculateValidTill";
+import { postPayment } from "../../api/postPayment";
 
 export default function Payment() {
-  const baseUrl = import.meta.env.VITE_Base_Url;
   const localProductInfo = JSON.parse(localStorage.getItem("productInfo"));
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -62,8 +63,7 @@ export default function Payment() {
 
   // Handle payment form submit
   const onSubmit = async (data) => {
-    console.log(data);
-
+    setLoading(true);
     const {
       customerName,
       contactEmail,
@@ -79,128 +79,86 @@ export default function Payment() {
       bobosohoEmail,
     } = data;
 
-    if (data.paymentMethod === "stripe") {
-      // Convert duration to an integer
-      const durationInMonths = parseInt(duration, 10);
+    const isStripe = paymentMethod === "stripe";
+    const validTill = calculateValidTill(duration);
+    const status = isStripe ? "paid" : "unpaid";
+    const paymentInfo = {
+      address,
+      user_name: bobosohoEmail,
+      email: contactEmail,
+      name: customerName,
+      country,
+      software: serviceName,
+      price: payableAmount,
+      password,
+      currencey: currency,
+      valid_till: validTill,
+      domain,
+      package_type: localProductInfo.packageType,
+      item_type: localProductInfo.version.toLowerCase(),
+      status,
+      payment_type: isStripe ? "stripe" : "bank",
+    };
 
-      // Get today's date
-      const currentDate = new Date();
-
-      // Add the selected months to the current date
-      currentDate.setMonth(currentDate.getMonth() + durationInMonths);
-
-      // Format the date as "YYYY-MM-DD"
-      const validTill = currentDate.toISOString().split("T")[0];
-
-      const paymentInfo = {
-        name: customerName,
-        user_name: bobosohoEmail,
-        email: contactEmail,
-        address: address,
-        country: country,
-        software: serviceName,
-        payment_type: "stripe",
-        price: payableAmount,
-        password: password,
-        currencey: currency,
-        valid_till: validTill,
-        domain: domain,
-        package_type: localProductInfo.packageType,
-        item_type: localProductInfo.version.toLowerCase(),
+    if (isStripe) {
+      // stripe payment method
+      const stripePaymentInfo = {
+        ...paymentInfo,
         version: localProductInfo.version.toLowerCase(),
-        status: "paid",
         isVerified: false,
         isDeleted: false,
         duration,
       };
 
       try {
-        const res = await fetch(
-          "https://paymentapi.bfinit.com/api/v1/online/payments/stripe",
+        const serverData = await postPayment(
+          `${import.meta.env.VITE_Base_Url}/online/payments/stripe`,
           {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              productName: data.serviceName,
-              duration: data.duration,
-              price: data.payableAmount,
-              currency: data.currency,
-            }),
+            productName: serviceName,
+            duration,
+            price: payableAmount,
+            currency,
           },
         );
 
-        const serverData = await res.json();
         if (serverData) {
           localStorage.setItem(
             "stripeSuccessInfo",
-            JSON.stringify({ ...paymentInfo, duration }),
+            JSON.stringify(stripePaymentInfo),
           );
-          localStorage.setItem("productInfo", JSON.stringify(paymentInfo));
+          localStorage.setItem(
+            "productInfo",
+            JSON.stringify(stripePaymentInfo),
+          );
           window.location.href = serverData.url;
         }
       } catch (error) {
-        console.error(error);
+        console.error("Stripe Payment Error:", error);
       }
-    } else if (data.paymentMethod === "bank") {
-      setLoading(true);
-
-      // Convert duration to an integer
-      const durationInMonths = parseInt(duration, 10);
-
-      // Get today's date
-      const currentDate = new Date();
-
-      // Add the selected months to the current date
-      currentDate.setMonth(currentDate.getMonth() + durationInMonths);
-
-      // Format the date as "YYYY-MM-DD"
-      const validTill = currentDate.toISOString().split("T")[0];
-
-      const paymentInfo = {
-        name: customerName,
-        email: contactEmail,
-        user_name: bobosohoEmail,
-        address,
-        country,
-        software: serviceName,
-        payment_type: paymentMethod,
-        price: payableAmount,
-        password,
-        currencey: currency,
-        valid_till: validTill,
-        domain,
-        package_type: localProductInfo.packageType,
-        item_type: localProductInfo.version.toLowerCase(),
-        status: data.paymentMethod === "stripe" ? "paid" : "unpaid",
-        duration,
-      };
-
+    } else {
+      // bank payment method
       try {
-        const res = await fetch(`${baseUrl}/payments/bitss/payment/create`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(paymentInfo),
-        });
-        const data = await res.json();
+        const serverData = await postPayment(
+          `${import.meta.env.VITE_Base_Url}/payments/bitss/payment/create`,
+          paymentInfo,
+        );
 
-        if (data.success === true) {
+        // invoice data saved in localstorage
+        const invoiceData = {
+          ...serverData.data,
+          ...localProductInfo,
+          ...paymentInfo,
+          duration,
+        };
+
+        if (serverData.success === true) {
           setLoading(false);
-          window.alert(data.message);
-
-          const productInfo = {
-            ...localProductInfo,
-            ...paymentInfo,
-            ...data.data,
-          };
-          localStorage.setItem("productInfo", JSON.stringify(productInfo));
+          window.alert(serverData.message);
+          localStorage.setItem("productInfo", JSON.stringify(invoiceData));
           navigate("/invoice");
         }
       } catch (error) {
-        console.error(error);
+        console.error("Bank Payment Error:", error);
         setLoading(false);
         window.alert(error.message);
       }
