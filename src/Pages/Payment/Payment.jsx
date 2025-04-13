@@ -111,6 +111,7 @@ export default function Payment() {
         status: "paid",
         isVerified: false,
         isDeleted: false,
+        duration,
       };
 
       try {
@@ -173,6 +174,7 @@ export default function Payment() {
         package_type: localProductInfo.packageType,
         item_type: localProductInfo.version.toLowerCase(),
         status: data.paymentMethod === "stripe" ? "paid" : "unpaid",
+        duration,
       };
 
       try {

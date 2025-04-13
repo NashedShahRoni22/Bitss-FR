@@ -210,13 +210,16 @@ export default function Invoice() {
           </li>
         </ul>
       </div>
-      <p className="mt-8 text-center">
-        Make your payment directly into the BFIN SASU bank account.
-        <br />
-        <span className="font-semibold">
-          Please use your Order ID as the Payment Reference.
-        </span>
-      </p>
+
+      {!orderData?.payment_type === "stripe" && (
+        <p className="mt-8 text-center">
+          Make your payment directly into the BFIN SASU bank account.
+          <br />
+          <span className="font-semibold">
+            Please use your Order ID as the Payment Reference.
+          </span>
+        </p>
+      )}
 
       <div className="mt-8 flex justify-center">
         <Link
