@@ -135,7 +135,7 @@ export default function Payment() {
         if (serverData) {
           localStorage.setItem(
             "stripeSuccessInfo",
-            JSON.stringify(paymentInfo),
+            JSON.stringify({ ...paymentInfo, duration }),
           );
           localStorage.setItem("productInfo", JSON.stringify(paymentInfo));
           window.location.href = serverData.url;
