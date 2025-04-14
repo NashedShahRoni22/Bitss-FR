@@ -121,7 +121,7 @@ export default function Payment() {
           },
         );
 
-        if (serverData) {
+        if (serverData?.url) {
           localStorage.setItem(
             "stripeSuccessInfo",
             JSON.stringify(stripePaymentInfo),

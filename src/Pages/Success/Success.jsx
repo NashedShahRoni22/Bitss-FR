@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function Success() {
   const baseUrl = import.meta.env.VITE_Base_Url;
+  const localProductInfo = JSON.parse(localStorage.getItem("productInfo"));
   const stripePaymentInfo = localStorage.getItem("stripeSuccessInfo");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -21,12 +22,13 @@ export default function Success() {
       .then((data) => {
         if (data.success === true) {
           setLoading(false);
-          localStorage.setItem("productInfo", JSON.stringify(data.data));
+          localStorage.setItem(
+            "productInfo",
+            JSON.stringify({ ...localProductInfo, ...data?.data }),
+          );
           navigate("/invoice");
         }
       });
-
-    setLoading(false);
   };
 
   return (
