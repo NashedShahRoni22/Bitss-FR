@@ -211,7 +211,7 @@ export default function Invoice() {
         </ul>
       </div>
 
-      {!orderData?.payment_type === "stripe" && (
+      {orderData?.payment_type === "bank" && (
         <p className="mt-8 text-center">
           Make your payment directly into the BFIN SASU bank account.
           <br />
