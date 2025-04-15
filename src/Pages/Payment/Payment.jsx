@@ -98,6 +98,7 @@ export default function Payment() {
       item_type: localProductInfo.version.toLowerCase(),
       status,
       payment_type: isStripe ? "stripe" : "bank",
+      duration,
     };
 
     if (isStripe) {
@@ -107,16 +108,18 @@ export default function Payment() {
         version: localProductInfo.version.toLowerCase(),
         isVerified: false,
         isDeleted: false,
-        duration,
       };
 
       try {
+        // Convert price to cents (integer) for Stripe
+        const priceInCents = Math.round(Number(payableAmount) * 100);
+
         const serverData = await postPayment(
           `${import.meta.env.VITE_Base_Url}/online/payments/stripe`,
           {
             productName: serviceName,
             duration,
-            price: payableAmount,
+            price: priceInCents,
             currency,
           },
         );
@@ -148,7 +151,7 @@ export default function Payment() {
           ...serverData.data,
           ...localProductInfo,
           ...paymentInfo,
-          duration,
+          email: serverData?.data?.email,
         };
 
         if (serverData.success === true) {
