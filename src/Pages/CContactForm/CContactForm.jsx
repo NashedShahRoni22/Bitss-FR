@@ -15,6 +15,10 @@ export default function CContactFormWp() {
     price: 7.5,
     currency: "EUR",
     packageType: "contact-form",
+    isAvailable: {
+      wp: true,
+      js: true,
+    },
   };
 
   return (

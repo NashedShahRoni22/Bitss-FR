@@ -34,19 +34,23 @@ export default function Hero({ productInfo }) {
                 </a>
                 <Link
                   onClick={() => saveProductInfo(productInfo)}
-                  to="/payment"
+                  to={productInfo.isAvailable.wp ? "/payment" : "/contact"}
                   className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
                 >
-                  Buy & Secure Website
+                  {productInfo.isAvailable.wp
+                    ? "Buy & Secure Website"
+                    : "Contact Us"}
                 </Link>
               </>
             ) : (
               <Link
                 onClick={() => saveProductInfo(productInfo)}
-                to="/payment"
+                to={productInfo.isAvailable.js ? "/payment" : "/contact"}
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
-                Buy & Secure Website Now
+                {productInfo.isAvailable.js
+                  ? "Buy & Secure Website"
+                  : "Contact Us"}
               </Link>
             )}
           </div>

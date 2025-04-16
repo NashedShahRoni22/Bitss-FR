@@ -185,23 +185,41 @@ export default function Invoice() {
           </p>
         )} */}
 
-        <p className="mt-8 text-lg font-semibold">
-          Congratulations! <br />
-          Visit your free access from BFINIT
-        </p>
-        <ul>
+        <p className="mt-8 text-lg font-semibold">Congratulations!</p>
+
+        {orderData?.payment_type === "bank" ? (
+          <p className="mt-4 text-sm">
+            We are glad that we have received your payment , To access your
+            product you can log in using the credentials below to download :
+            Product files | User manual | Login credentials & Payment receipt.
+          </p>
+        ) : (
+          <p className="mt-4 text-sm">
+            To access your product, simply log in using the credentials below to
+            download: Product files | User manual | Login credentials & Payment
+            receipt. <br />
+            Also a confirmation email has also been sent to your provided
+            address with the payment details.
+          </p>
+        )}
+
+        <ul className="mt-2 text-sm">
           <li>
             {" "}
-            <span className="font-semibold">Bobosoho:</span>{" "}
+            <span className="font-semibold">Website:</span>{" "}
             https://www.bobosohomail.com{" "}
           </li>
-          <li>
+          {/* <li>
             {" "}
             <span className="font-semibold">Pensaki:</span>{" "}
             https://office.bobosoho.com/login
-          </li>
+          </li> */}
+          {/* <li>
+            <span className="font-semibold">Useremail:</span> {orderData?.email}
+          </li> */}
           <li>
-            <span className="font-semibold">Email:</span> {orderData?.email}
+            <span className="font-semibold">Username:</span>{" "}
+            {orderData?.user_name}
           </li>
 
           <li>

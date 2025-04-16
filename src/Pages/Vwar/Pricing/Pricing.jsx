@@ -16,6 +16,13 @@ const features = [
 ];
 
 export default function Pricing({ currentVersion, productInfo }) {
+  const isAvailable = {
+    js: false,
+    wp: true,
+    software: false,
+    server: false,
+  };
+
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8 md:flex-row md:gap-16">
@@ -90,10 +97,12 @@ export default function Pricing({ currentVersion, productInfo }) {
           {/* Call-to-Action Button */}
           <Link
             onClick={() => saveProductInfo(productInfo)}
-            to="/payment"
+            to={isAvailable[currentVersion] ? "/payment" : "/contact"}
             className="mt-8 block w-full rounded-md bg-accent py-3.5 text-center text-custom-white transition-all duration-200 ease-linear hover:bg-[#0d2535] hover:shadow-custom-2"
           >
-            Buy & Activate Protection
+            {isAvailable[currentVersion]
+              ? "Buy & Secure Website"
+              : "Contact Us"}
           </Link>
         </div>
       </div>

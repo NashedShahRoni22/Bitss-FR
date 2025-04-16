@@ -12,6 +12,13 @@ export default function Hero({ currentVersion, productInfo }) {
     server: "Server",
   };
 
+  const isAvailable = {
+    js: false,
+    wp: true,
+    software: false,
+    server: false,
+  };
+
   const versionDescription = versionDescriptions[currentVersion] || "Website";
 
   return (
@@ -39,19 +46,21 @@ export default function Hero({ currentVersion, productInfo }) {
               </a>
               <Link
                 onClick={() => saveProductInfo(productInfo)}
-                to="/payment"
+                to={isAvailable[currentVersion] ? "/payment" : "/contact"}
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
-                Buy & Secure Website
+                {isAvailable[currentVersion]
+                  ? "Buy & Secure Website"
+                  : "Contact Us"}
               </Link>
             </>
           ) : (
             <Link
               onClick={() => saveProductInfo(productInfo)}
-              to="/payment"
+              to={isAvailable[currentVersion] ? "/payment" : "/contact"}
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
-              Buy & Secure Now
+              {isAvailable[currentVersion] ? "Buy & Secure Now" : "Contact Us"}
             </Link>
           )}
         </div>

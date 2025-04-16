@@ -17,6 +17,10 @@ const WapProtection = () => {
     price: 19.5,
     currency: "EUR",
     packageType: "vwap",
+    isAvailable: {
+      wp: true,
+      js: false,
+    },
   };
 
   return (

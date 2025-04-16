@@ -66,10 +66,24 @@ export default function Pricing({ productInfo }) {
           {/* Call-to-Action Button */}
           <Link
             onClick={() => saveProductInfo(productInfo)}
-            to="/payment"
+            to={
+              productInfo.version === "WordPress"
+                ? productInfo.isAvailable.wp
+                  ? "/payment"
+                  : "/contact"
+                : productInfo.isAvailable.js
+                  ? "/payment"
+                  : "/contact"
+            }
             className="mt-8 block w-full rounded-md bg-accent py-3.5 text-center text-custom-white transition-all duration-200 ease-linear hover:bg-[#0d2535] hover:shadow-custom-2"
           >
-            Buy & Activate Protection
+            {productInfo.version === "WordPress"
+              ? productInfo.isAvailable.wp
+                ? "Buy & Activate Protection"
+                : "Contact Us"
+              : productInfo.isAvailable.js
+                ? "Buy & Activate Protection"
+                : "Contact Us"}
           </Link>
         </div>
       </div>

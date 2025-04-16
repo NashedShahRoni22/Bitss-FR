@@ -4,7 +4,6 @@ import { BsDot } from "react-icons/bs";
 import {
   HiOutlineBars3,
   HiOutlineChevronDown,
-  HiOutlineUserCircle,
   HiOutlineXMark,
 } from "react-icons/hi2";
 import MobileNav from "./MobileNav";
@@ -134,10 +133,17 @@ export default function Navbar() {
                           <Link
                             key={k}
                             to={product.path}
-                            className="flex max-w-fit items-center gap-1 text-sm capitalize transition-all duration-200 ease-in-out hover:text-primary"
+                            className="flex max-w-fit flex-wrap gap-1 text-sm capitalize transition-all duration-200 ease-in-out hover:text-primary"
                           >
                             <BsDot className="min-w-fit text-lg" />
-                            {product.name}
+                            {product.name}{" "}
+                            {product?.isAvailable ? (
+                              <span className="text-green-600">
+                                (Available)
+                              </span>
+                            ) : (
+                              <span className="text-primary">(Upgrading)</span>
+                            )}
                           </Link>
                         ))}
                       </div>
