@@ -6,6 +6,7 @@ import Step2 from "./Step2/Step2";
 import Step3 from "./Step3/Step3";
 import { calculateValidTill } from "../../utils/calculateValidTill";
 import { postPayment } from "../../api/postPayment";
+import { generateInvoiceId } from "../../utils/generateInvoiceId";
 
 export default function Payment() {
   const localProductInfo = JSON.parse(localStorage.getItem("productInfo"));
@@ -99,6 +100,7 @@ export default function Payment() {
       status,
       payment_type: isStripe ? "stripe" : "bank",
       duration,
+      order_id: generateInvoiceId(),
     };
 
     if (isStripe) {
@@ -108,6 +110,7 @@ export default function Payment() {
         version: localProductInfo.version.toLowerCase(),
         isVerified: false,
         isDeleted: false,
+        order_id: generateInvoiceId(),
       };
 
       try {
