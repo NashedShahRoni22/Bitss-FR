@@ -15,6 +15,7 @@ import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 import Success from "../Pages/Success/Success";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import WebProtectionPack from "../Pages/WebProtectionPack/WebProtectionPack";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/web-protection-pack",
+        element: <WebProtectionPack />,
       },
       {
         path: "/about",

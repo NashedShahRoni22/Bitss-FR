@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
-export default function Faq({ faqData }) {
+export default function Faq({ faqData, title }) {
   const [faqOpen, setFaqOpen] = useState("");
 
   const toggleFaqOpen = (id) => {
@@ -11,7 +11,7 @@ export default function Faq({ faqData }) {
   return (
     <section className="px-5 py-10 md:container md:mx-auto md:py-20">
       <h2 className="mb-20 text-center text-3xl font-bold md:text-[2.5rem]">
-        Frequently Asked Questions
+        Frequently asked questions {title &&   <span className="text-primary">: {title}</span> }
       </h2>
 
       {/* FAQ Container */}

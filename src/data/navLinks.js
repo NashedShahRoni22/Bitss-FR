@@ -71,6 +71,10 @@ const navLinks = [
     ],
   },
   {
+    name:"Web Protection Pack",
+    path:"/web-protection-pack"
+  },
+  {
     name: "Hosting",
     children: [
       {
