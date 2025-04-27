@@ -1,5 +1,6 @@
 import React from "react";
 import banner from "../../../src/assets/bundle_banner.webp";
+import { Link } from "react-router";
 
 export default function Hero() {
   return (
@@ -26,13 +27,13 @@ export default function Hero() {
           </li>
         </ul>
         <div className="mt-6">
-          <p className="text-xl font-bold">
+          <p className="text-xl font-bold mb-6">
             Get the complete package for only <span className="text-primary">€47.50</span> (Regular Price: €58.50) –
             Save 20%!
           </p>
-          <button className="mt-4 rounded bg-primary px-6 py-3 font-semibold text-white">
+          <Link to={"/contact"} className=" rounded bg-primary px-6 py-3 font-semibold text-white">
             Buy & Secure Website
-          </button>
+          </Link>
         </div>
       </div>
       <div className="flex justify-center md:mt-0 md:w-1/2">

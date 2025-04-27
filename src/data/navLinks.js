@@ -71,7 +71,7 @@ const navLinks = [
     ],
   },
   {
-    name:"Web Protection Pack",
+    name:"Security Pack",
     path:"/web-protection-pack"
   },
   {
