@@ -4,9 +4,9 @@ import { Link } from "react-router";
 
 export default function Hero() {
   return (
-    <section className="py-8 flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:py-16">
+    <section className="flex flex-col gap-8 py-8 md:flex-row md:items-center md:justify-between md:py-16">
       <div className="md:w-1/2">
-        <h1 className="text-4xl font-bold md:text-6xl capitalize">
+        <h1 className="text-4xl font-bold capitalize md:text-6xl">
           We offer proven <span className="text-primary">website security</span>
         </h1>
         <p className="mt-4 text-lg text-gray-600 md:text-xl">
@@ -27,11 +27,15 @@ export default function Hero() {
           </li>
         </ul>
         <div className="mt-6">
-          <p className="text-xl font-bold mb-6">
-            Get the complete package for only <span className="text-primary">€47.50</span> (Regular Price: €58.50) –
-            Save 20%!
+          <p className="mb-6 text-xl font-bold">
+            Get the complete package for just{" "}
+            <span className="text-primary">€47.50/year</span> (Regular price:
+            €58.50/year) — save 20%!
           </p>
-          <Link to={"/contact"} className=" rounded bg-primary px-6 py-3 font-semibold text-white">
+          <Link
+            to={"/contact"}
+            className="rounded bg-primary px-6 py-3 font-semibold text-white"
+          >
             Buy & Secure Website
           </Link>
         </div>
