@@ -5,9 +5,9 @@ import bitssLogo from "../../../assets/logo/bitss-logo.png";
 export default function Hero() {
   return (
     <section className="">
-      <div className="flex w-full flex-col items-center justify-center gap-8 px-5 py-10 md:container md:mx-auto md:flex-row md:py-20">
+      <div className="flex w-full flex-col items-center justify-center gap-8 px-5 py-10 md:container md:mx-auto lg:flex-row md:py-20">
         {/* Text Container */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full lg:w-1/2">
           <img
             src={bitssLogo}
             alt="bitss logo"
@@ -36,12 +36,12 @@ export default function Hero() {
         </div>
 
         {/* Hero Image Container */}
-        <div className="w-full md:w-1/2">
+        <div className="lg:w-1/2">
           <img
             src={heroImg}
             alt="bitss world wide connection"
             loading="lazy"
-            className="h-[440px] w-full rounded-xl md:ml-auto md:h-auto md:max-w-lg"
+            className="h-[400px] w-full rounded-xl md:ml-auto md:h-auto md:max-w-lg"
           />
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function ProductsSection() {
       {navLinks.map(
         (link, i) =>
           link.name === "Products" && (
-            <div key={i} className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div key={i} className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {link.categories.map((category, i) => (
                 <div
                   key={i}

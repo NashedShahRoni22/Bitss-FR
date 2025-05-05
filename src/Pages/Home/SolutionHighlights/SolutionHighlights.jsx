@@ -37,7 +37,7 @@ export default function SolutionHighlights() {
           loading="lazy"
           className="absolute -right-6 -top-11 size-28 opacity-0 md:opacity-50"
         />
-        <div className="relative grid grid-cols-1 gap-4 py-6 md:grid-cols-3">
+        <div className="relative grid grid-cols-1 gap-4 py-6 md:grid-cols-2 lg:grid-cols-3">
           {highlitedSolutions.map((solution, i) => (
             <div
               key={i}
