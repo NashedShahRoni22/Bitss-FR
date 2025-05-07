@@ -14,7 +14,7 @@ export default function CContactFormWp() {
     version: isWpVersion ? "WordPress" : "JavaScript",
     price: 7.5,
     currency: "EUR",
-    packageType: "contact-form",
+    packageType: isWpVersion ? "contact-form" : "contact-form-js",
     isAvailable: {
       wp: true,
       js: true,

@@ -1,8 +1,8 @@
-import React from "react";
 import banner from "../../../src/assets/bundle_banner.webp";
 import { Link } from "react-router";
+import { saveProductInfo } from "../../utils/saveProductInfo";
 
-export default function Hero() {
+export default function Hero({ productInfo }) {
   return (
     <section className="flex flex-col gap-8 py-8 md:flex-row md:items-center md:justify-between md:py-16">
       <div className="md:w-1/2">
@@ -33,7 +33,8 @@ export default function Hero() {
             €58.50/year) — save 20%!
           </p>
           <Link
-            to={"/contact"}
+            onClick={() => saveProductInfo(productInfo)}
+            to={productInfo.isAvailable ? "/payment" : "/contact"}
             className="rounded bg-primary px-6 py-3 font-semibold text-white"
           >
             Buy & Secure Website
