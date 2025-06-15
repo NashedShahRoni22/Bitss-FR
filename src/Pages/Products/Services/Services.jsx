@@ -1,6 +1,6 @@
 import { Link } from "react-router";
+import SectionTitle from "../../../components/SectionTitle";
 import SectionSubTitle from "../../../components/SectionSubTitle";
-import SectionTitle from "../../../components/sectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { solutionsData } from "../../../data/solutions";
