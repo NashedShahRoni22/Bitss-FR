@@ -28,10 +28,10 @@ const WapProtection = () => {
       <Hero productInfo={productInfo} />
       <Features isWpVersion={isWpVersion} productInfo={productInfo} />
       <Pricing isWpVersion={isWpVersion} productInfo={productInfo} />
-      {/* <VideoSection
+      <VideoSection
         productName="Bitss WAP Website Admin Panel Protection"
-        videoUrl="https://bitss.fr/wp-content/uploads/2024/07/bitts.fr_.mp4"
-      /> */}
+        videoUrl="https://youtu.be/u4nNoY91IvM?si=BmpeCKw5gPAQv4ro"
+      />
       <Faq faqData={faqData} />
     </main>
   );
