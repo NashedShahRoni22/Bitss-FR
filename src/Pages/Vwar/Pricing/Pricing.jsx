@@ -19,7 +19,7 @@ export default function Pricing({ currentVersion, productInfo }) {
   const isAvailable = {
     js: false,
     wp: true,
-    software: false,
+    software: true,
     server: false,
   };
 

@@ -61,6 +61,7 @@ const navLinks = [
           {
             name: "Bitss VWAR frontline protection: Windows Device",
             path: "/products/vwar-frontline/software",
+            isAvailable: true,
           },
           {
             name: "Bitss VWAR frontline protection: Server",
@@ -71,8 +72,8 @@ const navLinks = [
     ],
   },
   {
-    name:"Security Pack",
-    path:"/web-protection-pack"
+    name: "Security Pack",
+    path: "/web-protection-pack",
   },
   {
     name: "Hosting",

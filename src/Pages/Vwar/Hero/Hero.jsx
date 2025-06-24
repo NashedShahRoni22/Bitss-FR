@@ -8,14 +8,14 @@ export default function Hero({ currentVersion, productInfo }) {
   const versionDescriptions = {
     js: "JavaScript Website",
     wp: "WordPress Website",
-    software: "Windows Devices",
+    software: "windows_protection",
     server: "Server",
   };
 
   const isAvailable = {
     js: false,
     wp: true,
-    software: false,
+    software: true,
     server: false,
   };
 
@@ -25,13 +25,19 @@ export default function Hero({ currentVersion, productInfo }) {
     <SectionContainer>
       <div className="w-full">
         <h3 className="mb-2.5 text-center text-xl font-medium text-primary">
-          {productInfo.version} Version
+          {productInfo.version === "windows_protection"
+            ? "Windows Devices"
+            : productInfo.version}{" "}
+          Version
         </h3>
         <HeroTitle>Bitss VWAR Frontline Malware Protection</HeroTitle>
         <HeroSubTitle>
-          Protect Your {versionDescription} – Detect, Block and Eliminate
-          Malware & Viruses <br /> with Advanced Scanning and Real-Time
-          Protection
+          Protect Your{" "}
+          {versionDescription === "windows_protection"
+            ? "Windows Devices"
+            : versionDescription}{" "}
+          – Detect, Block and Eliminate Malware & Viruses <br /> with Advanced
+          Scanning and Real-Time Protection
         </HeroSubTitle>
 
         <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">

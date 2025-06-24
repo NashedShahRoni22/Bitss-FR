@@ -16,7 +16,7 @@ const Vwar = () => {
   const versionPriceInfo = {
     wp: { name: "WordPress", price: 29.5 },
     js: { name: "JavaScript", price: 29.5 },
-    software: { name: "Windows Software", price: 49.5 },
+    software: { name: "windows_protection", price: 49.5 },
     server: { name: "Server", price: 69.5 },
   };
 
