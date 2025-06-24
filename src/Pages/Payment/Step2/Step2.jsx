@@ -29,6 +29,7 @@ export default function Step2({
   setValue,
   errors,
   getValues,
+  hideDomain,
 }) {
   const {
     paymentData,
@@ -124,7 +125,7 @@ export default function Step2({
             readOnly
             type="text"
             id="serviceName"
-            value={paymentData.name}
+            value={`${paymentData.name} ${paymentData.version === "windows_protection" ? "- Windows" : ""}`}
             {...register("serviceName")}
           />
         </div>
@@ -306,20 +307,22 @@ export default function Step2({
         </div>
 
         {/* domain field */}
-        <div className="col-span-12">
-          <label htmlFor="domain">Domain *</label>
-          <input
-            className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
-            type="text"
-            id="domain"
-            placeholder="example.com"
-            {...register("domain", {
-              required: true,
-              pattern:
-                /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/,
-            })}
-          />
-        </div>
+        {!hideDomain && (
+          <div className="col-span-12">
+            <label htmlFor="domain">Domain *</label>
+            <input
+              className="mt-3 w-full rounded border px-4 py-2 outline-none focus:border-black"
+              type="text"
+              id="domain"
+              placeholder="example.com"
+              {...register("domain", {
+                required: true,
+                pattern:
+                  /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/,
+              })}
+            />
+          </div>
+        )}
       </div>
 
       {/* Form Step Changing Buttons */}

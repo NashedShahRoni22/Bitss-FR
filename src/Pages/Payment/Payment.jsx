@@ -10,6 +10,10 @@ import { generateInvoiceId } from "../../utils/generateInvoiceId";
 
 export default function Payment() {
   const localProductInfo = JSON.parse(localStorage.getItem("productInfo"));
+  const hideDomain =
+    localProductInfo.packageType === "vwar" &&
+    localProductInfo.version === "windows_protection";
+
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState("");
@@ -58,7 +62,12 @@ export default function Payment() {
   const isStep1Valid =
     watchStep1.every(Boolean) &&
     /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(watchStep1[1]);
-  const watchStep2 = watch(["bobosohoEmail", "password", "duration", "domain"]);
+  const watchStep2 = watch([
+    "bobosohoEmail",
+    "password",
+    "duration",
+    ...(hideDomain ? [] : ["domain"]),
+  ]);
   const watchStep3 = watch(["paymentMethod"]);
   const selectedCurrency = watch("currency");
 
@@ -242,6 +251,7 @@ export default function Payment() {
             errors={errors}
             setStep={setStep}
             getValues={getValues}
+            hideDomain={hideDomain}
           />
         )}
 
