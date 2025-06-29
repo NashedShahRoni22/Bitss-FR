@@ -19,7 +19,7 @@ export default function Hero({ productInfo }) {
           </li>
           <li>
             <span className="font-semibold">Bitss V War:</span> Shield your
-            database from threats
+            database from malware, ransomware and similar threats
           </li>
           <li>
             <span className="font-semibold">Bitss WAP:</span> Keep login pages
