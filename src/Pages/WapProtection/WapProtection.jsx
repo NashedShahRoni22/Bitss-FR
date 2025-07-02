@@ -19,7 +19,7 @@ const WapProtection = () => {
     packageType: "vwap",
     isAvailable: {
       wp: true,
-      js: false,
+      js: true,
     },
   };
 

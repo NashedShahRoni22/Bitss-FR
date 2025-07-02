@@ -40,6 +40,7 @@ const navLinks = [
           {
             name: "Bitss WAP Protection: JavaScript",
             path: "/products/wap-website-protection/js",
+            isAvailable: true,
           },
         ],
       },
