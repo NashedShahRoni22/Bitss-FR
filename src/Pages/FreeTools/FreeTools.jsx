@@ -9,7 +9,7 @@ export default function FreeTools() {
       <Pricing />
       <VideoSection
         productName="Bitss C Secure Contact Form"
-        videoUrl="https://bitss.fr/wp-content/uploads/2024/07/preselect-2.mp4"
+        videoUrl="https://bitss.one/wp-content/uploads/2024/07/preselect-2.mp4"
       />
     </main>
   );

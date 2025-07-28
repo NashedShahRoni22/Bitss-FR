@@ -67,7 +67,7 @@ export default function Vision() {
           <div className="aspect-video w-full max-w-3xl">
             <video
               className="h-full w-full rounded-lg object-cover"
-              src="https://bitss.fr/wp-content/uploads/2023/12/bitss_video.mp4"
+              src="https://bitss.one/wp-content/uploads/2023/12/bitss_video.mp4"
               title="Our Mission and Vision"
               controls
             ></video>
