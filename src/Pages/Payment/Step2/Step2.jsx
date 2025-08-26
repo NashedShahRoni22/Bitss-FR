@@ -29,7 +29,7 @@ export default function Step2({
   setValue,
   errors,
   getValues,
-  hideDomain,
+  isVwarWindows,
 }) {
   const {
     paymentData,
@@ -175,10 +175,21 @@ export default function Step2({
               onChange: handleDurationChange,
             })}
           >
-            <option value={3}>3 Months (15% Discount)</option>
-            <option value={1}>1 Months</option>
-            <option value={6}>6 Months (20% Discount)</option>
-            <option value={12}>12 Months (33% Discount)</option>
+            {isVwarWindows ? (
+              <>
+                {" "}
+                <option value={3}>3 Months</option>
+                <option value={6}>6 Months (15% Discount)</option>
+                <option value={12}>12 Months (20% Discount)</option>{" "}
+              </>
+            ) : (
+              <>
+                <option value={3}>3 Months (15% Discount)</option>
+                <option value={1}>1 Months</option>
+                <option value={6}>6 Months (20% Discount)</option>
+                <option value={12}>12 Months (33% Discount)</option>
+              </>
+            )}
             {/* <option value={"coupon"}>12 Months with coupon code</option> */}
           </select>
         </div>
@@ -307,7 +318,7 @@ export default function Step2({
         </div>
 
         {/* domain field */}
-        {!hideDomain && (
+        {!isVwarWindows && (
           <div className="col-span-12">
             <label htmlFor="domain">Domain *</label>
             <input
