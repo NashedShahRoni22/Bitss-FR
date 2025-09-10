@@ -16,6 +16,7 @@ import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 import Success from "../Pages/Success/Success";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import WebProtectionPack from "../Pages/WebProtectionPack/WebProtectionPack";
+import Signup from "../Pages/Signup/Signup";
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         path: "/terms-and-conditions",
         element: <TermsAndConditions />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
       },
     ],
   },

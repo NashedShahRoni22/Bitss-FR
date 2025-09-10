@@ -31,6 +31,7 @@ export default function Step2({
   getValues,
   isVwarWindows,
 }) {
+  // custom hooks for calculating payment
   const {
     paymentData,
     selectedCurrency,
@@ -41,6 +42,7 @@ export default function Step2({
     payableAmount,
     originalAmount,
   } = usePaymentCalculation(setValue);
+
   const [emailAvailable, setEmailAvailable] = useState(null);
   const [emailLoading, setEmailLoading] = useState(false);
   // const [subMissionLoading, setSubMissionLoading] = useState(false);
