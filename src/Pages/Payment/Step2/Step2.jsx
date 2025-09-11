@@ -6,16 +6,7 @@ import { HiOutlineEye } from "react-icons/hi2";
 import { HiOutlineEyeOff } from "react-icons/hi";
 import { createBobosohoEmail } from "../../../utils/createBobosohoEmail";
 import Loader from "../../../components/shared/Loader";
-
-const debounce = (func, delay) => {
-  let timeoutId;
-  return (...args) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-};
+import { debounce } from "../../../utils/debounce";
 
 const debouncedValidateEmailAvailability = debounce(
   validateEmailAvailability,

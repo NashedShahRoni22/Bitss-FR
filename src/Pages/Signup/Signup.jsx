@@ -1,19 +1,28 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import FormField from "../../components/FormField";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { authFormValidationRules } from "../../data/authFormValidationRules";
 import bitssLogo from "../../assets/logo/bitss-logo.png";
+import { postApi } from "../../api/api";
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [countries, setCountries] = useState([]);
+  const [emailAvailable, setEmailAvailable] = useState(null);
 
   const {
     register,
     handleSubmit,
+    setValue,
+    getValues,
+    watch,
     formState: { errors },
   } = useForm();
+
+  // Watch the bobosohomail field to track changes
+  const watchedFields = watch();
 
   useEffect(() => {
     fetch("/country.json")
@@ -21,8 +30,57 @@ export default function Signup() {
       .then((data) => setCountries(data));
   }, []);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  // Handle email availability change from FormField
+  const handleEmailAvailabilityChange = (isAvailable) => {
+    setEmailAvailable(isAvailable);
+  };
+
+  // Check if form is valid and can be submitted
+  const isFormValid = () => {
+    // Check if all required fields have values
+    const hasRequiredFields =
+      watchedFields.name &&
+      watchedFields.bobosohomail &&
+      watchedFields.password &&
+      watchedFields.contactEmail &&
+      watchedFields.country &&
+      watchedFields.address &&
+      watchedFields.terms;
+
+    // Check if there are no validation errors
+    const hasNoErrors = Object.keys(errors).length === 0;
+
+    // Check if bobosoho email is available
+    const isEmailValid = emailAvailable === true;
+
+    return hasRequiredFields && hasNoErrors && isEmailValid;
+  };
+
+  const onSubmit = async (data) => {
+    // Only submit if form is valid and email is available
+    if (isFormValid()) {
+      const { address, bobosohomail, contactEmail, country, name, password } =
+        data;
+
+      const payload = {
+        address,
+        email: bobosohomail,
+        personal_email: contactEmail,
+        country,
+        name,
+        password,
+      };
+
+      const res = await postApi({
+        endpoint: "/auth/user/register",
+        payload,
+      });
+
+      if (res?.success) {
+        localStorage.setItem("authInfo", JSON.stringify(res.data));
+        navigate("/login");
+      }
+    }
   };
 
   return (
@@ -45,16 +103,21 @@ export default function Signup() {
               required
               register={register}
               errors={errors}
+              setValue={setValue}
+              getValues={getValues}
             />
 
             <FormField
               label="Bobosohomail"
-              type="email"
               name="bobosohomail"
               required
               toolTip
               register={register}
               errors={errors}
+              setValue={setValue}
+              getValues={getValues}
+              isBobosohoEmail={true}
+              onEmailAvailabilityChange={handleEmailAvailabilityChange}
             />
 
             <FormField
@@ -66,6 +129,8 @@ export default function Signup() {
               register={register}
               errors={errors}
               validation={authFormValidationRules.password}
+              setValue={setValue}
+              getValues={getValues}
             />
 
             <FormField
@@ -76,6 +141,8 @@ export default function Signup() {
               register={register}
               errors={errors}
               validation={authFormValidationRules.contactEmail}
+              setValue={setValue}
+              getValues={getValues}
             />
 
             {/* countries select dropdown */}
@@ -100,6 +167,13 @@ export default function Signup() {
                   </option>
                 ))}
               </select>
+
+              {/* Error message display */}
+              {errors?.country && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.country.message}
+                </p>
+              )}
             </div>
 
             {/* address */}
@@ -168,7 +242,12 @@ export default function Signup() {
               </Link>
               <button
                 type="submit"
-                className="w-full flex-shrink-0 rounded bg-primary px-4 py-2 font-medium text-white transition-all duration-200 ease-in-out hover:bg-primary-hover active:scale-[0.98] md:w-fit"
+                disabled={!isFormValid()}
+                className={`w-full flex-shrink-0 rounded px-4 py-2 font-medium text-white transition-all duration-200 ease-in-out md:w-fit ${
+                  isFormValid()
+                    ? "bg-primary hover:bg-primary-hover active:scale-[0.98]"
+                    : "cursor-not-allowed bg-gray-400"
+                }`}
               >
                 Create Account
               </button>
@@ -177,7 +256,7 @@ export default function Signup() {
         </div>
 
         {/* text info */}
-        <div className="flex w-full flex-col justify-center px-5 py-10 md:w-1/2">
+        <div className="flex w-full flex-col px-5 py-10 md:w-1/2">
           <div>
             <img src={bitssLogo} className="mx-auto size-20" />
             <h2 className="mt-6 text-center text-2xl font-medium text-gray-900">

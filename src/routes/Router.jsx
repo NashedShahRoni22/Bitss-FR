@@ -17,6 +17,7 @@ import Success from "../Pages/Success/Success";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import WebProtectionPack from "../Pages/WebProtectionPack/WebProtectionPack";
 import Signup from "../Pages/Signup/Signup";
+import Login from "../Pages/Login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
