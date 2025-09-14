@@ -9,8 +9,11 @@ import {
 import MobileNav from "./MobileNav";
 import navLinks from "../../../data/navLinks";
 import logo from "../../../assets/logo/logo.png";
+import useAuth from "../../../hooks/useAuth";
+import UserProfileDropdown from "./UserProfileDropdown";
 
 export default function Navbar() {
+  const { authInfo } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // manage translate
@@ -46,6 +49,11 @@ export default function Navbar() {
 
   return (
     <nav className="border-b border-[#C5D6E0]">
+      <div
+        id="google_translate_element"
+        className="mx-auto hidden w-fit lg:block"
+      ></div>
+
       <div className="relative flex w-full items-center justify-between px-5 md:container md:mx-auto">
         {/* Logo */}
         <div>
@@ -135,7 +143,6 @@ export default function Navbar() {
             </div>
           ))}
         </div>
-        <div id="google_translate_element" className="hidden lg:block"></div>
 
         {/* Desktop Login Button */}
         {/* <Link
@@ -144,6 +151,18 @@ export default function Navbar() {
         >
           <HiOutlineUserCircle className="text-xl" /> My Account
         </Link> */}
+
+        {/* login button */}
+        {authInfo?.access_token ? (
+          <UserProfileDropdown />
+        ) : (
+          <Link
+            to="/login"
+            className="hidden rounded bg-primary p-2 px-4 text-sm font-medium text-white transition-all duration-200 ease-in-out hover:bg-primary-hover md:block"
+          >
+            Login
+          </Link>
+        )}
 
         {/* Mobile Menu Toggle Button */}
         <button className="md:hidden">

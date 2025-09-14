@@ -117,10 +117,6 @@ const navLinks = [
     name: "Contact Us",
     path: "/contact",
   },
-  {
-    name: "Account",
-    path: "/login",
-  },
 ];
 
 export default navLinks;

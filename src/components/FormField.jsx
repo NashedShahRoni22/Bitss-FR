@@ -134,9 +134,20 @@ export default function FormField({
               })}
             />
             <div
-              className={`min-w-fit rounded-r border bg-gray-50 px-4 py-2 ${getBorderClass()}`}
+              className={`inline-flex items-center gap-2 rounded-r border bg-gray-50 px-4 py-2 ${getBorderClass()}`}
             >
-              @bobosohomail.com
+              <div className="min-w-fit">@bobosohomail.com</div>
+              {/* bobosoho email tooltip */}
+              {toolTip && (
+                <div className="group relative">
+                  <LuInfo className="h-5 w-5 cursor-help text-gray-400" />
+                  <div className="absolute bottom-full right-0 z-10 mb-2 hidden w-64 rounded bg-gray-800 p-2 text-xs text-white group-hover:block">
+                    This is the main email that will receive the products. This
+                    email will also be used for login to your account.
+                    <div className="absolute right-3 top-full -mt-1 border-4 border-transparent border-t-gray-800"></div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         ) : (
@@ -150,20 +161,6 @@ export default function FormField({
               ...validation,
             })}
           />
-        )}
-
-        {/* bobosoho email tooltip */}
-        {toolTip && (
-          <div className="absolute right-2 top-1/2 -translate-y-1/2">
-            <div className="group relative">
-              <LuInfo className="h-5 w-5 cursor-help text-gray-400" />
-              <div className="absolute bottom-full right-0 z-10 mb-2 hidden w-64 rounded bg-gray-800 p-2 text-xs text-white group-hover:block">
-                This is the main email that will receive the products. This
-                email will also be used for login to your account.
-                <div className="absolute right-3 top-full -mt-1 border-4 border-transparent border-t-gray-800"></div>
-              </div>
-            </div>
-          </div>
         )}
 
         {/* password toggle */}

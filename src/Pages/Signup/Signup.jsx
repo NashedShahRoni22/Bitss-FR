@@ -5,12 +5,17 @@ import { useForm } from "react-hook-form";
 import { authFormValidationRules } from "../../data/authFormValidationRules";
 import bitssLogo from "../../assets/logo/bitss-logo.png";
 import { postApi } from "../../api/api";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { LuLoaderCircle } from "react-icons/lu";
 
 export default function Signup() {
+  const { addAuthInfo } = useAuth();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [countries, setCountries] = useState([]);
   const [emailAvailable, setEmailAvailable] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -59,26 +64,44 @@ export default function Signup() {
   const onSubmit = async (data) => {
     // Only submit if form is valid and email is available
     if (isFormValid()) {
-      const { address, bobosohomail, contactEmail, country, name, password } =
-        data;
+      setIsLoading(true);
 
-      const payload = {
-        address,
-        email: bobosohomail,
-        personal_email: contactEmail,
-        country,
-        name,
-        password,
-      };
+      try {
+        const { address, bobosohomail, contactEmail, country, name, password } =
+          data;
 
-      const res = await postApi({
-        endpoint: "/auth/user/register",
-        payload,
-      });
+        const payload = {
+          address,
+          email: `${bobosohomail}@bobosohomail.com`,
+          personal_email: contactEmail,
+          country,
+          name,
+          password,
+        };
 
-      if (res?.success) {
-        localStorage.setItem("authInfo", JSON.stringify(res.data));
-        navigate("/login");
+        const res = await postApi({
+          endpoint: "/auth/user/register",
+          payload,
+        });
+
+        if (res?.success) {
+          toast.success(res?.message);
+          addAuthInfo(res?.data);
+          navigate("/login");
+        } else {
+          // Handle API response with success: false
+          toast.error(res?.message || "Registration failed. Please try again.");
+        }
+      } catch (error) {
+        // Handle network errors or other exceptions
+        console.error("Registration error:", error);
+        toast.error(
+          error?.message ||
+            "An error occurred during registration. Please try again.",
+        );
+      } finally {
+        // Always set loading to false, whether success or error
+        setIsLoading(false);
       }
     }
   };
@@ -242,14 +265,15 @@ export default function Signup() {
               </Link>
               <button
                 type="submit"
-                disabled={!isFormValid()}
-                className={`w-full flex-shrink-0 rounded px-4 py-2 font-medium text-white transition-all duration-200 ease-in-out md:w-fit ${
+                disabled={!isFormValid() || isLoading}
+                className={`inline-flex w-full flex-shrink-0 items-center justify-center gap-2 rounded px-4 py-2 font-medium text-white transition-all duration-200 ease-in-out disabled:cursor-not-allowed disabled:opacity-50 md:w-fit ${
                   isFormValid()
                     ? "bg-primary hover:bg-primary-hover active:scale-[0.98]"
                     : "cursor-not-allowed bg-gray-400"
                 }`}
               >
-                Create Account
+                {isLoading ? "Creating" : "Create"} Account{" "}
+                {isLoading && <LuLoaderCircle className="animate-spin" />}
               </button>
             </div>
           </form>

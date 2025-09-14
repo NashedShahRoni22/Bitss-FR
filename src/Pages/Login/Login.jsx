@@ -5,10 +5,15 @@ import { useForm } from "react-hook-form";
 import { authFormValidationRules } from "../../data/authFormValidationRules";
 import bitssLogo from "../../assets/logo/bitss-logo.png";
 import { postApi } from "../../api/api";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { LuLoaderCircle } from "react-icons/lu";
 
 export default function Login() {
+  const { addAuthInfo } = useAuth();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -30,15 +35,40 @@ export default function Login() {
   };
 
   const onSubmit = async (data) => {
+    // Only submit if form is valid
     if (isFormValid()) {
-      const res = await postApi({
-        endpoint: "/auth/user/login",
-        payload: data,
-      });
+      setIsLoading(true); // Start loading state
 
-      if (res?.success) {
-        localStorage.setItem("authInfo", JSON.stringify(res.data));
-        navigate("/");
+      try {
+        const res = await postApi({
+          endpoint: "/auth/user/login",
+          payload: data,
+        });
+
+        if (res?.success) {
+          toast.success(res?.message || "Login successful!");
+          addAuthInfo(res?.data);
+          navigate("/");
+        } else {
+          // Handle API response with success: false
+          toast.error(
+            res?.message || "Login failed. Please check your credentials.",
+          );
+        }
+      } catch (error) {
+        // Handle network errors or other exceptions
+        console.error("Login error:", error);
+
+        // Show user-friendly error message
+        const errorMessage =
+          error?.response?.data?.message ||
+          error?.message ||
+          "An error occurred during login. Please try again.";
+
+        toast.error(errorMessage);
+      } finally {
+        // Always set loading to false, whether success or error
+        setIsLoading(false);
       }
     }
   };
@@ -68,7 +98,7 @@ export default function Login() {
           <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4">
             <FormField
               label="Bobosohomail"
-              type="email"
+              type="text"
               name="email"
               required
               register={register}
@@ -106,14 +136,15 @@ export default function Login() {
               </Link>
               <button
                 type="submit"
-                disabled={!isFormValid()}
-                className={`w-full flex-shrink-0 rounded px-4 py-2 font-medium text-white transition-all duration-200 ease-in-out md:w-fit ${
+                disabled={!isFormValid() || isLoading}
+                className={`inline-flex w-full flex-shrink-0 items-center justify-center gap-2 rounded px-4 py-2 font-medium text-white transition-all duration-200 ease-in-out disabled:opacity-50 md:w-fit ${
                   isFormValid()
                     ? "bg-primary hover:bg-primary-hover active:scale-[0.98]"
                     : "cursor-not-allowed bg-gray-400"
                 }`}
               >
-                Sign In
+                Sign In{" "}
+                {isLoading && <LuLoaderCircle className="animate-spin" />}
               </button>
             </div>
           </form>
