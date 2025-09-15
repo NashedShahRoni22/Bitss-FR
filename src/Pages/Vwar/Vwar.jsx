@@ -6,12 +6,15 @@ import { useParams } from "react-router";
 import VideoSection from "../../components/VideoSection";
 import { vwarFaq } from "../../data/faq/vwarFaq";
 import MalwareTable from "./MalwareTable/MalwareTable";
+import useProductDetails from "../../hooks/useProductDetails";
 
 const Vwar = () => {
-  const { version } = useParams();
+  const { version, productId } = useParams();
 
   const validVersions = ["js", "wp", "software", "server"];
   const currentVersion = validVersions.includes(version) ? version : "wp";
+
+  const { productDetails } = useProductDetails(productId);
 
   const versionPriceInfo = {
     wp: { name: "WordPress", price: 29.5 },
@@ -32,7 +35,11 @@ const Vwar = () => {
     <main>
       <Hero currentVersion={currentVersion} productInfo={productInfo} />
       <Features currentVersion={currentVersion} />
-      <Pricing currentVersion={currentVersion} productInfo={productInfo} />
+      <Pricing
+        currentVersion={currentVersion}
+        productInfo={productInfo}
+        productDetails={productDetails}
+      />
       <MalwareTable />
       <VideoSection
         productName="Bitss VWAR Frontline Protection"

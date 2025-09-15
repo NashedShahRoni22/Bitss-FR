@@ -50,15 +50,15 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/products/wap-website-protection/:version",
+        path: "/products/wap-website-protection/:version/:productId",
         element: <WapProtection />,
       },
       {
-        path: "/products/c-contact-form/:version",
+        path: "/products/c-contact-form/:version/:productId",
         element: <CContactFormWp />,
       },
       {
-        path: "/products/vwar-frontline/:version",
+        path: "/products/vwar-frontline/:version/:productId",
         element: <Vwar />,
       },
       {

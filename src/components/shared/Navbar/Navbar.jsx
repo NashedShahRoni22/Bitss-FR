@@ -7,14 +7,46 @@ import {
   HiOutlineXMark,
 } from "react-icons/hi2";
 import MobileNav from "./MobileNav";
-import navLinks from "../../../data/navLinks";
+import { transformApiToNavStructure } from "../../../data/navLinks";
 import logo from "../../../assets/logo/logo.png";
 import useAuth from "../../../hooks/useAuth";
 import UserProfileDropdown from "./UserProfileDropdown";
+import staticNavLinks from "../../../data/navLinks";
 
 export default function Navbar() {
   const { authInfo } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navLinks, setNavLinks] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        const response = await fetch(
+          `${import.meta.env.VITE_Base_Url}/products/product/category-wise/products`,
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        if (result?.success) {
+          const dynamicNavLinks = transformApiToNavStructure(result?.data);
+          setNavLinks(dynamicNavLinks);
+        }
+      } catch (err) {
+        console.error("Error fetching categories:", err?.message);
+        setNavLinks(staticNavLinks);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // manage translate
   const googleTranslateElementInit = () => {

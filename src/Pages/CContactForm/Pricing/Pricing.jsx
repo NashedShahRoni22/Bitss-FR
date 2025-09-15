@@ -4,7 +4,7 @@ import SectionContainer from "../../../components/shared/SectionContainer";
 import { Link } from "react-router";
 import { saveProductInfo } from "../../../utils/saveProductInfo";
 
-export default function Pricing({ productInfo }) {
+export default function Pricing({ productInfo, productDetails }) {
   const features = [
     "Bitss C Anti-Spam Contact Form",
     "Yearly Backups (10 total) with 1 copy per month",
@@ -52,7 +52,7 @@ export default function Pricing({ productInfo }) {
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>
           <ul className="mt-2.5 space-y-2 font-light">
-            {features.map((feat, i) => (
+            {productDetails?.product_details?.map((feat, i) => (
               <li key={i} className="flex items-center gap-2">
                 <MdCheck className="min-w-fit rounded bg-[#0073e6] text-custom-white" />
                 {feat}

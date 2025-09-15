@@ -1,76 +1,7 @@
-import bitssVwar from "../assets/logo/bitss-vwar.png";
-import bitssC from "../assets/logo/bitss-c.png";
-import wapIcon from "../assets/icons/bitss-wap.png";
-
-const navLinks = [
+const staticNavLinks = [
   {
     name: "Home",
     path: "/",
-  },
-  {
-    name: "Products",
-    categories: [
-      {
-        title: "Bitss C Contact Form",
-        subTitle: "Anti spam & Virus Protection",
-        icon: bitssC,
-        items: [
-          {
-            name: "Bitss C Contact Form: WordPress",
-            path: "/products/c-contact-form/wp",
-            isAvailable: true,
-          },
-          {
-            name: "Bitss C Contact Form: JavaScript",
-            path: "/products/c-contact-form/js",
-            isAvailable: true,
-          },
-        ],
-      },
-      {
-        title: "Bitss WAP",
-        subTitle: "Website Login Protection",
-        icon: wapIcon,
-        items: [
-          {
-            name: "Bitss WAP Protection: WordPress",
-            path: "/products/wap-website-protection/wp",
-            isAvailable: true,
-          },
-          {
-            name: "Bitss WAP Protection: JavaScript",
-            path: "/products/wap-website-protection/js",
-            isAvailable: true,
-          },
-        ],
-      },
-      {
-        title: "Bitss VWAR",
-        subTitle:
-          "Provides Database Security, Filtering to Clean & Block Device Codes that are implemented in your database to destroy you business",
-        icon: bitssVwar,
-        items: [
-          {
-            name: "Bitss VWAR frontline protection: WordPress",
-            path: "/products/vwar-frontline/wp",
-            isAvailable: true,
-          },
-          {
-            name: "Bitss VWAR frontline protection: JavaScript",
-            path: "/products/vwar-frontline/js",
-          },
-          {
-            name: "Bitss VWAR frontline protection: Windows Device",
-            path: "/products/vwar-frontline/software",
-            isAvailable: true,
-          },
-          {
-            name: "Bitss VWAR frontline protection: Server",
-            path: "/products/vwar-frontline/server",
-          },
-        ],
-      },
-    ],
   },
   {
     name: "Security Pack",
@@ -119,4 +50,60 @@ const navLinks = [
   },
 ];
 
-export default navLinks;
+// Path mapping for products
+const productPathMapping = {
+  "Bitss C Contact Form": {
+    wordpress: "/products/c-contact-form/wp",
+    javascript: "/products/c-contact-form/js",
+  },
+  "Bitss WAP": {
+    wordpress: "/products/wap-website-protection/wp",
+    "windows device": "/products/wap-website-protection/software",
+  },
+  "Bitss VWAR": {
+    wordpress: "/products/vwar-frontline/wp",
+    javascript: "/products/vwar-frontline/js",
+    "windows device": "/products/vwar-frontline/software",
+    server: "/products/vwar-frontline/server",
+  },
+};
+
+// Function to transform API response to nav structure
+export const transformApiToNavStructure = (apiCategories) => {
+  const productsCategory = {
+    name: "Products",
+    categories: apiCategories.map((category) => ({
+      title: category.categoryName,
+      subTitle: category.sort_description.replace(/^\(|\)$/g, ""), // Remove outer parentheses
+      icon: category.image, // Use icon directly from API
+      items: category.products.map((product) => {
+        const productKey = product.name.toLowerCase();
+        const categoryPaths = productPathMapping[category.categoryName] || {};
+        const basePath = categoryPaths[productKey];
+
+        // Append product ID to the path for details page fetching
+        const productPath = basePath
+          ? `${basePath}/${product._id}`
+          : `/products/${category.categoryName.toLowerCase().replace(/\s+/g, "-")}/${productKey}/${product._id}`;
+
+        return {
+          name: `${category.categoryName}: ${product.name}`,
+          path: productPath,
+          productId: product._id, // Include product ID for easy access
+          isAvailable: product.status === "available",
+          price: product.price,
+          productDetails: product.product_details,
+        };
+      }),
+    })),
+  };
+
+  // Insert products category at index 1 (after Home)
+  return [
+    staticNavLinks[0], // Home
+    productsCategory, // Products (dynamic)
+    ...staticNavLinks.slice(1), // Rest of static links
+  ];
+};
+
+export default staticNavLinks;

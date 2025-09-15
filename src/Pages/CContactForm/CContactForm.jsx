@@ -5,9 +5,14 @@ import Faq from "../../components/Faq";
 import useIsWpVersion from "../../hooks/useIsWpVersion";
 import { cContactFormWp } from "../../data/faq/cContactFormWp";
 import { cContactFormFeats } from "../../data/cContactFormFeats";
+import { useParams } from "react-router";
+import useProductDetails from "../../hooks/useProductDetails";
 
 export default function CContactFormWp() {
+  const { productId } = useParams();
   const isWpVersion = useIsWpVersion();
+
+  const { productDetails } = useProductDetails(productId);
 
   const productInfo = {
     name: "Bitss C Contact Form",
@@ -29,7 +34,7 @@ export default function CContactFormWp() {
         subTitle={`Secure your contact form with Bitss C Antispam – advanced protection against spam and malicious submissions for ${isWpVersion ? "WordPress" : "JavaScript"}`}
         featsData={cContactFormFeats}
       />
-      <Pricing productInfo={productInfo} />
+      <Pricing productInfo={productInfo} productDetails={productDetails} />
       <Faq faqData={cContactFormWp} />
     </main>
   );
