@@ -3,6 +3,7 @@ import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import { Link } from "react-router";
 import { saveProductInfo } from "../../../utils/saveProductInfo";
+import formatPriceDisplay from "../../../utils/formatPriceDisplay";
 
 export default function Pricing({ productInfo, productDetails }) {
   const features = [
@@ -11,6 +12,8 @@ export default function Pricing({ productInfo, productDetails }) {
     "Licence Upgrade",
     "Training & Support",
   ];
+
+  const yearlyPrice = formatPriceDisplay(productDetails?.price * 12);
 
   return (
     <SectionContainer>
@@ -46,8 +49,10 @@ export default function Pricing({ productInfo, productDetails }) {
         {/* Right Section: Pricing and Features */}
         <div className="w-full md:w-1/2">
           {/* Pricing */}
-          <p className="mb-2.5 text-3xl font-semibold">Yearly: €7.50</p>
-          <p className="mt-4">One-time installation by Bitss team: €7.50</p>
+          <p className="mb-2.5 text-3xl font-semibold">
+            Yearly: €{yearlyPrice}
+          </p>
+          {/* <p className="mt-4">One-time installation by Bitss team: €7.50</p> */}
 
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>

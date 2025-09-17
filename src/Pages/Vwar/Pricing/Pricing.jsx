@@ -3,6 +3,7 @@ import { MdCheck } from "react-icons/md";
 import SectionTitle from "../../../components/SectionTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import { saveProductInfo } from "../../../utils/saveProductInfo";
+import formatPriceDisplay from "../../../utils/formatPriceDisplay";
 const features = [
   "Automatic Directory Scanner",
   "Manual Directory Scanner",
@@ -26,6 +27,8 @@ export default function Pricing({
     software: true,
     server: false,
   };
+
+  const yearlyPrice = formatPriceDisplay(productDetails?.price * 12);
 
   return (
     <SectionContainer>
@@ -83,9 +86,9 @@ export default function Pricing({
         <div className="w-full md:w-1/2">
           {/* Pricing */}
           <p className="mb-2.5 text-3xl font-semibold">
-            Yearly: €{productInfo.price.toFixed(2)}
+            Yearly: €{yearlyPrice}
           </p>
-          <p className="mt-4">One-time installation by Bitss team: €25</p>
+          {/* <p className="mt-4">One-time installation by Bitss team: €25</p> */}
 
           {/* Features List */}
           <p className="mt-4 font-bold">What&apos;s included:</p>
