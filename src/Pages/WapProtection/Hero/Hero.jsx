@@ -5,7 +5,7 @@ import SectionContainer from "../../../components/shared/SectionContainer";
 import ProductVersion from "../../../components/ProductVersion";
 import { saveProductInfo } from "../../../utils/saveProductInfo";
 
-export default function Hero({ productInfo }) {
+export default function Hero({ productInfo, handleAddToCart }) {
   return (
     <SectionContainer>
       <div className="w-full">
@@ -36,26 +36,24 @@ export default function Hero({ productInfo }) {
               >
                 Download User Manual
               </a>
-              <Link
-                onClick={() => saveProductInfo(productInfo)}
-                to={productInfo.isAvailable.wp ? "/payment" : "/contact"}
+              <button
+                onClick={handleAddToCart}
                 className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
               >
                 {productInfo.isAvailable.wp
                   ? "Buy & Secure Website"
                   : "Contact Us"}
-              </Link>
+              </button>
             </>
           ) : (
-            <Link
-              onClick={() => saveProductInfo(productInfo)}
-              to={productInfo.isAvailable.js ? "/payment" : "/contact"}
+            <button
+              onClick={handleAddToCart}
               className="w-full rounded-md border border-primary bg-primary px-6 py-3 text-center text-custom-white shadow transition-all duration-200 ease-in-out hover:border-primary-hover hover:bg-primary-hover hover:shadow-custom-red md:w-fit"
             >
               {productInfo.isAvailable.js
                 ? "Buy & Secure Website"
                 : "Contact Us"}
-            </Link>
+            </button>
           )}
         </div>
       </div>

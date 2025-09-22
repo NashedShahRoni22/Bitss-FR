@@ -19,6 +19,7 @@ import WebProtectionPack from "../Pages/WebProtectionPack/WebProtectionPack";
 import Signup from "../Pages/Signup/Signup";
 import Login from "../Pages/Login/Login";
 import Profile from "../Pages/Profile/Profile";
+import Cart from "../Pages/Cart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

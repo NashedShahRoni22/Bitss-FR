@@ -5,7 +5,11 @@ import { Link } from "react-router";
 import { saveProductInfo } from "../../../utils/saveProductInfo";
 import formatPriceDisplay from "../../../utils/formatPriceDisplay";
 
-export default function Pricing({ productInfo, productDetails }) {
+export default function Pricing({
+  productInfo,
+  productDetails,
+  handleAddToCart,
+}) {
   const features = [
     "Bitss C Anti-Spam Contact Form",
     "Yearly Backups (10 total) with 1 copy per month",
@@ -66,17 +70,8 @@ export default function Pricing({ productInfo, productDetails }) {
           </ul>
 
           {/* Call-to-Action Button */}
-          <Link
-            onClick={() => saveProductInfo(productInfo)}
-            to={
-              productInfo.version === "WordPress"
-                ? productInfo.isAvailable.wp
-                  ? "/payment"
-                  : "/contact"
-                : productInfo.isAvailable.js
-                  ? "/payment"
-                  : "/contact"
-            }
+          <button
+            onClick={handleAddToCart}
             className="mt-8 block w-full rounded-md bg-accent py-3.5 text-center text-custom-white transition-all duration-200 ease-linear hover:bg-[#0d2535] hover:shadow-custom-2"
           >
             {productInfo.version === "WordPress"
@@ -86,7 +81,7 @@ export default function Pricing({ productInfo, productDetails }) {
               : productInfo.isAvailable.js
                 ? "Buy & Activate Protection"
                 : "Contact Us"}
-          </Link>
+          </button>
         </div>
       </div>
     </SectionContainer>

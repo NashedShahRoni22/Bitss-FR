@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { LuChevronDown, LuShoppingCart, LuUser } from "react-icons/lu";
 import { Link } from "react-router";
+import useCart from "../../../hooks/useCart";
 
 export default function UserProfileDropdown() {
+  const { cartItems } = useCart();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const dropdownRef = useRef(null);
@@ -88,7 +90,7 @@ export default function UserProfileDropdown() {
                 onClick={() => setIsDropdownOpen(false)}
               >
                 <LuShoppingCart className="mr-3 h-4 w-4" />
-                Cart
+                Cart {cartItems.length > 0 ? `- ${cartItems.length}` : ""}
               </Link>
 
               {/* Divider */}

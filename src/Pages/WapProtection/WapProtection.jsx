@@ -8,8 +8,10 @@ import { wapJsFaq } from "../../data/faq/wapJsFaq";
 import useIsWpVersion from "../../hooks/useIsWpVersion";
 import { useParams } from "react-router";
 import useProductDetails from "../../hooks/useProductDetails";
+import useCart from "../../hooks/useCart";
 
 const WapProtection = () => {
+  const { addToCart } = useCart();
   const { productId } = useParams();
   const isWpVersion = useIsWpVersion();
   const faqData = isWpVersion ? wapWordpressFaq : wapJsFaq;
@@ -27,14 +29,27 @@ const WapProtection = () => {
     },
   };
 
+  const handleAddToCart = () => {
+    const cartProduct = {
+      id: productId,
+      name: productInfo.name,
+      version: productDetails.name,
+      price: productDetails.price,
+      subscriptions: productDetails.subscription_periods,
+    };
+
+    addToCart(cartProduct);
+  };
+
   return (
     <main>
-      <Hero productInfo={productInfo} />
+      <Hero productInfo={productInfo} handleAddToCart={handleAddToCart} />
       <Features isWpVersion={isWpVersion} productInfo={productInfo} />
       <Pricing
         isWpVersion={isWpVersion}
         productInfo={productInfo}
         productDetails={productDetails}
+        handleAddToCart={handleAddToCart}
       />
       <VideoSection
         productName="Bitss WAP Website Admin Panel Protection"

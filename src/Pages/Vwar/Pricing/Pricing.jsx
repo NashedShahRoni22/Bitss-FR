@@ -20,6 +20,7 @@ export default function Pricing({
   currentVersion,
   productInfo,
   productDetails,
+  handleAddToCart,
 }) {
   const isAvailable = {
     js: false,
@@ -102,15 +103,14 @@ export default function Pricing({
           </ul>
 
           {/* Call-to-Action Button */}
-          <Link
-            onClick={() => saveProductInfo(productInfo)}
-            to={isAvailable[currentVersion] ? "/payment" : "/contact"}
+          <button
+            onClick={handleAddToCart}
             className="mt-8 block w-full rounded-md bg-accent py-3.5 text-center text-custom-white transition-all duration-200 ease-linear hover:bg-[#0d2535] hover:shadow-custom-2"
           >
             {isAvailable[currentVersion]
               ? "Buy & Secure Website"
               : "Contact Us"}
-          </Link>
+          </button>
         </div>
       </div>
     </SectionContainer>
