@@ -20,6 +20,8 @@ import Signup from "../Pages/Signup/Signup";
 import Login from "../Pages/Login/Login";
 import Profile from "../Pages/Profile/Profile";
 import Cart from "../Pages/Cart/Cart";
+import Checkout from "../Pages/Checkout/Checkout";
+import MyOrders from "../Pages/MyOrders/MyOrders";
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +95,14 @@ export const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
+      },
+      {
+        path: "/my-orders",
+        element: <MyOrders />,
       },
     ],
   },

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import AuthContext from "../Context/AuthContext";
+import toast from "react-hot-toast";
 
 export default function AuthProvider({ children }) {
   const [authInfo, setAuthInfo] = useState(null);
@@ -8,6 +9,12 @@ export default function AuthProvider({ children }) {
     setAuthInfo(data);
     localStorage.setItem("authInfo", JSON.stringify(data));
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("authInfo");
+    setAuthInfo(null);
+    toast.success("Successfully logged out");
+  };
 
   useEffect(() => {
     try {
@@ -24,6 +31,7 @@ export default function AuthProvider({ children }) {
   const value = {
     authInfo,
     addAuthInfo,
+    handleLogout,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

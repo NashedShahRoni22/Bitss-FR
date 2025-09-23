@@ -1,63 +1,51 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   LuUser,
   LuMail,
   LuMapPin,
   LuGlobe,
-  LuCalendar,
-  LuShield,
   LuSave,
   LuX,
   LuSettings,
   LuLock,
-  LuCircleAlert,
-  LuCircleCheck,
   LuPencil,
 } from "react-icons/lu";
+import useAuth from "../../hooks/useAuth";
 
 export default function Profile() {
+  const { authInfo } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    name: "Ak Azad hosen",
-    email: "akazad9143@example.com",
-    personal_email: "personal1@example.com",
-    address: "Dhaka, Bangladesh",
-    country: "Bangladesh",
-    username: "akazad1",
+    name: authInfo?.user?.name,
+    email: authInfo?.user?.email,
+    personal_email: authInfo?.user?.personal_email,
+    address: authInfo?.user?.address,
+    country: authInfo?.user?.country,
+    username: authInfo?.user?.username,
   });
 
-  // Mock user data from API response
-  const userData = {
-    _id: "68bd2d079b2c273266b08643",
-    name: "Ak Azad hosen",
-    email: "akazad9143@example.com",
-    personal_email: "personal1@example.com",
-    address: "Dhaka, Bangladesh",
-    country: "Bangladesh",
-    role: "user",
-    status: "active",
-    isVerified: false,
-    isDeleted: false,
-    createdAt: "2025-09-07T06:58:15.182Z",
-    updatedAt: "2025-09-07T06:58:15.182Z",
-    username: "akazad1",
-  };
+  // update formData on component mount with authInfo
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      name: authInfo?.user?.name,
+      email: authInfo?.user?.email,
+      personal_email: authInfo?.user?.personal_email,
+      address: authInfo?.user?.address,
+      country: authInfo?.user?.country,
+      username: authInfo?.user?.username,
+    }));
+  }, [authInfo]);
 
   const getInitials = (name) => {
-    return name
-      .split(" ")
-      .map((word) => word.charAt(0))
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
-  };
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+    if (name) {
+      return name
+        .split(" ")
+        .map((word) => word.charAt(0))
+        .join("")
+        .toUpperCase()
+        .slice(0, 2);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -78,12 +66,12 @@ export default function Profile() {
   const handleCancel = () => {
     // Reset form data to original values
     setFormData({
-      name: userData.name,
-      email: userData.email,
-      personal_email: userData.personal_email,
-      address: userData.address,
-      country: userData.country,
-      username: userData.username,
+      name: authInfo?.user?.name,
+      email: authInfo?.user?.email,
+      personal_email: authInfo?.user?.personal_email,
+      address: authInfo?.user?.address,
+      country: authInfo?.user?.country,
+      username: authInfo?.user?.username,
     });
     setIsEditing(false);
   };
@@ -97,45 +85,30 @@ export default function Profile() {
             <div className="flex items-center space-x-4">
               {/* Profile Avatar */}
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-red-600 text-2xl font-bold text-white">
-                {getInitials(userData.name)}
+                {getInitials(authInfo?.user?.name)}
               </div>
 
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">
-                  {userData.name}
+                  {authInfo?.user?.name}
                 </h1>
-                <p className="text-gray-600">@{userData.username}</p>
+                <p className="text-gray-600">@{authInfo?.user?.username}</p>
                 <div className="mt-2 flex items-center">
                   <span
                     className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                      userData.status === "active"
+                      authInfo?.user?.status === "active"
                         ? "bg-green-100 text-green-800"
                         : "bg-gray-100 text-gray-800"
                     }`}
                   >
                     <span
                       className={`mr-1.5 h-1.5 w-1.5 rounded-full ${
-                        userData.status === "active"
+                        authInfo?.user?.status === "active"
                           ? "bg-green-400"
                           : "bg-gray-400"
                       }`}
                     ></span>
-                    {userData.status}
-                  </span>
-
-                  <span
-                    className={`ml-2 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                      userData.isVerified
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-yellow-100 text-yellow-800"
-                    }`}
-                  >
-                    {userData.isVerified ? (
-                      <LuCircleCheck className="mr-1 h-3 w-3" />
-                    ) : (
-                      <LuCircleAlert className="mr-1 h-3 w-3" />
-                    )}
-                    {userData.isVerified ? "Verified" : "Unverified"}
+                    {authInfo?.user?.status}
                   </span>
                 </div>
               </div>
@@ -196,7 +169,7 @@ export default function Profile() {
                       className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   ) : (
-                    <p className="py-2 text-gray-900">{userData.name}</p>
+                    <p className="py-2 text-gray-900">{authInfo?.user?.name}</p>
                   )}
                 </div>
 
@@ -214,7 +187,9 @@ export default function Profile() {
                       className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   ) : (
-                    <p className="py-2 text-gray-900">@{userData.username}</p>
+                    <p className="py-2 text-gray-900">
+                      @{authInfo?.user?.username}
+                    </p>
                   )}
                 </div>
 
@@ -233,7 +208,9 @@ export default function Profile() {
                       className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   ) : (
-                    <p className="py-2 text-gray-900">{userData.email}</p>
+                    <p className="py-2 text-gray-900">
+                      {authInfo?.user?.email}
+                    </p>
                   )}
                 </div>
 
@@ -252,7 +229,7 @@ export default function Profile() {
                     />
                   ) : (
                     <p className="py-2 text-gray-900">
-                      {userData.personal_email}
+                      {authInfo?.user?.personal_email}
                     </p>
                   )}
                 </div>
@@ -272,7 +249,9 @@ export default function Profile() {
                       className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   ) : (
-                    <p className="py-2 text-gray-900">{userData.address}</p>
+                    <p className="py-2 text-gray-900">
+                      {authInfo?.user?.address}
+                    </p>
                   )}
                 </div>
 
@@ -291,7 +270,9 @@ export default function Profile() {
                       className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   ) : (
-                    <p className="py-2 text-gray-900">{userData.country}</p>
+                    <p className="py-2 text-gray-900">
+                      {authInfo?.user?.country}
+                    </p>
                   )}
                 </div>
               </div>
@@ -300,38 +281,6 @@ export default function Profile() {
 
           {/* Account Details & Quick Actions */}
           <div className="space-y-6">
-            {/* Account Details */}
-            <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-              <h2 className="mb-4 flex items-center text-lg font-semibold text-gray-900">
-                <LuShield className="mr-2 h-5 w-5 text-red-600" />
-                Account Details
-              </h2>
-
-              <div className="space-y-4">
-                <div>
-                  <span className="text-sm text-gray-600">Role</span>
-                  <p className="font-medium capitalize text-gray-900">
-                    {userData.role}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="text-sm text-gray-600">Member Since</span>
-                  <p className="flex items-center font-medium text-gray-900">
-                    <LuCalendar className="mr-1 h-4 w-4" />
-                    {formatDate(userData.createdAt)}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="text-sm text-gray-600">Last Updated</span>
-                  <p className="font-medium text-gray-900">
-                    {formatDate(userData.updatedAt)}
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* Quick Actions */}
             <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
               <h2 className="mb-4 flex items-center text-lg font-semibold text-gray-900">
@@ -343,18 +292,6 @@ export default function Profile() {
                 <button className="flex w-full items-center rounded-md px-4 py-3 text-left text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-50">
                   <LuLock className="mr-3 h-4 w-4" />
                   Change Password
-                </button>
-
-                {!userData.isVerified && (
-                  <button className="flex w-full items-center rounded-md px-4 py-3 text-left text-sm text-blue-700 transition-colors duration-200 hover:bg-blue-50">
-                    <LuCircleCheck className="mr-3 h-4 w-4" />
-                    Verify Account
-                  </button>
-                )}
-
-                <button className="flex w-full items-center rounded-md px-4 py-3 text-left text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-50">
-                  <LuShield className="mr-3 h-4 w-4" />
-                  Security Settings
                 </button>
               </div>
             </div>

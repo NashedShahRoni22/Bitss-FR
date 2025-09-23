@@ -1,11 +1,23 @@
 import { LuShoppingCart } from "react-icons/lu";
 import useCart from "../../hooks/useCart";
 import CartItem from "../../components/CartItem";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 export default function CartPage() {
+  const navigate = useNavigate();
+  const { authInfo } = useAuth();
   const { cartItems, calculateTotal, getCartItemsCount } = useCart();
   const total = calculateTotal();
   const itemCount = getCartItemsCount();
+
+  // handle proceed to checkout
+  const handleCheckout = () => {
+    if (!authInfo?.access_token) {
+      return navigate("/login?return=/checkout");
+    }
+    navigate("/checkout");
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -33,9 +45,12 @@ export default function CartPage() {
               <p className="mb-6 text-gray-500">
                 Start shopping to add products to your cart
               </p>
-              <button className="rounded-md bg-red-600 px-6 py-3 font-medium text-white transition-colors hover:bg-red-700">
+              <Link
+                to="/"
+                className="rounded-md bg-red-600 px-6 py-3 font-medium text-white transition-colors hover:bg-red-700"
+              >
                 Continue Shopping
-              </button>
+              </Link>
             </div>
           ) : (
             <>
@@ -58,7 +73,10 @@ export default function CartPage() {
                 </div>
 
                 <div className="space-y-3">
-                  <button className="w-full rounded-md bg-red-600 px-6 py-4 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-red-700">
+                  <button
+                    onClick={handleCheckout}
+                    className="w-full rounded-md bg-red-600 px-6 py-4 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-red-700"
+                  >
                     Proceed to Checkout
                   </button>
                   <button className="w-full rounded-md border border-gray-300 bg-white px-6 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50">

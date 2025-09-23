@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import { LuChevronDown, LuShoppingCart, LuUser } from "react-icons/lu";
+import {
+  LuChevronDown,
+  LuPackage,
+  LuShoppingCart,
+  LuUser,
+} from "react-icons/lu";
 import { Link } from "react-router";
 import useCart from "../../../hooks/useCart";
+import useAuth from "../../../hooks/useAuth";
 
 export default function UserProfileDropdown() {
+  const { authInfo, handleLogout } = useAuth();
   const { cartItems } = useCart();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const dropdownRef = useRef(null);
-
-  // Mock authInfo - replace with your actual auth context
-  const authInfo = {
-    access_token: "mock_token",
-    name: "John Doe",
-  };
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -45,6 +46,11 @@ export default function UserProfileDropdown() {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleLogoutClick = () => {
+    handleLogout();
+    handleDropdownToggle();
+  };
+
   return (
     <div className="relative hidden md:block" ref={dropdownRef}>
       <div className="relative">
@@ -55,12 +61,12 @@ export default function UserProfileDropdown() {
         >
           {/* User Initials Circle */}
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-medium text-white">
-            {getInitials(authInfo.name)}
+            {getInitials(authInfo?.user?.name)}
           </div>
 
           {/* Welcome text and chevron */}
           <span className="hidden text-sm font-medium md:block">
-            Welcome, {authInfo.name?.split(" ")[0] || "User"}
+            Welcome, {authInfo?.user?.name?.split(" ")[0] || "User"}
           </span>
           <LuChevronDown
             className={`h-4 w-4 transition-transform duration-200 ${
@@ -83,6 +89,16 @@ export default function UserProfileDropdown() {
                 Profile
               </Link>
 
+              {/* Order Link */}
+              <Link
+                to="/my-orders"
+                className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors duration-150 hover:bg-gray-100"
+                onClick={() => setIsDropdownOpen(false)}
+              >
+                <LuPackage className="mr-3 h-4 w-4" />
+                My Orders
+              </Link>
+
               {/* Cart Link */}
               <Link
                 to="/cart"
@@ -99,11 +115,7 @@ export default function UserProfileDropdown() {
               {/* Logout */}
               <button
                 className="flex w-full items-center px-4 py-2 text-sm text-red-600 transition-colors duration-150 hover:bg-red-50"
-                onClick={() => {
-                  setIsDropdownOpen(false);
-                  // Add your logout logic here
-                  console.log("Logout clicked");
-                }}
+                onClick={handleLogoutClick}
               >
                 <svg
                   className="mr-3 h-4 w-4"
