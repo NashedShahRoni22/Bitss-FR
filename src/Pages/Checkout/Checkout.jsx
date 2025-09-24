@@ -103,6 +103,10 @@ const CheckoutPage = () => {
       token,
     });
 
+    if (paymentType === "stripe" && response?.success) {
+      return (window.location.href = response?.data?.payment_url);
+    }
+
     if (response?.success) {
       toast.success("Order created successfully!");
     } else {
