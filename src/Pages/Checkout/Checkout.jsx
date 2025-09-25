@@ -5,6 +5,8 @@ import OrderSummary from "../../components/Checkout/OrderSummary";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { postApi } from "../../api/api";
+import SectionContainer from "../../components/shared/SectionContainer";
+import PrivateRoute from "../../routes/PrivateRoute";
 
 const convertCartItems = (cartItems) => {
   const startDate = new Date(); // Current date as start date
@@ -48,7 +50,8 @@ function generateOrderId() {
 
 const CheckoutPage = () => {
   const { authInfo } = useAuth();
-  const { cartItems } = useCart();
+  const { cartItems, clearCartItems } = useCart();
+  const [loading, setLoading] = useState(false);
 
   const [currency, setCurrency] = useState("EUR");
   const [paymentType, setPaymentType] = useState("stripe");
@@ -76,77 +79,92 @@ const CheckoutPage = () => {
       return toast.error("Please enter your domain name");
     }
 
-    const token = authInfo?.access_token;
+    setLoading(true);
 
-    const products = convertCartItems(cartItems);
-    const order_number = generateOrderId();
+    try {
+      const token = authInfo?.access_token;
 
-    const payload = {
-      order_number,
-      country: authInfo?.user?.country,
-      currency_name: currency,
-      currency_rate: currencies[currency],
-      currency,
-      rate: currencies[currency],
-      payment_type: paymentType === "stripe" ? "online" : "bank",
-      terms_and_conditions: agreeTerms,
-      status: "due",
-      domain,
-      products,
-      ...(paymentType === "stripe" && { payment_method: "stripe" }),
-    };
+      const products = convertCartItems(cartItems);
+      const order_number = generateOrderId();
 
-    // Call the API
-    const response = await postApi({
-      endpoint: "/orders/order/confirm",
-      payload,
-      token,
-    });
+      const payload = {
+        order_number,
+        country: authInfo?.user?.country,
+        currency_name: currency,
+        currency_rate: currencies[currency],
+        currency,
+        rate: currencies[currency],
+        payment_type: paymentType === "stripe" ? "online" : "bank",
+        terms_and_conditions: agreeTerms,
+        status: "due",
+        domain,
+        products,
+        ...(paymentType === "stripe" && { payment_method: "stripe" }),
+      };
 
-    if (paymentType === "stripe" && response?.success) {
-      return (window.location.href = response?.data?.payment_url);
-    }
+      // Call the API
+      const response = await postApi({
+        endpoint: "/orders/order/confirm",
+        payload,
+        token,
+      });
 
-    if (response?.success) {
-      toast.success("Order created successfully!");
-    } else {
-      toast.error("Failed to create order");
+      if (paymentType === "stripe" && response?.success) {
+        window.location.href = response?.data?.payment_url;
+        clearCartItems();
+        return;
+      }
+
+      if (response?.success) {
+        toast.success("Order created successfully!");
+        clearCartItems();
+      } else {
+        toast.error("Failed to create order");
+      }
+    } catch (err) {
+      console.error("Checkout error:", err);
+      toast.error("Something went wrong while processing your order.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="mx-auto px-4 py-8 md:container sm:px-6 lg:px-8">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Checkout</h1>
-        <p className="mt-2 text-gray-600">Complete your purchase securely</p>
-      </div>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {/* Left Column - Order Information */}
-        <OrderInfo
-          {...{
-            domain,
-            setDomain,
-            currency,
-            setCurrency,
-            paymentType,
-            setPaymentType,
-            agreeTerms,
-            setAgreeTerms,
-            currencies,
-          }}
-        />
-        {/* Right Column - Order Summary */}
-        <OrderSummary
-          {...{
-            handleSubmit,
-            agreeTerms,
-            domain,
-            currency,
-            currencies,
-          }}
-        />
-      </div>
-    </div>
+    <PrivateRoute>
+      <SectionContainer>
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-gray-900">Checkout</h1>
+          <p className="mt-2 text-gray-600">Complete your purchase securely</p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {/* Left Column - Order Information */}
+          <OrderInfo
+            {...{
+              domain,
+              setDomain,
+              currency,
+              setCurrency,
+              paymentType,
+              setPaymentType,
+              agreeTerms,
+              setAgreeTerms,
+              currencies,
+            }}
+          />
+          {/* Right Column - Order Summary */}
+          <OrderSummary
+            {...{
+              handleSubmit,
+              agreeTerms,
+              domain,
+              currency,
+              currencies,
+              loading,
+            }}
+          />
+        </div>
+      </SectionContainer>
+    </PrivateRoute>
   );
 };
 

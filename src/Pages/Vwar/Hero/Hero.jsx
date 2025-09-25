@@ -4,19 +4,17 @@ import HeroTitle from "../../../components/HeroTitle";
 import SectionContainer from "../../../components/shared/SectionContainer";
 import { saveProductInfo } from "../../../utils/saveProductInfo";
 
-export default function Hero({ currentVersion, productInfo, handleAddToCart }) {
+export default function Hero({
+  currentVersion,
+  productInfo,
+  handleAddToCart,
+  isAvailable,
+}) {
   const versionDescriptions = {
     js: "JavaScript Website",
     wp: "WordPress Website",
     software: "windows_protection",
     server: "Server",
-  };
-
-  const isAvailable = {
-    js: false,
-    wp: true,
-    software: true,
-    server: false,
   };
 
   const versionDescription = versionDescriptions[currentVersion] || "Website";

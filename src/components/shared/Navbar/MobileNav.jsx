@@ -5,13 +5,14 @@ import {
   LuDot,
   LuLogIn,
   LuLogOut,
+  LuPackage,
   LuShoppingCart,
   LuUser,
 } from "react-icons/lu";
 import useAuth from "../../../hooks/useAuth";
 
 export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
-  const { authInfo, logout } = useAuth(); // Assuming you have a logout function in useAuth
+  const { authInfo, handleLogout } = useAuth(); // Assuming you have a logout function in useAuth
   const [showSubLinks, setShowSubLinks] = useState("");
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -34,8 +35,8 @@ export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
       .slice(0, 2);
   };
 
-  const handleLogout = () => {
-    logout(); // Call your logout function
+  const handleLogoutClick = () => {
+    handleLogout(); // Call your logout function
     setMenuOpen(false);
   };
 
@@ -84,6 +85,18 @@ export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
               </p>
             </Link>
 
+            {/* Order Link */}
+            <Link
+              to="/my-orders"
+              onClick={handleLinkClick}
+              className={`grid overflow-hidden text-sm transition-all duration-300 ease-in-out ${showUserMenu ? "grid-rows-[1fr] pt-4 opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+            >
+              <p className="flex items-center gap-3 overflow-hidden">
+                <LuPackage className="min-w-fit text-lg" />
+                My Orders
+              </p>
+            </Link>
+
             {/* Cart Link */}
             <Link
               to="/cart"
@@ -98,7 +111,7 @@ export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
 
             {/* Logout Button */}
             <button
-              onClick={handleLogout}
+              onClick={handleLogoutClick}
               className={`grid w-full overflow-hidden text-sm transition-all duration-300 ease-in-out ${showUserMenu ? "grid-rows-[1fr] pt-4 opacity-100" : "grid-rows-[0fr] opacity-0"}`}
             >
               <p className="flex items-center gap-3 overflow-hidden text-red-600">

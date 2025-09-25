@@ -2,21 +2,34 @@ import Hero from "./Hero/Hero";
 import Features from "./Features/Features";
 import Pricing from "./Pricing/Pricing";
 import Faq from "../../components/Faq";
-import { useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import VideoSection from "../../components/VideoSection";
 import { vwarFaq } from "../../data/faq/vwarFaq";
 import MalwareTable from "./MalwareTable/MalwareTable";
 import useProductDetails from "../../hooks/useProductDetails";
 import useCart from "../../hooks/useCart";
+import useAuth from "../../hooks/useAuth";
 
 const Vwar = () => {
+  const { authInfo } = useAuth();
   const { addToCart } = useCart();
   const { version, productId } = useParams();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const validVersions = ["js", "wp", "software", "server"];
   const currentVersion = validVersions.includes(version) ? version : "wp";
 
   const { productDetails } = useProductDetails(productId);
+
+  const isAvailable = productDetails?.status === "available";
+
+  const versionAvailability = {
+    js: isAvailable,
+    wp: isAvailable,
+    software: isAvailable,
+    server: isAvailable,
+  };
 
   const versionPriceInfo = {
     wp: { name: "WordPress", price: 29.5 },
@@ -34,6 +47,10 @@ const Vwar = () => {
   };
 
   const handleAddToCart = () => {
+    if (!authInfo?.access_token) {
+      return navigate(`/login?redirect=${pathname}`);
+    }
+
     const cartProduct = {
       id: productId,
       name: productInfo.name,
@@ -51,6 +68,7 @@ const Vwar = () => {
         currentVersion={currentVersion}
         productInfo={productInfo}
         handleAddToCart={handleAddToCart}
+        isAvailable={versionAvailability}
       />
       <Features currentVersion={currentVersion} />
       <Pricing
@@ -58,6 +76,7 @@ const Vwar = () => {
         productInfo={productInfo}
         productDetails={productDetails}
         handleAddToCart={handleAddToCart}
+        isAvailable={versionAvailability}
       />
       <MalwareTable />
       <VideoSection

@@ -21,14 +21,8 @@ export default function Pricing({
   productInfo,
   productDetails,
   handleAddToCart,
+  isAvailable,
 }) {
-  const isAvailable = {
-    js: false,
-    wp: true,
-    software: true,
-    server: false,
-  };
-
   const yearlyPrice = formatPriceDisplay(productDetails?.price * 12);
 
   return (

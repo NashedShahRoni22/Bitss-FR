@@ -1,4 +1,4 @@
-import { LuShoppingCart, LuX } from "react-icons/lu";
+import { LuLoaderCircle, LuShoppingCart, LuX } from "react-icons/lu";
 import useCart from "../../hooks/useCart";
 
 export default function OrderSummary({
@@ -7,6 +7,7 @@ export default function OrderSummary({
   domain,
   currency,
   currencies,
+  loading,
 }) {
   const { cartItems, calculateItemPrice, calculateTotal, removeFromCart } =
     useCart();
@@ -86,10 +87,11 @@ export default function OrderSummary({
           <button
             type="button"
             onClick={handleSubmit}
-            className="w-full rounded-lg bg-red-600 px-4 py-3 font-semibold text-white transition-colors duration-200 hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
-            disabled={!agreeTerms || !domain}
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-3 font-semibold text-white transition-all duration-200 ease-in-out hover:bg-red-700 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
+            disabled={!agreeTerms || !domain || loading}
           >
             Complete Purchase
+            {loading && <LuLoaderCircle className="animate-spin" />}
           </button>
         </div>
       </div>

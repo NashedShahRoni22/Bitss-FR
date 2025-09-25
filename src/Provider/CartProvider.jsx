@@ -108,6 +108,11 @@ export default function CartProvider({ children }) {
     return cartItems.length;
   };
 
+  // clear cart
+  const clearCartItems = () => {
+    setCartItems([]);
+  };
+
   const value = {
     cartItems,
     addToCart,
@@ -117,6 +122,7 @@ export default function CartProvider({ children }) {
     calculateItemTotal,
     calculateTotal,
     getCartItemsCount,
+    clearCartItems,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

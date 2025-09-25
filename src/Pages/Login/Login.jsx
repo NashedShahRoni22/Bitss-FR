@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import FormField from "../../components/FormField";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,9 @@ import toast from "react-hot-toast";
 import { LuLoaderCircle } from "react-icons/lu";
 
 export default function Login() {
+  const [searchParams] = useSearchParams();
+  const redirectUrl = searchParams.get("redirect");
+
   const { addAuthInfo } = useAuth();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
@@ -48,7 +51,11 @@ export default function Login() {
         if (res?.success) {
           toast.success(res?.message || "Login successful!");
           addAuthInfo(res?.data);
-          navigate("/");
+          if (redirectUrl) {
+            return navigate(decodeURIComponent(redirectUrl));
+          } else {
+            navigate("/");
+          }
         } else {
           // Handle API response with success: false
           toast.error(

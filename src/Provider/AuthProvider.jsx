@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 export default function AuthProvider({ children }) {
   const [authInfo, setAuthInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const addAuthInfo = useCallback((data) => {
     setAuthInfo(data);
@@ -24,7 +25,9 @@ export default function AuthProvider({ children }) {
       }
     } catch (error) {
       console.error("Error parsing stored auth info:", error);
-      localStorage.removeItem("authInfo"); // Clean up corrupted data
+      localStorage.removeItem("authInfo");
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -32,6 +35,7 @@ export default function AuthProvider({ children }) {
     authInfo,
     addAuthInfo,
     handleLogout,
+    loading,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -22,6 +22,7 @@ import Profile from "../Pages/Profile/Profile";
 import Cart from "../Pages/Cart/Cart";
 import Checkout from "../Pages/Checkout/Checkout";
 import MyOrders from "../Pages/MyOrders/MyOrders";
+import OrderDetails from "../Pages/OrderDetails/OrderDetails";
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ export const router = createBrowserRouter([
       {
         path: "/my-orders",
         element: <MyOrders />,
+      },
+      {
+        path: "/my-orders/:orderId",
+        element: <OrderDetails />,
       },
     ],
   },

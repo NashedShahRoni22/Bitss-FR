@@ -5,16 +5,21 @@ import Faq from "../../components/Faq";
 import useIsWpVersion from "../../hooks/useIsWpVersion";
 import { cContactFormWp } from "../../data/faq/cContactFormWp";
 import { cContactFormFeats } from "../../data/cContactFormFeats";
-import { useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import useProductDetails from "../../hooks/useProductDetails";
 import useCart from "../../hooks/useCart";
+import useAuth from "../../hooks/useAuth";
 
 export default function CContactFormWp() {
+  const { authInfo } = useAuth();
   const { addToCart } = useCart();
+  const { pathname } = useLocation();
   const { productId } = useParams();
+  const navigate = useNavigate();
   const isWpVersion = useIsWpVersion();
 
   const { productDetails } = useProductDetails(productId);
+  const isAvailable = productDetails?.status === "available";
 
   const productInfo = {
     name: "Bitss C Contact Form",
@@ -23,12 +28,16 @@ export default function CContactFormWp() {
     currency: "EUR",
     packageType: isWpVersion ? "contact-form" : "contact-form-js",
     isAvailable: {
-      wp: true,
-      js: true,
+      wp: isAvailable,
+      js: isAvailable,
     },
   };
 
   const handleAddToCart = () => {
+    if (!authInfo?.access_token) {
+      return navigate(`/login?redirect=${pathname}`);
+    }
+
     const cartProduct = {
       id: productId,
       name: productInfo.name,
