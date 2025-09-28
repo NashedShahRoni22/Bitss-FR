@@ -62,7 +62,7 @@ export default function OrderSummary({
                     Discount:{" "}
                     {item.subscriptions[0].discount_type === "percent"
                       ? `${item.subscriptions[0].amount}%`
-                      : `${item.subscriptions[0].amount}`}
+                      : `${item.subscriptions[0].amount} ${currency}`}
                   </p>
                 )}
               </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import SectionContainer from "../../components/shared/SectionContainer";
+import calculatePriceWithDiscount from "../../utils/calculatePriceWithDiscount";
 
 export default function OrderDetails() {
   const { orderId } = useParams();
@@ -223,11 +224,17 @@ export default function OrderDetails() {
 
                   <div className="ml-6 text-right">
                     <p className="text-2xl font-bold text-red-500">
-                      {formatCurrency(item.price, order.currency)}
+                      {formatCurrency(
+                        calculatePriceWithDiscount(item),
+                        order.currency,
+                      )}
                     </p>
                     <p className="text-sm text-gray-500 line-through">
                       Original:{" "}
-                      {formatCurrency(item.product.price, order.currency)}
+                      {formatCurrency(
+                        item.product.price * item.period,
+                        order.currency,
+                      )}
                     </p>
                   </div>
                 </div>

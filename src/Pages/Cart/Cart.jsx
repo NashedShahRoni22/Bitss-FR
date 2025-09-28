@@ -73,7 +73,7 @@ export default function CartPage() {
                       Total
                     </span>
                     <span className="text-2xl font-bold text-red-600">
-                      ${total.toFixed(2)}
+                      €{total.toFixed(2)}
                     </span>
                   </div>
 

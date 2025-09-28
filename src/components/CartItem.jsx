@@ -19,14 +19,14 @@ export default function CartItem({ item }) {
           </p>
           <div className="mt-2">
             <span className="text-sm text-gray-600">
-              Monthly Price: ${item.price.toFixed(2)}
+              Monthly Price: €{item.price.toFixed(2)}
             </span>
           </div>
           <div className="mt-1">
             <span className="text-xs text-gray-500">
               Duration: {item.subscriptions[0]?.duration} month
-              {item.subscriptions[0]?.duration !== "1" ? "s" : ""}× $
-              {item.price.toFixed(2)} = $
+              {item.subscriptions[0]?.duration !== "1" ? "s" : ""}× €
+              {item.price.toFixed(2)} = €
               {(
                 item.price * parseFloat(item.subscriptions[0]?.duration || 1)
               ).toFixed(2)}
@@ -35,7 +35,7 @@ export default function CartItem({ item }) {
           {item.subscriptions[0]?.amount > 0 && (
             <div className="mt-1">
               <span className="text-xs text-green-600">
-                Discount: -$
+                Discount: -€
                 {item.subscriptions[0]?.discount_type === "percent"
                   ? (
                       (item.price *
@@ -67,14 +67,14 @@ export default function CartItem({ item }) {
                   {subscription.duration !== "1" ? "s" : ""} -
                   {subscription.discount_type === "percent"
                     ? ` ${subscription.amount}% off`
-                    : ` $${subscription.amount} off`}
+                    : ` €${subscription.amount} off`}
                 </option>
               ))}
             </select>
           </div>
           <div className="mt-3">
             <span className="text-lg font-bold text-gray-900">
-              Final Price: ${calculateItemPrice(item).toFixed(2)}
+              Final Price: €{calculateItemPrice(item).toFixed(2)}
             </span>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function CartItem({ item }) {
           {/* Item Total */}
           <div className="text-right">
             <p className="text-lg font-semibold text-gray-900">
-              ${calculateItemTotal(item).toFixed(2)}
+              €{calculateItemTotal(item).toFixed(2)}
             </p>
           </div>
 

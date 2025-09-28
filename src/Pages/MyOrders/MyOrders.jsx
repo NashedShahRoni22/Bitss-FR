@@ -14,6 +14,9 @@ import SectionContainer from "../../components/shared/SectionContainer";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router";
 import PrivateRoute from "../../routes/PrivateRoute";
+import OrderProduct from "../../components/MyOrders/OrderProduct";
+import formatDate from "../../utils/formatDate";
+import formatCurrency from "../../utils/FormatCurrency";
 
 const MyOrders = () => {
   const { authInfo } = useAuth();
@@ -74,27 +77,36 @@ const MyOrders = () => {
     }
   };
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  };
-
-  const formatCurrency = (amount, currency) => {
-    return `${amount} ${currency}`;
-  };
-
+  // Fixed search functionality
   const filteredOrders = orders.filter((order) => {
-    const matchesSearch =
-      order.order_number.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.products?.some((product) =>
-        product.product?.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    const searchTermLower = searchTerm.toLowerCase();
+
+    // Search in order number
+    const matchesOrderNumber = order.order_number
+      ?.toLowerCase()
+      .includes(searchTermLower);
+
+    // Search in product names and categories - Fixed the path
+    const matchesProduct = order.products?.some((productOrder) => {
+      const productName = productOrder.product?.name?.toLowerCase() || "";
+      const categoryName =
+        productOrder.product?.category?.name?.toLowerCase() || "";
+      return (
+        productName.includes(searchTermLower) ||
+        categoryName.includes(searchTermLower)
       );
+    });
+
+    // Search in domain
+    const matchesDomain = order.domain?.toLowerCase().includes(searchTermLower);
+
+    const matchesSearch = matchesOrderNumber || matchesProduct || matchesDomain;
+
+    // Filter by status
     const orderStatus = order.invoices?.[0]?.paid ? "active" : "pending";
     const matchesFilter =
       filterStatus === "all" || orderStatus === filterStatus;
+
     return matchesSearch && matchesFilter;
   });
 
@@ -196,7 +208,7 @@ const MyOrders = () => {
                 <LuSearch className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-accent" />
                 <input
                   type="text"
-                  placeholder="Search by order number or product name..."
+                  placeholder="Search by order number, product name, category, or domain..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 text-dark focus:outline-none focus:ring-2 focus:ring-primary/20"
@@ -231,155 +243,133 @@ const MyOrders = () => {
                       ? "Try adjusting your search or filter criteria."
                       : "You haven't made any purchases yet."}
                   </p>
+                  {searchTerm && (
+                    <button
+                      onClick={() => setSearchTerm("")}
+                      className="mt-4 text-primary hover:underline"
+                    >
+                      Clear search
+                    </button>
+                  )}
                 </div>
               ) : (
-                filteredOrders.map((order) => {
-                  const invoice = order.invoices?.[0];
-                  const statusInfo = getStatusInfo(order.status, invoice?.paid);
-                  const StatusIcon = statusInfo.icon;
-
-                  return (
-                    <div
-                      key={order._id}
-                      className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md"
-                    >
-                      {/* Order Header */}
-                      <div className="border-b border-gray-100 p-6">
-                        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
-                          <div className="flex items-start gap-4">
-                            <div className="rounded-xl bg-primary/10 p-3">
-                              <LuShield className="h-6 w-6 text-primary" />
-                            </div>
-                            <div>
-                              <h3 className="mb-1 text-lg font-bold text-dark">
-                                {order.order_number}
-                              </h3>
-                              <div className="flex items-center gap-4 text-sm text-accent">
-                                <div className="flex items-center gap-1">
-                                  <LuCalendar className="h-4 w-4" />
-                                  <span>{formatDate(order.created_at)}</span>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                  <LuCreditCard className="h-4 w-4" />
-                                  <span className="capitalize">
-                                    {invoice?.payment_method || "N/A"}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center gap-4">
-                            <div
-                              className={`flex items-center gap-2 rounded-xl border px-4 py-2 ${statusInfo.color}`}
-                            >
-                              <StatusIcon
-                                className={`h-4 w-4 ${statusInfo.iconColor}`}
-                              />
-                              <span className="text-sm font-medium">
-                                {statusInfo.label}
-                              </span>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-2xl font-bold text-primary">
-                                {formatCurrency(
-                                  invoice?.totalAmount || 0,
-                                  order.currency,
-                                )}
-                              </p>
-                              <p className="text-sm text-accent">
-                                {order.country}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Products */}
-                      <div className="p-6">
-                        <div className="space-y-4">
-                          {order.products?.map((productOrder, index) => (
-                            <div
-                              key={index}
-                              className="rounded-xl border border-gray-100 bg-gray-50 p-4"
-                            >
-                              <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
-                                <div className="flex-1">
-                                  <h4 className="mb-2 text-lg font-semibold text-dark">
-                                    {productOrder.product?.name ||
-                                      "Product Name"}
-                                  </h4>
-                                  <div className="mb-3 flex items-center gap-4 text-sm text-accent">
-                                    <span className="rounded-lg bg-white px-2 py-1 font-medium">
-                                      {productOrder.product?.category?.name ||
-                                        "Category"}
-                                    </span>
-                                    <span>
-                                      {productOrder.start_date &&
-                                        productOrder.end_date &&
-                                        `${formatDate(productOrder.start_date)} - ${formatDate(productOrder.end_date)}`}
-                                    </span>
-                                  </div>
-                                  <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-                                    {productOrder.product?.product_details
-                                      ?.slice(0, 4)
-                                      .map((feature, i) => (
-                                        <div
-                                          key={i}
-                                          className="flex items-center gap-2 text-sm text-accent"
-                                        >
-                                          <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                                          <span>{feature}</span>
-                                        </div>
-                                      ))}
-                                    {productOrder.product?.product_details
-                                      ?.length > 4 && (
-                                      <div className="text-sm font-medium text-primary">
-                                        +
-                                        {productOrder.product.product_details
-                                          .length - 4}{" "}
-                                        more features
-                                      </div>
-                                    )}
-                                  </div>
-                                </div>
-                                <div className="text-right lg:min-w-[120px]">
-                                  <p className="text-lg font-bold text-primary">
-                                    {formatCurrency(
-                                      productOrder.price || 0,
-                                      order.currency,
-                                    )}
-                                  </p>
-                                  <p className="text-sm text-accent">
-                                    {productOrder.period} month
-                                    {productOrder.period > 1 ? "s" : ""}
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          )) || (
-                            <div className="rounded-xl border border-gray-100 bg-gray-50 p-4">
-                              <p className="text-accent">
-                                No products found for this order
-                              </p>
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Action Button */}
-                        <div className="mt-6">
-                          <Link
-                            to={`/my-orders/${order?._id}`}
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-primary-hover hover:shadow-lg sm:w-auto"
-                          >
-                            <LuEye className="h-5 w-5" />
-                            View Order Details
-                          </Link>
-                        </div>
-                      </div>
+                <>
+                  {/* Show search results count */}
+                  {searchTerm && (
+                    <div className="mb-4 text-sm text-accent">
+                      Found {filteredOrders.length} order
+                      {filteredOrders.length !== 1 ? "s" : ""}
+                      {searchTerm && ` matching "${searchTerm}"`}
+                      {filterStatus !== "all" &&
+                        ` with status "${filterStatus}"`}
                     </div>
-                  );
-                })
+                  )}
+
+                  {filteredOrders.map((order) => {
+                    const invoice = order.invoices?.[0];
+                    const statusInfo = getStatusInfo(
+                      order.status,
+                      invoice?.paid,
+                    );
+                    const StatusIcon = statusInfo.icon;
+
+                    return (
+                      <div
+                        key={order._id}
+                        className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md"
+                      >
+                        {/* Order Header */}
+                        <div className="border-b border-gray-100 p-6">
+                          <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
+                            <div className="flex items-start gap-4">
+                              <div className="rounded-xl bg-primary/10 p-3">
+                                <LuShield className="h-6 w-6 text-primary" />
+                              </div>
+                              <div>
+                                <h3 className="mb-1 text-lg font-bold text-dark">
+                                  {order.order_number}
+                                </h3>
+                                <div className="flex items-center gap-4 text-sm text-accent">
+                                  <div className="flex items-center gap-1">
+                                    <LuCalendar className="h-4 w-4" />
+                                    <span>{formatDate(order.created_at)}</span>
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    <LuCreditCard className="h-4 w-4" />
+                                    <span className="capitalize">
+                                      {invoice?.payment_method ||
+                                        invoice?.payment_type ||
+                                        "N/A"}
+                                    </span>
+                                  </div>
+                                  {order.domain && (
+                                    <div className="flex items-center gap-1">
+                                      <span>Domain: {order.domain}</span>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-4">
+                              <div
+                                className={`flex items-center gap-2 rounded-xl border px-4 py-2 ${statusInfo.color}`}
+                              >
+                                <StatusIcon
+                                  className={`h-4 w-4 ${statusInfo.iconColor}`}
+                                />
+                                <span className="text-sm font-medium">
+                                  {statusInfo.label}
+                                </span>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-2xl font-bold text-primary">
+                                  {formatCurrency(
+                                    invoice?.totalAmount || 0,
+                                    order.currency,
+                                  )}
+                                </p>
+                                <p className="text-sm text-accent">
+                                  {order.country}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Products */}
+                        <div className="p-6">
+                          <div className="space-y-4">
+                            {order.products?.map((productOrder, index) => (
+                              <OrderProduct
+                                key={index}
+                                productOrder={productOrder}
+                                order={order}
+                              />
+                            )) || (
+                              <div className="rounded-xl border border-gray-100 bg-gray-50 p-4">
+                                <p className="text-accent">
+                                  No products found for this order
+                                </p>
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Action Button */}
+                          <div className="mt-6">
+                            <Link
+                              to={`/my-orders/${order?._id}`}
+                              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-primary-hover hover:shadow-lg sm:w-auto"
+                            >
+                              <LuEye className="h-5 w-5" />
+                              View Order Details
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
               )}
             </div>
           </div>

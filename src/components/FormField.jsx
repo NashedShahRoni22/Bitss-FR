@@ -59,12 +59,55 @@ export default function FormField({
     300,
   );
 
+  // Validate BoboSoho email format
+  const validateBobosohoEmailFormat = (value) => {
+    // Allow only lowercase letters, numbers, dots, hyphens, and underscores
+    const validPattern = /^[a-z0-9._-]+$/;
+
+    if (!validPattern.test(value)) {
+      return "Username can only contain lowercase letters, numbers, dots (.), hyphens (-), and underscores (_)";
+    }
+
+    // Must start and end with alphanumeric character
+    if (!/^[a-z0-9].*[a-z0-9]$/.test(value) && value.length > 1) {
+      return "Username must start and end with a letter or number";
+    }
+
+    // Single character must be alphanumeric
+    if (value.length === 1 && !/^[a-z0-9]$/.test(value)) {
+      return "Username must start with a letter or number";
+    }
+
+    // No consecutive dots
+    if (value.includes("..")) {
+      return "Consecutive dots are not allowed";
+    }
+
+    // Minimum length check
+    if (value.length < 3) {
+      return "Username must be at least 3 characters long";
+    }
+
+    // Maximum length check (most email providers limit to 64 characters)
+    if (value.length > 64) {
+      return "Username cannot exceed 64 characters";
+    }
+
+    return true;
+  };
+
   // Handle email input change for bobosoho email
   const handleEmailChange = (e) => {
     if (!isBobosohoEmail) return;
 
-    const inputValue = e.target.value.replace(/[^a-zA-Z0-9._-]/g, ""); // Restrict special characters
+    let inputValue = e.target.value;
+
+    // Convert to lowercase and remove invalid characters
+    inputValue = inputValue.toLowerCase().replace(/[^a-z0-9._-]/g, "");
+
+    // Update the input field display
     setEmailPrefix(inputValue);
+
     const fullEmail = `${inputValue}@bobosohomail.com`;
     setValue(name, fullEmail); // Update react-hook-form value
 
@@ -73,7 +116,13 @@ export default function FormField({
     } else {
       // Skip validation if email is the default
       if (fullEmail !== "@bobosohomail.com") {
-        debouncedValidateEmailAvailability(fullEmail);
+        // Only check availability if format is valid
+        const formatValidation = validateBobosohoEmailFormat(inputValue);
+        if (formatValidation === true) {
+          debouncedValidateEmailAvailability(fullEmail);
+        } else {
+          setEmailAvailable(null); // Don't check availability for invalid format
+        }
       } else {
         setEmailAvailable(false); // Force "not available" when it's the default email
       }
@@ -111,6 +160,26 @@ export default function FormField({
     return "border border-gray-200 focus:border-gray-300";
   };
 
+  // Get validation rules for BoboSoho email
+  const getBobosohoValidationRules = () => {
+    if (!isBobosohoEmail) return validation;
+
+    return {
+      ...validation,
+      validate: {
+        format: (value) => {
+          if (!value || value === "@bobosohomail.com") {
+            return required ? "Username is required" : true;
+          }
+
+          const username = value.replace("@bobosohomail.com", "");
+          return validateBobosohoEmailFormat(username);
+        },
+        ...validation.validate,
+      },
+    };
+  };
+
   return (
     <div className="space-y-2">
       <label htmlFor={name} className="text-sm font-medium">
@@ -130,7 +199,7 @@ export default function FormField({
               {...register(name, {
                 required: required ? `${label} is required` : false,
                 onChange: handleEmailChange,
-                ...validation,
+                ...getBobosohoValidationRules(),
               })}
             />
             <div

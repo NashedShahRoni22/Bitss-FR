@@ -7,6 +7,56 @@ import useAuth from "../../hooks/useAuth";
 import { postApi } from "../../api/api";
 import SectionContainer from "../../components/shared/SectionContainer";
 import PrivateRoute from "../../routes/PrivateRoute";
+import { useNavigate } from "react-router";
+
+const validateDomain = (value) => {
+  if (!value.trim()) {
+    return false;
+  }
+
+  // Remove protocol if present and clean the input
+  let cleanDomain = value.trim().toLowerCase();
+  cleanDomain = cleanDomain.replace(/^https?:\/\//, "");
+  cleanDomain = cleanDomain.replace(/^www\./, "");
+  cleanDomain = cleanDomain.replace(/\/.*$/, "");
+  cleanDomain = cleanDomain.replace(/:.*$/, "");
+
+  // Basic domain format validation
+  const domainRegex =
+    /^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/;
+
+  if (!domainRegex.test(cleanDomain)) {
+    return false;
+  }
+
+  if (cleanDomain.length < 4 || cleanDomain.length > 253) {
+    return false;
+  }
+
+  if (!cleanDomain.includes(".")) {
+    return false;
+  }
+
+  const parts = cleanDomain.split(".");
+  const tld = parts[parts.length - 1];
+  if (tld.length < 2) {
+    return false;
+  }
+
+  if (parts.length < 2 || parts[0].length === 0) {
+    return false;
+  }
+
+  if (cleanDomain.includes("..") || cleanDomain.includes("--")) {
+    return false;
+  }
+
+  if (cleanDomain.startsWith("-") || cleanDomain.endsWith("-")) {
+    return false;
+  }
+
+  return true;
+};
 
 const convertCartItems = (cartItems) => {
   const startDate = new Date(); // Current date as start date
@@ -35,7 +85,6 @@ const convertCartItems = (cartItems) => {
     return {
       product: item.id,
       period: selectedSubscription.duration,
-      price: finalPrice,
     };
   });
 };
@@ -51,10 +100,11 @@ function generateOrderId() {
 const CheckoutPage = () => {
   const { authInfo } = useAuth();
   const { cartItems, clearCartItems } = useCart();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const [currency, setCurrency] = useState("EUR");
-  const [paymentType, setPaymentType] = useState("stripe");
+  const [paymentType, setPaymentType] = useState("bank");
   const [domain, setDomain] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [currencies, setCurrencies] = useState(null);
@@ -78,6 +128,9 @@ const CheckoutPage = () => {
     if (!domain) {
       return toast.error("Please enter your domain name");
     }
+    if (!validateDomain(domain)) {
+      return toast.error("Please enter a valid domain name");
+    }
 
     setLoading(true);
 
@@ -86,6 +139,13 @@ const CheckoutPage = () => {
 
       const products = convertCartItems(cartItems);
       const order_number = generateOrderId();
+
+      // Clean the domain before sending to API
+      let cleanDomain = domain.trim().toLowerCase();
+      cleanDomain = cleanDomain.replace(/^https?:\/\//, "");
+      cleanDomain = cleanDomain.replace(/^www\./, "");
+      cleanDomain = cleanDomain.replace(/\/.*$/, "");
+      cleanDomain = cleanDomain.replace(/:.*$/, "");
 
       const payload = {
         order_number,
@@ -97,7 +157,7 @@ const CheckoutPage = () => {
         payment_type: paymentType === "stripe" ? "online" : "bank",
         terms_and_conditions: agreeTerms,
         status: "due",
-        domain,
+        domain: cleanDomain, // Use cleaned domain
         products,
         ...(paymentType === "stripe" && { payment_method: "stripe" }),
       };
@@ -118,6 +178,7 @@ const CheckoutPage = () => {
       if (response?.success) {
         toast.success("Order created successfully!");
         clearCartItems();
+        navigate("/my-orders");
       } else {
         toast.error("Failed to create order");
       }
