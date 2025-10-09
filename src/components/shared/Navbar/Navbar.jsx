@@ -19,6 +19,8 @@ export default function Navbar() {
   const [navLinks, setNavLinks] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  console.log(navLinks);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

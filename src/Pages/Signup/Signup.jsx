@@ -72,7 +72,8 @@ export default function Signup() {
 
         const payload = {
           address,
-          email: `${bobosohomail}@bobosohomail.com`,
+          // email: `${bobosohomail}@bobosohomail.com`,
+          username: bobosohomail,
           personal_email: contactEmail,
           country,
           name,

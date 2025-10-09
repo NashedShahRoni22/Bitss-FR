@@ -62,6 +62,10 @@ export const router = createBrowserRouter([
         element: <CContactFormWp />,
       },
       {
+        path: "/products/bitss-c-contact-form/:version/:productId",
+        element: <CContactFormWp />,
+      },
+      {
         path: "/products/vwar-frontline/:version/:productId",
         element: <Vwar />,
       },
