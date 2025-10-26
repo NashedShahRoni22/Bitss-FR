@@ -8,6 +8,7 @@ export default function CartItem({ item }) {
     calculateItemPrice,
     calculateItemTotal,
   } = useCart();
+console.log(item);
 
   return (
     <div className="p-6">

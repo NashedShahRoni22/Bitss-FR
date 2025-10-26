@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
-import Products from "../Pages/Products/Products";
+// import Products from "../Pages/Products/Products";
 import About from "../Pages/About/About";
 import FreeTools from "../Pages/FreeTools/FreeTools";
 import Contact from "../Pages/Contact/Contact";
@@ -23,6 +23,7 @@ import Cart from "../Pages/Cart/Cart";
 import Checkout from "../Pages/Checkout/Checkout";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import OrderDetails from "../Pages/OrderDetails/OrderDetails";
+import ProductsPage from "../components/ProductsPage";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products />,
+        element: <ProductsPage />,
       },
       {
         path: "/web-protection-pack",

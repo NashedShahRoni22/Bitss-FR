@@ -6,12 +6,14 @@ import Contact from "./Contact/Contact";
 import Faq from "../../components/Faq";
 import { homeFaq } from "../../data/faq/homeFaq";
 import ProductsSection from "../../components/ProductsSection";
+import ProductsPage from "../../components/ProductsPage";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <ProductsSection />
+      <ProductsPage/>
+      {/* <ProductsSection /> */}
       <Featured />
       <Solutions />
       <SolutionHighlights />

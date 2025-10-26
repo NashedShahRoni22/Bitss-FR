@@ -16,41 +16,40 @@ import staticNavLinks from "../../../data/navLinks";
 export default function Navbar() {
   const { authInfo } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [navLinks, setNavLinks] = useState([]);
+  // const [navLinks, setNavLinks] = useState([]);
   const [loading, setLoading] = useState(false);
+  // get dynamic nav links
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setLoading(true);
 
-  console.log(navLinks);
+  //       const response = await fetch(
+  //         `${import.meta.env.VITE_Base_Url}/products/product/category-wise/products`,
+  //       );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
 
-        const response = await fetch(
-          `${import.meta.env.VITE_Base_Url}/products/product/category-wise/products`,
-        );
+  //       const result = await response.json();
+  //       if (result?.success) {
+  //         const dynamicNavLinks = transformApiToNavStructure(result?.data);
+  //         setNavLinks(dynamicNavLinks);
+  //       }
+  //     } catch (err) {
+  //       console.error("Error fetching categories:", err?.message);
+  //       setNavLinks(staticNavLinks);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        if (result?.success) {
-          const dynamicNavLinks = transformApiToNavStructure(result?.data);
-          setNavLinks(dynamicNavLinks);
-        }
-      } catch (err) {
-        console.error("Error fetching categories:", err?.message);
-        setNavLinks(staticNavLinks);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   // manage translate
+
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement(
       {
@@ -98,7 +97,7 @@ export default function Navbar() {
 
         {/* Desktop Nav Links */}
         <div className="hidden items-center md:flex">
-          {navLinks.map((link, i) => (
+          {staticNavLinks.map((link, i) => (
             <div key={i} className="group relative p-3">
               {/* Main Nav Link */}
               <Link
@@ -215,7 +214,7 @@ export default function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <MobileNav setMenuOpen={setMenuOpen} updatedMenuItems={navLinks} />
+          <MobileNav setMenuOpen={setMenuOpen} updatedMenuItems={staticNavLinks} />
         )}
       </div>
     </nav>

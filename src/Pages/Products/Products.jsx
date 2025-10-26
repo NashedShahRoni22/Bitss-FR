@@ -5,7 +5,7 @@ import Services from "./Services/Services";
 export default function Products() {
   return (
     <main>
-      <ProductsSection />
+      {/* <ProductsSection /> */}
       <Services />
       <Goal />
     </main>

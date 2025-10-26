@@ -4,6 +4,10 @@ const staticNavLinks = [
     path: "/",
   },
   {
+    name: "Products",
+    path: "/products",
+  },
+  {
     name: "Security Pack",
     path: "/web-protection-pack",
   },

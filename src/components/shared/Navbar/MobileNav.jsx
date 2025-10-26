@@ -10,9 +10,10 @@ import {
   LuUser,
 } from "react-icons/lu";
 import useAuth from "../../../hooks/useAuth";
+import staticNavLinks from "../../../data/navLinks";
 
 export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
-  const { authInfo, handleLogout } = useAuth(); // Assuming you have a logout function in useAuth
+  const { authInfo, handleLogout } = useAuth();
   const [showSubLinks, setShowSubLinks] = useState("");
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -36,7 +37,7 @@ export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
   };
 
   const handleLogoutClick = () => {
-    handleLogout(); // Call your logout function
+    handleLogout();
     setMenuOpen(false);
   };
 

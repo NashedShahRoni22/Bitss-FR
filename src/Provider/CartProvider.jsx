@@ -22,7 +22,7 @@ export default function CartProvider({ children }) {
 
     if (existingItem) {
       toast.error(
-        `${product.name} (${product.version}) is already in your cart!`,
+        `${product.name} is already in your cart!`,
       );
       return false;
     }
@@ -38,7 +38,7 @@ export default function CartProvider({ children }) {
 
     setCartItems((prevItems) => [...prevItems, cartItem]);
     toast.success(
-      `${product.name} (${product.version}) added to cart successfully!`,
+      `${product.name} added to cart successfully!`,
     );
     return true;
   };

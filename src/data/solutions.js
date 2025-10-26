@@ -1,6 +1,6 @@
 export const solutionsData = [
   {
-    title: "Website Protection",
+    title: "Login Website Protection",
     description:
       "Comprehensive protection for WordPress, JavaScript-based websites, and other web applications.",
     highlights: [
@@ -10,7 +10,7 @@ export const solutionsData = [
     ],
   },
   {
-    title: "Contact Form Security",
+    title: "Contact Form Website Protection",
     description:
       "Secure your website's contact forms against spam and unwanted submissions.",
     highlights: [
@@ -20,7 +20,7 @@ export const solutionsData = [
     ],
   },
   {
-    title: "Security for Websites & Devices",
+    title: "Security for Websites Database & Windows Devices",
     description:
       "Protect your websites, devices and servers with advanced frontline protection.",
     highlights: [
