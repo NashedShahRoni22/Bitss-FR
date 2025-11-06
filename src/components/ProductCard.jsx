@@ -38,7 +38,7 @@ export default function ProductCard({ product, categoryId }) {
     <div className="group relative flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:border-red-300 hover:shadow-xl">
       {/* Status Badge */}
       <div className="mb-4 flex items-center justify-between">
-        <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-medium capitalize text-green-700 ring-1 ring-inset ring-green-600/20">
+        <span className={`inline-flex rounded-full  ${product.status === "available" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"} px-3 py-1 text-xs font-medium capitalize `}>
           {product.status}
         </span>
       </div>

@@ -61,7 +61,7 @@ export const featuresData = [
     image: bitssRetailPack,
     icon: vwarIcon,
     name: "Bitss Retail Pack",
-    title: "BITSS VWAR - Windows Device Protection ( Desinged for Microsoft Wndows )",
+    title: "BITSS VWAR - Windows Device Protection ( Desinged for Microsoft Windows )",
     overview:
       "Realtime protection against Malware (inck. Done Attacks) Ransomewear and Viruses - Trojans to spywear.",
     features: [

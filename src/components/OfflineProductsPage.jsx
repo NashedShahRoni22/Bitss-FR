@@ -4,6 +4,7 @@ import { FaBox, FaShieldAlt, FaCheckCircle, FaSpinner } from "react-icons/fa";
 
 export default function OfflineProductsPage() {
   const [product, setProduct] = useState(null);
+  console.log(product);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedPeriod, setSelectedPeriod] = useState(null);
@@ -174,7 +175,7 @@ export default function OfflineProductsPage() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Product Details Card */}
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="bg-white rounded shadow overflow-hidden">
             <div className="bg-gradient-to-r from-red-600 to-indigo-600 p-6">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -194,14 +195,6 @@ export default function OfflineProductsPage() {
             </div>
 
             <div className="p-6">
-              {/* Price */}
-              <div className="mb-6 p-4 bg-red-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Base Price (per month)</p>
-                <p className="text-3xl font-bold text-red-600">
-                  ${product?.price?.toFixed(2)}
-                </p>
-              </div>
-
               {/* Features */}
               <div className="mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
@@ -280,7 +273,7 @@ export default function OfflineProductsPage() {
           </div>
 
           {/* Order Form Card */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-8">
+          <div className="bg-white rounded shadow p-6 lg:p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               Delivery Information
             </h3>
@@ -435,6 +428,10 @@ export default function OfflineProductsPage() {
             </div>
           </div>
         </div>
+
+        {/* Product Description Here   */}
+        <h5 className="text-3xl font-semibold text-gray-900 mt-16 mb-8 text-center">Learn more about <span className="text-primary">{product?.name}</span> </h5>
+        <div dangerouslySetInnerHTML={{__html: product?.description }} />
 
         {/* Additional Info */}
         <div className="mt-12 bg-white rounded-2xl shadow-xl p-8">
