@@ -106,7 +106,7 @@ export default function UserProfileDropdown() {
                 onClick={() => setIsDropdownOpen(false)}
               >
                 <LuShoppingCart className="mr-3 h-4 w-4" />
-                Cart {cartItems.length > 0 ? `- ${cartItems.length}` : ""}
+                Cart {cartItems.length > 0 ? <span className="size-4 ml-2 animate-pulse bg-primary rounded-full text-white text-xs flex justify-center items-center">{cartItems.length}</span> : ""}
               </Link>
 
               {/* Divider */}

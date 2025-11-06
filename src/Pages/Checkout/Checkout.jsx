@@ -90,11 +90,24 @@ const convertCartItems = (cartItems) => {
 };
 
 function generateOrderId() {
-  const timestamp = Date.now().toString();
-  const random = Math.floor(Math.random() * 1000)
-    .toString()
-    .padStart(3, "0");
-  return `ORD-${timestamp}-${random}`;
+  const prefix = "BITSS";
+
+  // Get current date
+  const date = new Date();
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = String(date.getFullYear()).slice(-2); // last 2 digits of year
+
+  const datePart = `${day}${month}${year}`;
+
+  // Generate 6-letter random string (A–Z)
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let randomStr = "";
+  for (let i = 0; i < 6; i++) {
+    randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  return `${prefix}${datePart}${randomStr}`;
 }
 
 const CheckoutPage = () => {

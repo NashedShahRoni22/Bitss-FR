@@ -1,9 +1,11 @@
 import bitssC from "../assets/logo/bitss-c.png";
 import wapIcon from "../assets/icons/bitss-wap.png";
 import vwarIcon from "../assets/logo/bitss-vwar.png";
+import retailPackIcon from "../assets/logo/bitss-retail-pack-icon.png";
 import webProtect from "../assets/home/website-protection.png";
 import antispamContact from "../assets/home/antispam-cotanct.png";
 import preselectForm from "../assets/home/pre-select-form.png";
+import bitssRetailPack from "../assets/home/bitss retail pack.png";
 
 export const featuresData = [
   {
@@ -52,6 +54,22 @@ export const featuresData = [
       "Directory Scanning: Automatic and manual scans for secure directories",
       "Modified Files Tracker: Monitor and review recent file changes",
       "Real-Time Notifications: Email alerts for detected threats and updates",
+    ],
+    url: "/products/vwar-frontline/wp",
+  },
+  {
+    image: bitssRetailPack,
+    icon: vwarIcon,
+    name: "Bitss Retail Pack",
+    title: "BITSS VWAR - Windows Device Protection ( Desinged for Microsoft Wndows )",
+    overview:
+      "Realtime protection against Malware (inck. Done Attacks) Ransomewear and Viruses - Trojans to spywear.",
+    features: [
+      "Scan-Vault Security Core",
+      "Realtime Threat Defense",
+      "NextGen SIgnature Engine",
+      "Auto Backup & Quarentine ",
+      "High Reliabe Protection Core ",
     ],
     url: "/products/vwar-frontline/wp",
   },

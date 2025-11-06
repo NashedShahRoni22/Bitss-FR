@@ -47,16 +47,16 @@ export default function OrderSummary({
                 </button>
               </div>
               <div className="mb-3 space-y-1 text-xs text-gray-600">
-                <p>
+                {/* <p>
                   Version: <span className="font-medium">{item.version}</span>
-                </p>
+                </p> */}
                 <p>
                   Duration:{" "}
                   <span className="font-medium">
-                    {item.subscriptions[0]?.duration || 1} month(s)
+                    {item.subscriptions[0]?.duration / 12 || 1} year{item.subscriptions[0]?.duration / 12 > 1 ? "s" : ""}
                   </span>
                 </p>
-                <p>Monthly Price: {formatPrice(item.price)}</p>
+                <p>Yearly Price: {formatPrice(item.price * 12)}</p>
                 {item.subscriptions[0]?.discount_type && (
                   <p className="text-green-600">
                     Discount:{" "}

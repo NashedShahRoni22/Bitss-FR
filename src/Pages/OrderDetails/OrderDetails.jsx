@@ -85,7 +85,6 @@ export default function OrderDetails() {
   }
 
   const order = orderData.data;
-  const totalAmount = order.products.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <SectionContainer>
@@ -132,7 +131,7 @@ export default function OrderDetails() {
                 Total Amount
               </h3>
               <p className="text-lg font-semibold text-red-500">
-                {formatCurrency(totalAmount, order.currency)}
+                {formatCurrency(order.totalPrice, order.currency)}
               </p>
             </div>
           </div>
@@ -193,7 +192,7 @@ export default function OrderDetails() {
                         <p className="mb-1 text-xs text-gray-500">
                           Subscription Period
                         </p>
-                        <p className="font-medium">{item.period} Month(s)</p>
+                        <p className="font-medium">{item.period / 12} Year{item.period / 12 > 1 ? "s" : ""} </p>
                       </div>
                       <div className="rounded bg-gray-50 p-3">
                         <p className="mb-1 text-xs text-gray-500">Start Date</p>
@@ -225,14 +224,14 @@ export default function OrderDetails() {
                   <div className="ml-6 text-right">
                     <p className="text-2xl font-bold text-red-500">
                       {formatCurrency(
-                        calculatePriceWithDiscount(item),
+                        calculatePriceWithDiscount(item).toFixed(2),
                         order.currency,
                       )}
                     </p>
                     <p className="text-sm text-gray-500 line-through">
                       Original:{" "}
                       {formatCurrency(
-                        item.product.price * item.period,
+                        (item.product.price * item.period).toFixed(2),
                         order.currency,
                       )}
                     </p>

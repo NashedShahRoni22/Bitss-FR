@@ -5,12 +5,21 @@ const staticNavLinks = [
   },
   {
     name: "Products",
-    path: "/products",
+    children: [
+      {
+        name: "Online Products",
+        link: "/products",
+      },
+      {
+        name: "BITSS Retail Packs",
+        link: "/bitss-retail-packs",
+      }
+    ]
   },
-  {
-    name: "Security Pack",
-    path: "/web-protection-pack",
-  },
+  // {
+  //   name: "Security Pack",
+  //   path: "/web-protection-pack",
+  // },
   {
     name: "Hosting",
     children: [
@@ -44,10 +53,10 @@ const staticNavLinks = [
     name: "About us",
     path: "/about",
   },
-  {
-    name: "Free Tools",
-    path: "/free-tools",
-  },
+  // {
+  //   name: "Free Tools",
+  //   path: "/free-tools",
+  // },
   {
     name: "Contact Us",
     path: "/contact",

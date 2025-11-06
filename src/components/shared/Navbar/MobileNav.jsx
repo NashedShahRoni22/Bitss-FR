@@ -11,8 +11,10 @@ import {
 } from "react-icons/lu";
 import useAuth from "../../../hooks/useAuth";
 import staticNavLinks from "../../../data/navLinks";
+import useCart from "../../../hooks/useCart";
 
 export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
+  const { cartItems } = useCart();
   const { authInfo, handleLogout } = useAuth();
   const [showSubLinks, setShowSubLinks] = useState("");
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -46,7 +48,7 @@ export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
   };
 
   return (
-    <div className="absolute left-0 top-20 min-h-[calc(100dvh-80px)] w-full space-y-4 border bg-white p-5 md:hidden">
+    <div className="z-50 absolute left-0 top-20 min-h-[calc(100dvh-80px)] w-full space-y-4 border bg-white p-5 md:hidden">
       {/* User Authentication Section */}
       {authInfo?.access_token && (
         <div className="space-y-4">
@@ -107,6 +109,7 @@ export default function MobileNav({ setMenuOpen, updatedMenuItems }) {
               <p className="flex items-center gap-3 overflow-hidden">
                 <LuShoppingCart className="min-w-fit text-lg" />
                 Cart
+                {cartItems.length > 0 ? <span className="size-4 ml-2 animate-pulse bg-primary rounded-full text-white text-xs flex justify-center items-center">{cartItems.length}</span> : ""}
               </p>
             </Link>
 

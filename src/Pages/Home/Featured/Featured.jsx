@@ -28,7 +28,7 @@ export default function Featured() {
               src={feat.image}
               alt={feat.name}
               loading="lazy"
-              className="h-fit w-full max-w-lg"
+              className="h-fit w-full max-w-lg rounded-lg"
             />
           </div>
 
@@ -49,7 +49,7 @@ export default function Featured() {
               {feat.overview}
             </p>
 
-            <Link
+            {/* <Link
               to={feat.url}
               className={
                 "group my-8 inline-flex items-center justify-center rounded-full bg-primary px-3.5 py-2 text-lg font-medium text-custom-white transition-all duration-200 ease-linear"
@@ -61,10 +61,10 @@ export default function Featured() {
                 </span>
               </span>
               <HiOutlineArrowLongRight className="-ml-3 min-w-fit scale-0 opacity-0 transition-opacity duration-300 group-hover:scale-150 group-hover:opacity-100" />
-            </Link>
+            </Link> */}
 
             {feat.features && (
-              <ul className="space-y-2 font-light">
+              <ul className="space-y-2 font-light mt-4">
                 {feat.features.map((li, i) => (
                   <li key={i} className="flex gap-2">
                     <FaCheck className="mt-1.5 min-w-fit text-primary" />

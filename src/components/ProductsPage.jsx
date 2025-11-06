@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import ProductCard from "./ProductCard";
 
 export default function ProductsPage() {
@@ -21,6 +21,7 @@ export default function ProductsPage() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const location = useLocation();
 
   const handleAddToCart = () => {
     if (!authInfo?.access_token) {
@@ -79,6 +80,8 @@ export default function ProductsPage() {
       return categoryMatch || productMatch;
     });
 
+  const isProductsPage = location.pathname === "/products";
+
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-white">
@@ -114,21 +117,187 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="border-b border-gray-200">
-        <div className="container mx-auto px-4 py-8">
-          <h1 className="mb-2 text-4xl font-bold text-gray-900">
-            Our Products
-          </h1>
-          <p className="text-gray-600">
-            Advanced cybersecurity solutions to protect your digital assets
-          </p>
-        </div>
+        {isProductsPage ? (
+          <div className="container mx-auto px-4 py-8">
+            <h1 className="mb-2 text-4xl font-bold text-gray-900">
+              Our Products
+            </h1>
+            <p className="text-gray-600">
+              Advanced cybersecurity solutions to protect your digital assets
+            </p>
+          </div>
+        ) : (
+          <div className="container mx-auto">
+            <h1 className="mb-2 text-center text-4xl font-bold text-gray-900">
+              Bitss For
+            </h1>
+          </div>
+        )}
       </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col gap-8 lg:flex-row">
-          {/* Left Side - Products */}
-          <div className="flex-1">
+        {isProductsPage ? (
+          /* Desktop Products Page Layout - Sidebar on Right */
+          <div className="flex flex-col-reverse gap-8 lg:flex-row">
+            {/* Left Side - Products */}
+            <div className="flex-1">
+              {filteredCategories.length === 0 ? (
+                <div className="py-16 text-center">
+                  <p className="text-lg text-gray-500">No products found</p>
+                </div>
+              ) : (
+                <div className="space-y-12">
+                  {filteredCategories.map((category) => (
+                    <div key={category._id} className="space-y-6">
+                      {/* Category Header */}
+                      <div className="flex items-center gap-4">
+                        <img
+                          src={category.image}
+                          alt={category.categoryName}
+                          className="size-36 rounded-full object-cover"
+                          onError={(e) => {
+                            e.target.src =
+                              "https://via.placeholder.com/64?text=No+Image";
+                          }}
+                        />
+                        <div>
+                          <h2 className="text-2xl font-bold text-gray-900">
+                            {category.categoryName}
+                          </h2>
+                          <p className="text-gray-600">
+                            {category.sort_description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Products Grid */}
+                      {category.products.length === 0 ? (
+                        <p className="ml-20 text-gray-500">
+                          No products available in this category
+                        </p>
+                      ) : (
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                          {category.products.map((product) => (
+                            <ProductCard
+                              key={product._id}
+                              product={product}
+                              categoryId={category._id}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Right Side - Sidebar */}
+            <div className="lg:w-80">
+              <div className="sticky top-4 space-y-6">
+                {/* Categories Filter */}
+                <div className="rounded-lg border border-gray-200 p-6">
+                  <h3 className="mb-4 text-lg font-bold text-gray-900">
+                    Categories
+                  </h3>
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => setSelectedCategory("all")}
+                      className={`w-full rounded-lg px-4 py-3 text-left transition-colors ${
+                        selectedCategory === "all"
+                          ? "bg-red-600 text-white"
+                          : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium">All Products</span>
+                        <span className="text-sm">
+                          {categories.reduce(
+                            (acc, cat) => acc + cat.products.length,
+                            0,
+                          )}
+                        </span>
+                      </div>
+                    </button>
+
+                    {categories.map((category) => (
+                      <button
+                        key={category._id}
+                        onClick={() => setSelectedCategory(category._id)}
+                        className={`w-full rounded-lg px-4 py-3 text-left transition-colors ${
+                          selectedCategory === category._id
+                            ? "bg-red-600 text-white"
+                            : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium">
+                            {category.categoryName}
+                          </span>
+                          <span className="text-sm">
+                            {category.products.length}
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Need Help Section */}
+                <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900">
+                    Need Help?
+                  </h3>
+                  <p className="mb-4 text-sm text-gray-600">
+                    Contact our team for personalized recommendations
+                  </p>
+                  <Link to={"/contact"} className="w-full rounded-lg bg-gray-900 py-2 px-4 font-semibold text-white transition-colors hover:bg-gray-800">
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Mobile/Home Layout - Top Tab Bar */
+          <div className="space-y-8">
+            {/* Top Tab Bar for Categories */}
+            <div className="overflow-x-auto pb-2 -mx-4 px-4">
+              <div className="flex gap-2 min-w-max justify-center">
+                <button
+                  onClick={() => setSelectedCategory("all")}
+                  className={`rounded-full px-6 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                    selectedCategory === "all"
+                      ? "bg-red-600 text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  All Products
+                  <span className="ml-2 text-xs">
+                    ({categories.reduce((acc, cat) => acc + cat.products.length, 0)})
+                  </span>
+                </button>
+
+                {categories.map((category) => (
+                  <button
+                    key={category._id}
+                    onClick={() => setSelectedCategory(category._id)}
+                    className={`rounded-full px-6 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                      selectedCategory === category._id
+                        ? "bg-red-600 text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {category.categoryName}
+                    <span className="ml-2 text-xs">
+                      ({category.products.length})
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Products Display */}
             {filteredCategories.length === 0 ? (
               <div className="py-16 text-center">
@@ -139,21 +308,21 @@ export default function ProductsPage() {
                 {filteredCategories.map((category) => (
                   <div key={category._id} className="space-y-6">
                     {/* Category Header */}
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-center gap-4">
                       <img
                         src={category.image}
                         alt={category.categoryName}
-                        className="h-16 w-16 rounded-lg object-cover"
+                        className="size-24 md:size-36 rounded-full object-cover"
                         onError={(e) => {
                           e.target.src =
                             "https://via.placeholder.com/64?text=No+Image";
                         }}
                       />
                       <div>
-                        <h2 className="text-2xl font-bold text-gray-900">
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-900">
                           {category.categoryName}
                         </h2>
-                        <p className="text-gray-600">
+                        <p className="text-sm md:text-base text-gray-600">
                           {category.sort_description}
                         </p>
                       </div>
@@ -161,11 +330,11 @@ export default function ProductsPage() {
 
                     {/* Products Grid */}
                     {category.products.length === 0 ? (
-                      <p className="ml-20 text-gray-500">
+                      <p className="text-gray-500">
                         No products available in this category
                       </p>
                     ) : (
-                      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {category.products.map((product) => (
                           <ProductCard
                             key={product._id}
@@ -180,73 +349,7 @@ export default function ProductsPage() {
               </div>
             )}
           </div>
-
-          {/* Right Side - Filter Sidebar */}
-          <div className="lg:w-80">
-            <div className="sticky top-4 space-y-6">
-              {/* Categories Filter */}
-              <div className="rounded-lg border border-gray-200 p-6">
-                <h3 className="mb-4 text-lg font-bold text-gray-900">
-                  Categories
-                </h3>
-                <div className="space-y-2">
-                  <button
-                    onClick={() => setSelectedCategory("all")}
-                    className={`w-full rounded-lg px-4 py-3 text-left transition-colors ${
-                      selectedCategory === "all"
-                        ? "bg-red-600 text-white"
-                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="font-medium">All Products</span>
-                      <span className="text-sm">
-                        {categories.reduce(
-                          (acc, cat) => acc + cat.products.length,
-                          0,
-                        )}
-                      </span>
-                    </div>
-                  </button>
-
-                  {categories.map((category) => (
-                    <button
-                      key={category._id}
-                      onClick={() => setSelectedCategory(category._id)}
-                      className={`w-full rounded-lg px-4 py-3 text-left transition-colors ${
-                        selectedCategory === category._id
-                          ? "bg-red-600 text-white"
-                          : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium">
-                          {category.categoryName}
-                        </span>
-                        <span className="text-sm">
-                          {category.products.length}
-                        </span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price Info */}
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
-                <h3 className="mb-2 text-lg font-bold text-gray-900">
-                  Need Help?
-                </h3>
-                <p className="mb-4 text-sm text-gray-600">
-                  Contact our team for personalized recommendations
-                </p>
-                <button className="w-full rounded-lg bg-gray-900 py-2 font-semibold text-white transition-colors hover:bg-gray-800">
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

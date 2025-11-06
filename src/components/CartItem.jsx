@@ -8,7 +8,6 @@ export default function CartItem({ item }) {
     calculateItemPrice,
     calculateItemTotal,
   } = useCart();
-console.log(item);
 
   return (
     <div className="p-6">
@@ -20,13 +19,13 @@ console.log(item);
           </p>
           <div className="mt-2">
             <span className="text-sm text-gray-600">
-              Monthly Price: €{item.price.toFixed(2)}
+              Yearly Price: €{(item.price * 12).toFixed(2)}
             </span>
           </div>
           <div className="mt-1">
             <span className="text-xs text-gray-500">
-              Duration: {item.subscriptions[0]?.duration} month
-              {item.subscriptions[0]?.duration !== "1" ? "s" : ""}× €
+              Duration: {item.subscriptions[0]?.duration / 12} year
+              {item.subscriptions[0]?.duration / 12 > 1 ? "s" : ""} × €
               {item.price.toFixed(2)} = €
               {(
                 item.price * parseFloat(item.subscriptions[0]?.duration || 1)
@@ -36,7 +35,7 @@ console.log(item);
           {item.subscriptions[0]?.amount > 0 && (
             <div className="mt-1">
               <span className="text-xs text-green-600">
-                Discount: -€
+                Discount: - €
                 {item.subscriptions[0]?.discount_type === "percent"
                   ? (
                       (item.price *
@@ -48,7 +47,7 @@ console.log(item);
                 (
                 {item.subscriptions[0]?.discount_type === "percent"
                   ? `${item.subscriptions[0]?.amount}%`
-                  : `${item.subscriptions[0]?.amount}`}
+                  : `€${item.subscriptions[0]?.amount}`}
                 )
               </span>
             </div>
@@ -58,14 +57,14 @@ console.log(item);
               Subscription Duration
             </label>
             <select
-              value={item.subscriptions[0]?.id}
+              value={item.subscriptions[0]?._id}
               onChange={(e) => updateSubscription(item.id, e.target.value)}
               className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500"
             >
               {item.subscriptions.map((subscription) => (
-                <option key={subscription.id} value={subscription.id}>
-                  {subscription.duration} month
-                  {subscription.duration !== "1" ? "s" : ""} -
+                <option key={subscription._id} value={subscription._id}>
+                  {subscription.duration / 12} year
+                  {subscription.duration / 12 > 1 ? "s" : ""} -
                   {subscription.discount_type === "percent"
                     ? ` ${subscription.amount}% off`
                     : ` €${subscription.amount} off`}

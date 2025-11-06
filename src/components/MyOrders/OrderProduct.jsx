@@ -43,10 +43,10 @@ export default function OrderProduct({ productOrder, order }) {
         </div>
         <div className="text-right lg:min-w-[120px]">
           <p className="text-lg font-bold text-primary">
-            {formatCurrency(price || 0, order.currency)}
+            {formatCurrency((price).toFixed(2) || 0, order.currency)}
           </p>
           <p className="text-sm text-accent">
-            {productOrder.period} month
+            {productOrder.period / 12} year
             {productOrder.period > 1 ? "s" : ""}
           </p>
         </div>

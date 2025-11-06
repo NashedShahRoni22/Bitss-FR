@@ -21,6 +21,8 @@ import formatCurrency from "../../utils/FormatCurrency";
 const MyOrders = () => {
   const { authInfo } = useAuth();
   const [orders, setOrders] = useState([]);
+  console.log(orders);
+  
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
@@ -325,7 +327,7 @@ const MyOrders = () => {
                               <div className="text-right">
                                 <p className="text-2xl font-bold text-primary">
                                   {formatCurrency(
-                                    invoice?.totalAmount || 0,
+                                    order.totalPrice || 0,
                                     order.currency,
                                   )}
                                 </p>

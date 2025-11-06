@@ -81,13 +81,13 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="border-b border-[#C5D6E0]">
+    <nav className="border-b border-[#C5D6E0] sticky top-0 z-50 bg-white">
       <div
         id="google_translate_element"
         className="mx-auto hidden w-fit lg:block"
       ></div>
 
-      <div className="relative flex w-full items-center justify-between px-5 md:container md:mx-auto">
+      <div className="relative flex w-full items-center justify-between px-5 max-w-7xl mx-auto">
         {/* Logo */}
         <div>
           <Link to="/">
@@ -165,7 +165,7 @@ export default function Navbar() {
                     <Link
                       key={j}
                       to={subLink.link}
-                      target="_blank"
+                      // target="_blank"
                       className="block text-sm capitalize transition-all duration-200 ease-in-out hover:text-primary"
                     >
                       {subLink.name}

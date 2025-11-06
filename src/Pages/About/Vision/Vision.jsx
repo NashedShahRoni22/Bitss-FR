@@ -65,12 +65,13 @@ export default function Vision() {
         {/* Video Container */}
         <div className="w-full md:w-1/2">
           <div className="aspect-video w-full max-w-3xl">
-            <video
-              className="h-full w-full rounded-lg object-cover"
-              src="https://bitss.one/wp-content/uploads/2023/12/bitss_video.mp4"
+            <iframe
+              className="h-full w-full rounded-lg"
+              src="https://www.youtube.com/embed/C9XBLzhUk3Q?si=Zp8FWOY2CxJZKp7x"
               title="Our Mission and Vision"
-              controls
-            ></video>
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </div>

@@ -59,11 +59,11 @@ export default function CartProvider({ children }) {
       items.map((item) => {
         if (item.id === itemId) {
           const selectedSubscription = item.subscriptions.find(
-            (sub) => sub.id === subscriptionId,
+            (sub) => sub._id === subscriptionId,
           );
           const reorderedSubscriptions = [
             selectedSubscription,
-            ...item.subscriptions.filter((sub) => sub.id !== subscriptionId),
+            ...item.subscriptions.filter((sub) => sub._id !== subscriptionId),
           ];
           return { ...item, subscriptions: reorderedSubscriptions };
         }

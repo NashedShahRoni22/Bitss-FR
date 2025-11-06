@@ -24,6 +24,8 @@ import Checkout from "../Pages/Checkout/Checkout";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import OrderDetails from "../Pages/OrderDetails/OrderDetails";
 import ProductsPage from "../components/ProductsPage";
+import OfflineProductsPage from "../components/OfflineProductsPage";
+import ProductDetailsPage from "../components/ProductDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ export const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductsPage />,
+      },
+      {
+        path: "/products-details/:id",
+        element: <ProductDetailsPage />,
+      },
+      {
+        path: "/bitss-retail-packs",
+        element: <OfflineProductsPage />,
       },
       {
         path: "/web-protection-pack",
