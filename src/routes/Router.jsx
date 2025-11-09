@@ -26,6 +26,7 @@ import OrderDetails from "../Pages/OrderDetails/OrderDetails";
 import ProductsPage from "../components/ProductsPage";
 import OfflineProductsPage from "../components/OfflineProductsPage";
 import ProductDetailsPage from "../components/ProductDetailsPage";
+import OrderStatus from "../Pages/OrderStatus/OrderStatus";
 
 export const router = createBrowserRouter([
   {
@@ -137,5 +138,13 @@ export const router = createBrowserRouter([
   {
     path: "/*",
     element: <ErrorPage />,
+  },
+  {
+    path: "/order/payment/success",
+    element: <OrderStatus />,
+  },
+  {
+    path: "/order/payment/cancel",
+    element: <OrderStatus />,
   },
 ]);

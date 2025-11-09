@@ -1,10 +1,12 @@
-export default function calculatePriceWithDiscount(orderItem) {
+export default function calculatePriceWithDiscount(orderItem, rate) {
   const price = orderItem.product.price;
   const duration = orderItem.period;
   const discountAmount = orderItem.subscription.amount;
   const discountType = orderItem.subscription.discount_type;
+  // console.log(price, duration, rate);
+  
 
-  const basePrice = price * duration;
+  const basePrice = (price * rate) * duration;
 
   let discount = 0;
   if (discountType === "percent") {

@@ -163,7 +163,7 @@ const ContactForm = () => {
       // Notify user if an error occurs during submission
       alert("Oops! Something went wrong. Please try again later.");
       // You can console.log the error to know what went wrong
-      console.log(error);
+      // console.log(error);
     }
 
     // Reset form data and captcha invalidation error message

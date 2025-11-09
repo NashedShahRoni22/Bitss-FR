@@ -58,7 +58,7 @@ export default function Profile() {
 
   const handleSave = () => {
     // Here you would call your API to update user data
-    console.log("Saving profile data:", formData);
+    // console.log("Saving profile data:", formData);
     setIsEditing(false);
     // Show success message
   };

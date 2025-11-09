@@ -3,7 +3,7 @@ import formatCurrency from "../../utils/FormatCurrency";
 import formatDate from "../../utils/formatDate";
 
 export default function OrderProduct({ productOrder, order }) {
-  const price = calculatePriceWithDiscount(productOrder);
+  const price = calculatePriceWithDiscount(productOrder, order.currency_rate);
 
   return (
     <div className="rounded-xl border border-gray-100 bg-gray-50 p-4">

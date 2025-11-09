@@ -4,7 +4,6 @@ import { FaBox, FaShieldAlt, FaCheckCircle, FaSpinner } from "react-icons/fa";
 
 export default function OfflineProductsPage() {
   const [product, setProduct] = useState(null);
-  console.log(product);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedPeriod, setSelectedPeriod] = useState(null);
@@ -246,17 +245,17 @@ export default function OfflineProductsPage() {
                             </p>
                             {period.amount > 0 && (
                               <p className="text-sm text-green-600 font-medium">
-                                Save {period.amount}{period.discount_type === "percent" ? "%" : "$"}
+                                Save {period.amount}{period.discount_type === "percent" ? "%" : "€"}
                               </p>
                             )}
                           </div>
                           <div className="text-right">
                             <p className="text-2xl font-bold text-red-600">
-                              ${finalPrice}
+                              €{finalPrice}
                             </p>
                             {discount > 0 && (
                               <p className="text-sm text-gray-500 line-through">
-                                ${monthlyPrice.toFixed(2)}
+                                €{monthlyPrice.toFixed(2)}
                               </p>
                             )}
                           </div>
@@ -396,7 +395,7 @@ export default function OfflineProductsPage() {
                 <div className="pt-2 border-t border-red-200 flex items-center justify-between">
                   <span className="text-base font-bold text-gray-900">Total Price:</span>
                   <span className="text-2xl font-bold text-red-600">
-                    ${calculatePrice()}
+                    €{calculatePrice()}
                   </span>
                 </div>
               </div>

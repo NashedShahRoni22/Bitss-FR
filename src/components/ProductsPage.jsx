@@ -152,7 +152,7 @@ export default function ProductsPage() {
                     <div key={category._id} className="space-y-6">
                       {/* Category Header */}
                       <div className="flex items-center gap-4">
-                        <img
+                        {/* <img
                           src={category.image}
                           alt={category.categoryName}
                           className="size-36 rounded-full object-cover"
@@ -160,7 +160,7 @@ export default function ProductsPage() {
                             e.target.src =
                               "https://via.placeholder.com/64?text=No+Image";
                           }}
-                        />
+                        /> */}
                         <div>
                           <h2 className="text-2xl font-bold text-gray-900">
                             {category.categoryName}
