@@ -27,6 +27,7 @@ import ProductsPage from "../components/ProductsPage";
 import OfflineProductsPage from "../components/OfflineProductsPage";
 import ProductDetailsPage from "../components/ProductDetailsPage";
 import OrderStatus from "../Pages/OrderStatus/OrderStatus";
+import ActivateLicense from "../Pages/ActivateLicense/ActivateLicense";
 
 export const router = createBrowserRouter([
   {
@@ -124,6 +125,10 @@ export const router = createBrowserRouter([
       {
         path: "/my-orders/:orderId",
         element: <OrderDetails />,
+      },
+      {
+        path: "/activate-license",
+        element: <ActivateLicense />,
       },
     ],
   },

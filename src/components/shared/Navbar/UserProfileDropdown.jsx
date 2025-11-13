@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   LuChevronDown,
+  LuKeyRound,
   LuPackage,
   LuShoppingCart,
   LuUser,
@@ -106,7 +107,24 @@ export default function UserProfileDropdown() {
                 onClick={() => setIsDropdownOpen(false)}
               >
                 <LuShoppingCart className="mr-3 h-4 w-4" />
-                Cart {cartItems.length > 0 ? <span className="size-4 ml-2 animate-pulse bg-primary rounded-full text-white text-xs flex justify-center items-center">{cartItems.length}</span> : ""}
+                Cart{" "}
+                {cartItems.length > 0 ? (
+                  <span className="ml-2 flex size-4 animate-pulse items-center justify-center rounded-full bg-primary text-xs text-white">
+                    {cartItems.length}
+                  </span>
+                ) : (
+                  ""
+                )}
+              </Link>
+
+              {/* Cart Link */}
+              <Link
+                to="/activate-license"
+                className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors duration-150 hover:bg-gray-100"
+                onClick={() => setIsDropdownOpen(false)}
+              >
+                <LuKeyRound className="mr-3 h-4 w-4" />
+                Activate License
               </Link>
 
               {/* Divider */}
